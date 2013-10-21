@@ -1,0 +1,44 @@
+#browser
+{
+        display:none;
+        width: 100%;
+        background-color: #d5d5d5; 
+        color:#000; 
+        font-weight: bold; 
+        z-index: 122;
+        font-size: 1em;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        opacity: 0.95;        
+        -moz-opacity: 0.95;
+        filter: alpha(opacity=95);        
+        /*IE 7*/
+        *position: static;
+}
+#browser .atualize
+{
+        width: 400px;
+        margin: auto;
+}
+#browser .fechar
+{
+        color: #000;
+        float: right;
+        font-weight: bold;
+        margin: auto auto auto;
+        text-decoration: none;
+        width: 20px;
+        margin-top: -25px;
+}
+#browser .atualize a img
+{
+    margin-top: 5px;
+}
+#browser p
+{
+        display: inline;
+        width: 400px;
+        float: left;
+        margin-top: 15px;
+}

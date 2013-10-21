@@ -1,0 +1,15 @@
+C:\Users\ana.rosa\Desktop\Academia\SFF.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\ana.rosa\Desktop\Academia\SFF.Web\obj\Debug\SFF.Web.dll
+C:\Users\ana.rosa\Desktop\Academia\SFF.Web\bin\SFF.Web.dll
+C:\Users\ana.rosa\Desktop\Academia\SFF.Web\bin\SFF.Web.pdb
+C:\Users\ana.rosa\Desktop\Academia\SFF.Web\obj\Debug\SFF.Web.pdb
+G:\Projetos\Academia\Academia\SFF.Web\obj\Debug\ResolveAssemblyReference.cache
+G:\Projetos\Academia\Academia\SFF.Web\obj\Debug\SFF.Web.dll
+G:\Projetos\Academia\Academia\SFF.Web\bin\SFF.Web.dll
+G:\Projetos\Academia\Academia\SFF.Web\bin\SFF.Web.pdb
+G:\Projetos\Academia\Academia\SFF.Web\obj\Debug\SFF.Web.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SFF.Web\bin\SFF.Web.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SFF.Web\bin\SFF.Web.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SFF.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SFF.Web\obj\Debug\SFF.Web.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SFF.Web\obj\Debug\SFF.Web.pdb
