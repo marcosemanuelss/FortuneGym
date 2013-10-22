@@ -51,6 +51,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrativo\CadastroUsuario.aspx" />
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\logo.jpg" />
@@ -89,6 +90,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\CadastroUsuario.aspx.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\CadastroUsuario.aspx.designer.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo\ConsultaUsuario.aspx.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

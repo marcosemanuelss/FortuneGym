@@ -17,6 +17,10 @@
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server">
                 
                 </asp:GridView>
+                <div class="btnsConsulta">
+                    <asp:Button ID="btnNovo" ToolTip="Novo" runat="server" Text="Novo" Cssclass="buttons"/>
+                    <asp:Button ID="btnVoltar" ToolTip="Voltar" Cssclass="buttons" runat="server" Text="Voltar"/>
+                </div>
             </div>
         </div>
 </asp:Content>

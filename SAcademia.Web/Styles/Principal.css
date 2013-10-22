@@ -26,6 +26,13 @@ h2{
     font-size:1.1em; 
     font-weight: lighter;
 }
+h3{
+    font-size:1em; 
+    font-weight: bold;
+    margin-left:34px;
+    margin-top:25px;
+    margin-bottom:8px;
+}
 a{
     text-decoration:none;    
 }
@@ -135,7 +142,7 @@ ul,ol{
 /*MASTER PAGE*/
 #tudo .topo{
     margin:23px auto;
-    width:98%;
+    width:88%;
 }
 #tudo .topo .left{
     float:left;
@@ -174,7 +181,7 @@ ul,ol{
 }
 #tudo .menu ul li{
     float:left;
-    margin-left:25px;
+    margin-left:40px;
     margin-top: 19px;
     position: relative;
 }
