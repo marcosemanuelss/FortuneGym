@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAcademia.Web", "SFF.Web\SAcademia.Web.csproj", "{312187EC-575E-4AFB-AF67-528037322C40}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAcademia.Web", "SAcademia.Web\SAcademia.Web.csproj", "{312187EC-575E-4AFB-AF67-528037322C40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
