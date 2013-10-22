@@ -32,6 +32,20 @@ a{
 ul,ol{
     list-style-type:none;
 }
+/*Buttons*/
+.buttons{
+    border: 1px solid #000;
+    background: #fff repeat-x left top;
+    cursor: pointer;
+    height: 32px;
+    padding:0px 11px 3px 11px;
+    padding-bottom:2px\0/;
+}
+/* Somente para Chrome e Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .buttons{ padding-bottom:2px; }
+}
+/*end*/
 #tudo{
     width:100%;
     height:100%;
