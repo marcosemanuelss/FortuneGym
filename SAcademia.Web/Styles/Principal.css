@@ -58,7 +58,7 @@ ul,ol{
     height:100%;
 }
 #tudo .descricaosys{
-    margin: 5% auto 1% auto;
+    margin: 5% auto 2% auto;
     width: 203px;
 }
 .centro{
@@ -147,7 +147,7 @@ ul,ol{
 #tudo .topo .left{
     float:left;
     width:203px;
-    margin-right:1em;
+    margin-right:2em;
 }
 #tudo .topo .middle{
     float:left;
@@ -178,6 +178,7 @@ ul,ol{
     float:left;
     background:#303030 repeat-x;
     min-height:58px;
+    margin-top: 19px;
 }
 #tudo .menu ul li{
     float:left;

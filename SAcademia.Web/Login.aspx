@@ -34,7 +34,7 @@
     <form id="form" runat="server">
         <div>
             <div id="tudo">
-                <div class="descricaosys"><img src="img/logo.jpg" alt="logo" /></div>
+                <div class="descricaosys"><img src="img/softgym.jpg" alt="logo" /></div>
                 <div class="centro">
                     <div class="acesso">
                         <h2>ACESSE NOSSO SISTEMA</h2>

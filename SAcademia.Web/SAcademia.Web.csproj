@@ -56,6 +56,7 @@
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\marca.jpg" />
+    <Content Include="img\softgym.jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="Inicio\Inicio.aspx" />
     <Content Include="Login.aspx" />

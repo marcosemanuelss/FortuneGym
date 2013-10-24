@@ -82,7 +82,7 @@
     <form runat="server">
     <div id="tudo">
         <div class="topo">
-            <div class="left"><img src="/img/logo.jpg" alt="logo" /></div>
+            <div class="left"><img src="/img/softgym.jpg" alt="logo" /></div>
             <div class="middle">
                 <div class="one">
                     <strong><label>Bem-Vindo, </label> <asp:Label ID="lblNomeUser" runat="server" Text="Administrador!"></asp:Label></strong>
