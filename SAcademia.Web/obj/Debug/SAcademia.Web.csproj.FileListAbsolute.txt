@@ -3,3 +3,8 @@ D:\FortuneGym\FortuneGym\SAcademia.Web\bin\SFF.Web.pdb
 D:\FortuneGym\FortuneGym\SAcademia.Web\obj\Debug\ResolveAssemblyReference.cache
 D:\FortuneGym\FortuneGym\SAcademia.Web\obj\Debug\SFF.Web.dll
 D:\FortuneGym\FortuneGym\SAcademia.Web\obj\Debug\SFF.Web.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SAcademia.Web\bin\SFF.Web.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SAcademia.Web\bin\SFF.Web.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SAcademia.Web\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SAcademia.Web\obj\Debug\SFF.Web.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\SAcademia.Web\obj\Debug\SFF.Web.pdb

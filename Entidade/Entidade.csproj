@@ -40,21 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Academia\Academia.cs" />
-    <Compile Include="Academia\AcademiaParametros.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="Equipamento\EquipamentoCategoria.cs" />
-    <Compile Include="Equipamento\Equipamentos.cs" />
+    <Compile Include="Academias\Academia.cs" />
+    <Compile Include="Academias\AcademiaParametros.cs" />
+    <Compile Include="Erros.cs" />
+    <Compile Include="Exercicios\ExercicioCategoria.cs" />
+    <Compile Include="Exercicios\Exercicio.cs" />
+    <Compile Include="Fichas\Ficha.cs" />
+    <Compile Include="IP.cs" />
+    <Compile Include="Objetivos\Objetivo.cs" />
+    <Compile Include="Objetivos\ObjetivoTipo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repeticao\Repeticao.cs" />
-    <Compile Include="Repeticao\TipoRepeticao.cs" />
-    <Compile Include="Serie\Series.cs" />
-    <Compile Include="Serie\SerieTipo.cs" />
-    <Compile Include="Usuario\UsuarioComplemento.cs" />
-    <Compile Include="Usuario\Usuarios.cs" />
-    <Compile Include="Usuario\UsuarioTipo.cs" />
+    <Compile Include="Repeticoes\Repeticao.cs" />
+    <Compile Include="Repeticoes\TipoRepeticao.cs" />
+    <Compile Include="Fichas\Series.cs" />
+    <Compile Include="Fichas\SerieTipo.cs" />
+    <Compile Include="Usuarios\UsuarioComplemento.cs" />
+    <Compile Include="Usuarios\Usuarios.cs" />
+    <Compile Include="Usuarios\UsuarioTipo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

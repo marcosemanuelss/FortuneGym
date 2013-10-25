@@ -1,0 +1,7 @@
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\obj\Debug\SIC.Seguranca.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\bin\Debug\SIC.Seguranca.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\bin\Debug\SIC.Seguranca.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\bin\Debug\Entidade.dll
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\bin\Debug\Entidade.pdb
+C:\Users\vanderson.santana\Desktop\UFS\Academia\Seguranca\obj\Debug\SIC.Seguranca.dll
