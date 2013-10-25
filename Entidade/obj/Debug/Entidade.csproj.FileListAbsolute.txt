@@ -1,5 +1,0 @@
-C:\Users\vanderson.santana\Desktop\UFS\Academia\Entidade\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\vanderson.santana\Desktop\UFS\Academia\Entidade\bin\Debug\Entidade.dll
-C:\Users\vanderson.santana\Desktop\UFS\Academia\Entidade\bin\Debug\Entidade.pdb
-C:\Users\vanderson.santana\Desktop\UFS\Academia\Entidade\obj\Debug\Entidade.dll
-C:\Users\vanderson.santana\Desktop\UFS\Academia\Entidade\obj\Debug\Entidade.pdb

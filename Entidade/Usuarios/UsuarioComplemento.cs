@@ -22,5 +22,7 @@ namespace Entidade.Usuarios
 
         public Fichas.Ficha Ficha { get; set; }
         public List<Objetivos.Objetivo> Objetivo { get; set; }
+
+
     }
 }

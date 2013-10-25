@@ -11,3 +11,9 @@ bin
 /Seguranca/bin/Release
 /Seguranca/obj/Debug
 /Seguranca/obj/Release
+/*.sln
+/*.suo
+obj
+bin
+bin
+obj
