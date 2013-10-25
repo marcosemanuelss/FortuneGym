@@ -1,4 +1,13 @@
 bin
 /Persistencia/obj
+/Persistencia/obj/Debug
+/Persistencia/obj/Release
+/Persistencia/bin
+/Persistencia/bin/Debug
+/Persistencia/bin/Release
 /Seguranca/obj
 /Seguranca/bin
+/Seguranca/bin/Debug
+/Seguranca/bin/Release
+/Seguranca/obj/Debug
+/Seguranca/obj/Release
