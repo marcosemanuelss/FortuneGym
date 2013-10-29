@@ -7,28 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAcademia.Web.Administrativo {
+namespace SAcademia.Web.Cadastros {
     
     
-    public partial class CadastroUsuario {
-        
-        /// <summary>
-        /// txtLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLogin;
-        
-        /// <summary>
-        /// txtCpf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCpf;
+    public partial class CadastraEquipamento {
         
         /// <summary>
         /// txtNome control.
@@ -40,15 +22,6 @@ namespace SAcademia.Web.Administrativo {
         protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
-        /// dpTipoUsuario control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpTipoUsuario;
-        
-        /// <summary>
         /// dpSituacao control.
         /// </summary>
         /// <remarks>
@@ -56,6 +29,15 @@ namespace SAcademia.Web.Administrativo {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList dpSituacao;
+        
+        /// <summary>
+        /// dpCategoria control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpCategoria;
         
         /// <summary>
         /// btnSalvar control.

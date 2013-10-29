@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace SFF.Web.Administrativo
+namespace SAcademia.Web.Administrativo
 {
     public partial class CadastroUsuario : System.Web.UI.Page
     {
@@ -15,6 +15,11 @@ namespace SFF.Web.Administrativo
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Administrativo/ConsultaUsuario.aspx");
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Administrativo/ConsultaUsuario.aspx");
         }

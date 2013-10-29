@@ -40,7 +40,7 @@
     margin-bottom: 20px;
 }
 .filtrar{
-    width:85%;
+    width:95%;
     float:left;
     margin:20px 0 20px 25px;
 }
@@ -88,7 +88,7 @@
 }
 .btnsConsulta{
     float:right;
-    margin:0px 23px 16px;
+    margin:0px 26px 16px;
 }
 .btnsConsulta input{
     margin-left:6px;
@@ -160,8 +160,13 @@
 }
 .btnsCadastro{
     float:right;
-    margin:25px 38px 16px;
+    margin:18px 37px 16px;
 }
+/* Somente para Chrome e Safari */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .btnsCadastro{ margin-top:15px; }
+}
+/*end*/
 .btnsCadastro input{
     margin-left:6px;
 }

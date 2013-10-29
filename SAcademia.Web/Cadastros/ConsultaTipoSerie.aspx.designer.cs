@@ -7,64 +7,55 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SAcademia.Web.Administrativo {
+namespace SAcademia.Web.Cadastros {
     
     
-    public partial class CadastroUsuario {
+    public partial class ConsultaTipoSerie {
         
         /// <summary>
-        /// txtLogin control.
+        /// txtPesquisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtLogin;
+        protected global::System.Web.UI.WebControls.TextBox txtPesquisa;
         
         /// <summary>
-        /// txtCpf control.
+        /// btnPesquisar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCpf;
+        protected global::System.Web.UI.WebControls.Button btnPesquisar;
         
         /// <summary>
-        /// txtNome control.
+        /// btnLimpar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNome;
+        protected global::System.Web.UI.WebControls.Button btnLimpar;
         
         /// <summary>
-        /// dpTipoUsuario control.
+        /// gvConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpTipoUsuario;
+        protected global::System.Web.UI.WebControls.GridView gvConsulta;
         
         /// <summary>
-        /// dpSituacao control.
+        /// btnNovo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpSituacao;
-        
-        /// <summary>
-        /// btnSalvar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalvar;
+        protected global::System.Web.UI.WebControls.Button btnNovo;
         
         /// <summary>
         /// btnVoltar control.

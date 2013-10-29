@@ -4,32 +4,30 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls;
 using System.Data;
-namespace SAcademia.Web.Administrativo
+namespace SAcademia.Web.Cadastros
 {
-    public partial class ConsultaUsuario : System.Web.UI.Page
+    public partial class ConsultaEquipamento : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             CarregaGV();
         }
-
         protected void CarregaGV()
         {
             DataTable dt = new DataTable();
 
-            dt.Columns.Add("Login", System.Type.GetType("System.String"));
             dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("Academia", System.Type.GetType("System.String"));
+            dt.Columns.Add("Categoria", System.Type.GetType("System.String"));
             dt.Columns.Add("Situação", System.Type.GetType("System.String"));
             dt.Columns.Add("Ação", System.Type.GetType("System.String"));
-            dt.Columns.Add("Resetar Senha", System.Type.GetType("System.String"));
             dt.Columns.Add("Editar", System.Type.GetType("System.String"));
             dt.Columns.Add("Excluir", System.Type.GetType("System.String"));
 
             for (int i = 1; i < 10; i++)
             {
-                dt.Rows.Add(new String[] {"Nome Teste", "Teste da Silva", "img", "Inativo", "img", "img", "img", "img" });
+                dt.Rows.Add(new String[] { "Nome Teste", "Categoria A", "Ativo", "img", "img", "img" });
             }
 
             gvConsulta.DataSource = dt;
@@ -38,7 +36,7 @@ namespace SAcademia.Web.Administrativo
 
         protected void btnNovo_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Administrativo/CadastroUsuario.aspx");
+            Response.Redirect("~/Cadastros/CadastraEquipamento.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)

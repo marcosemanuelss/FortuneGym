@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-namespace SFF.Web.Administrativo
+namespace SAcademia.Web.Administrativo
 {
     public partial class ConsultaCliente : System.Web.UI.Page
     {
@@ -19,8 +19,8 @@ namespace SFF.Web.Administrativo
 
             dt.Columns.Add("Login", System.Type.GetType("System.String"));
             dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("E-mail", System.Type.GetType("System.String"));
-            dt.Columns.Add("Academia", System.Type.GetType("System.String"));
+            dt.Columns.Add("Matrícula", System.Type.GetType("System.String"));
+            dt.Columns.Add("CPF", System.Type.GetType("System.String"));
             dt.Columns.Add("Situação", System.Type.GetType("System.String"));
             dt.Columns.Add("Ação", System.Type.GetType("System.String"));
             dt.Columns.Add("Resetar Senha", System.Type.GetType("System.String"));
@@ -29,11 +29,21 @@ namespace SFF.Web.Administrativo
 
             for (int i = 1; i < 10; i++)
             {
-                dt.Rows.Add(new String[] { "Nome Teste", "Teste da Silva", "testedasilva@email.com.br", "img", "Inativo", "img", "img", "img", "img" });
+                dt.Rows.Add(new String[] { "Nome Teste", "Teste da Silva", "545465465", "88888888888", "Inativo", "img", "img", "img", "img" });
             }
 
             gvConsulta.DataSource = dt;
             gvConsulta.DataBind();
+        }
+
+        protected void btnNovo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Administrativo/CadastraCliente.aspx");
+        }
+
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Inicio.aspx");
         }
         
     }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SFF.Web.Administrativo {
+namespace SAcademia.Web.Administrativo {
     
     
     public partial class CadastraCliente {

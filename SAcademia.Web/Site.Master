@@ -166,17 +166,17 @@
                 <li><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
-                        <li class="first"><a href="" class="parent">Usuário</a></li>
+                        <li class="first"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
                         <li><a href="" class="parent">Perfil</a></li>
-                        <li><a href="" class="parent">Cliente</a></li>
+                        <li><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
-                        <li class="first"><a href="" class="parent">Categoria de Equipamentos</a></li>
-                        <li><a href="" class="parent">Equipamentos</a></li>
-                        <li><a href="" class="parent">Tipo de Séries</a></li>
+                        <li class="first"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Equipamentos</a></li>
+                        <li><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Equipamentos</a></li>
+                        <li><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
                         <li><a href="" class="parent">Tipo de Repetições</a></li>
                     </ul>
                 </li>

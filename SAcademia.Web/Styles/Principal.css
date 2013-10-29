@@ -302,4 +302,6 @@ li:hover ul, li li:hover ul, li.over ul, li li.over ul { display: block; } /* Th
     font-size:0.8em;
     float:left;
     margin-left: 2.9em;
+    margin-bottom: 1em;
+    width:74%;
 }

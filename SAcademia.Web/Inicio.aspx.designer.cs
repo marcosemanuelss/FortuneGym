@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SFF.Web {
+namespace SAcademia.Web {
     
     
     public partial class Inicio {

@@ -1,0 +1,30 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CadastraCategoria.aspx.cs" Inherits="SAcademia.Web.Cadastros.CadastraCategoria" %>
+
+<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div class="conteudo">
+        <div class="cabecalho">
+            <div class="seta-right">
+            </div>
+            <h2>
+                Cadastro/Alteração de Categoria de Equipamentos</h2>
+        </div>
+        <div class="bg-tabela">
+            <h3>
+                Dados da Categoria</h3>
+            <div class="row-750">
+                <label>
+                    Nome*:</label>
+                <asp:TextBox ID="txtNome" Cssclass="required" runat="server" ToolTip="Nome" />
+            </div>            
+            <div class="btnsCadastro">
+                <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
+                    runat="server" Text="Salvar" CssClass="buttons" />
+                <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" Text="Voltar" />
+            </div>
+            <span class="campObrigatorio">(*) Campo Obrigatório</span>
+        </div>
+    </div>   
+</asp:Content>
+

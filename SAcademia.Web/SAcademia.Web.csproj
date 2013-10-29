@@ -55,6 +55,12 @@
     <Content Include="Administrativo\CadastroUsuario.aspx" />
     <Content Include="Administrativo\ConsultaCliente.aspx" />
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
+    <Content Include="Cadastros\CadastraCategoria.aspx" />
+    <Content Include="Cadastros\CadastraEquipamento.aspx" />
+    <Content Include="Cadastros\CadastraTipoSerie.aspx" />
+    <Content Include="Cadastros\ConsultaCategoria.aspx" />
+    <Content Include="Cadastros\ConsultaEquipamento.aspx" />
+    <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\icon-atencao.png" />
     <Content Include="img\icon-erro.png" />
@@ -64,7 +70,6 @@
     <Content Include="img\marca.jpg" />
     <Content Include="img\softgym.jpg" />
     <Content Include="Inicio.aspx" />
-    <Content Include="Inicio\Inicio.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jAtualizarBrowser.js" />
     <Content Include="Scripts\jquery.mask.js" />
@@ -126,6 +131,48 @@
     <Compile Include="Administrativo\ConsultaUsuario.aspx.designer.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\CadastraCategoria.aspx.cs">
+      <DependentUpon>CadastraCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastraCategoria.aspx.designer.cs">
+      <DependentUpon>CadastraCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\CadastraEquipamento.aspx.cs">
+      <DependentUpon>CadastraEquipamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastraEquipamento.aspx.designer.cs">
+      <DependentUpon>CadastraEquipamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\CadastraTipoSerie.aspx.cs">
+      <DependentUpon>CadastraTipoSerie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastraTipoSerie.aspx.designer.cs">
+      <DependentUpon>CadastraTipoSerie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaCategoria.aspx.cs">
+      <DependentUpon>ConsultaCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaCategoria.aspx.designer.cs">
+      <DependentUpon>ConsultaCategoria.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaEquipamento.aspx.cs">
+      <DependentUpon>ConsultaEquipamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaEquipamento.aspx.designer.cs">
+      <DependentUpon>ConsultaEquipamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaTipoSerie.aspx.cs">
+      <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaTipoSerie.aspx.designer.cs">
+      <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -141,13 +188,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Inicio\Inicio.aspx.cs">
-      <DependentUpon>Inicio.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Inicio\Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">

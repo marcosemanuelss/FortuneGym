@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CadastraCliente.aspx.cs"
-    Inherits="SFF.Web.Administrativo.CadastraCliente" %>
+    Inherits="SAcademia.Web.Administrativo.CadastraCliente" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script type="text/javascript">
@@ -111,7 +111,8 @@
                 <asp:TextBox ID="txtTelCel" runat="server" ToolTip="Telefone Celular" />
             </div>
             <div class="btnsCadastro">
-                <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" runat="server" Text="Salvar" CssClass="buttons" />
+                <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
+                    runat="server" Text="Salvar" CssClass="buttons" onclick="btnSalvar_Click" />
                 <asp:Button ID="btnVoltar" onclick="btnVoltar_Click" ToolTip="Voltar" CssClass="buttons" runat="server" Text="Voltar" />
             </div>
             <span class="campObrigatorio">(*) Campo Obrigatório</span>

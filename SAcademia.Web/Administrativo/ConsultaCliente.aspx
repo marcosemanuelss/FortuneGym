@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ConsultaCliente.aspx.cs" Inherits="SFF.Web.Administrativo.ConsultaCliente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ConsultaCliente.aspx.cs" Inherits="SAcademia.Web.Administrativo.ConsultaCliente" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
@@ -18,8 +18,8 @@
                 
                 </asp:GridView>
                 <div class="btnsConsulta">
-                    <asp:Button ID="btnNovo" ToolTip="Novo" runat="server" Text="Novo" Cssclass="buttons"/>
-                    <asp:Button ID="btnVoltar" ToolTip="Voltar" Cssclass="buttons" runat="server" Text="Voltar"/>
+                    <asp:Button ID="btnNovo" onclick="btnNovo_Click" ToolTip="Novo" runat="server" Text="Novo" Cssclass="buttons"/>
+                    <asp:Button ID="btnVoltar" onclick="btnVoltar_Click" ToolTip="Voltar" Cssclass="buttons" runat="server" Text="Voltar"/>
                 </div>
             </div>
         </div>

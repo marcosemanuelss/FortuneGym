@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CadastroUsuario.aspx.cs" Inherits="SFF.Web.Administrativo.CadastroUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CadastroUsuario.aspx.cs" Inherits="SAcademia.Web.Administrativo.CadastroUsuario" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
     <script type="text/javascript">
         $(function () {
@@ -44,7 +44,8 @@
                     </asp:DropDownList>
                 </div>
                 <div class="btnsCadastro">
-                    <asp:Button ID="btnSalvar" OnClientClick="validaCampos();" ToolTip="Salvar" runat="server" Text="Salvar" Cssclass="buttons"/>
+                    <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
+                        runat="server" Text="Salvar" Cssclass="buttons" onclick="btnSalvar_Click"/>
                     <asp:Button ID="btnVoltar" ToolTip="Voltar" Cssclass="buttons" runat="server" 
                         Text="Voltar" onclick="btnVoltar_Click"/>
                 </div>
