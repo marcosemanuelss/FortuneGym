@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="SAcademia.Web.SiteMaster" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
@@ -7,13 +8,18 @@
     <link href="~/Styles/Conteudo.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="/Scripts/jquery.min.js"></script>
     <script type="text/javascript" src="/Scripts/jquery.mask.js"></script>
-    <script type="text/javascript" src="/Scripts/jquery.maskMoney.js"></script>    
+    <script type="text/javascript" src="/Scripts/jquery.maskMoney.js"></script>
+    <script src="/Scripts/jValidate.js" type="text/javascript"></script> 
     <script type="text/javascript">
         //Função que obriga o usuário a digitar apenas numeros
         function verificaNumero(e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 return false;
             }
+        }
+        //Limpa Campo 
+        function limpaCampo(ID) {
+            $('#' + ID).val("");
         }
         //Função para validar CPF
         function validarCPF(cpf) {
@@ -52,15 +58,44 @@
                 return false;
             return true;
         }
+        //Função ALERT MENSAGEM PERSONALIZADO
+        function mostraPopUpAlert(mensagemAlert, iconeAlert, bool, ID) {
+            var IDNome = "'" + ID + "'";
+            $('#Modal').show();
+            $('#iconeAlert').attr("src", iconeAlert);
+            $('#mensagemAlert').html(mensagemAlert);
+            if (bool) {
+                var input1 = '<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="confirmaAlert(' + IDNome + ');" />';
+                var input2 = '<input type="button" class="buttons" id="btnCancel" title="Cancelar" value="Cancelar" onclick="return fechar();" />';
+                $('.btnsAlert').html(input1 + input2);
+            } else {
+                $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar();" />')
+            }
+            $("#btnOK").focus();
+            $('html, body').animate({ scrollTop: $('#tudo').offset().top }, 500);
+            return false;
+        }
+
+        function confirmaAlert(ID) {
+            $('#' + ID).attr("onclick", "return true;");
+            $('#' + ID).click();
+            fechar();
+            return true;
+        }
+
+        function fechar() {
+            $('#Modal').hide();
+        }
+        // END
         //Função para remover máscara de campos CPF
         function removeCaracteres(cpf) {
             cpf = cpf.replace(".", "");
             cpf = cpf.replace(".", "");
             cpf = cpf.replace("-", "");
             //alert(cpf);
-            return cpf;
+            return cpf; 
         }
-        //Função para remover máscara de campos CEP
+        //Função para remover máscara de campos CEP   
         function removeCaracteresCEP(cep) {
             cep = cep.replace("-", "");
             //alert(cep);
@@ -74,43 +109,70 @@
             //alert(tel);
             return tel;
         }
+        //FUNÇÃO PARA EXECUTAR O EVENTO DO BOTÃO DE SUBMIT DA PÁGINA, AO PRESSIONAR A TECLA ENTER
+        function BotaoEnter(e, id) {
+            if (OnEnter(e)) {
+                $('#' + id).click();
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        
     </script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form runat="server">
+    <form runat="server" name="form">
     <div id="tudo">
         <div class="topo">
-            <div class="left"><img src="/img/softgym.jpg" alt="logo" /></div>
+            <div class="left">
+                <img src="/img/softgym.jpg" alt="logo" /></div>
             <div class="middle">
                 <div class="one">
-                    <strong><label>Bem-Vindo, </label> <asp:Label ID="lblNomeUser" runat="server" Text="Administrador!"></asp:Label></strong>
+                    <strong>
+                        <label>
+                            Bem-Vindo,
+                        </label>
+                        <asp:Label ID="lblNomeUser" runat="server" Text="Administrador!"></asp:Label></strong>
                 </div>
                 <div class="one">
-                    <strong><label>Academia: </label></strong> <asp:Label ID="lblNomeAcademia" runat="server" Text="Dom Bosco"></asp:Label>
+                    <strong>
+                        <label>
+                            Academia:
+                        </label>
+                    </strong>
+                    <asp:Label ID="lblNomeAcademia" runat="server" Text="Dom Bosco"></asp:Label>
                 </div>
             </div>
             <div class="right">
                 <div class="one">
-                    <asp:Button ID="btnDesconectar" ToolTip="Sair" Text="Logout" runat="server" BorderStyle="None" TabIndex="1000" />
+                    <asp:Button ID="btnDesconectar" OnClientClick="return mostraPopUpAlert('Deseja realmente sair?','../img/icon-question.png',true,this.id);"
+                        ToolTip="Sair" Text="Logout" runat="server" BorderStyle="None" TabIndex="1000" />
                 </div>
                 <div class="one">
-                    <label>Último Login: </label> <asp:Label ID="lblUltimoLogin" runat="server" Text="20/10/2013 ás 15:20:00"></asp:Label>
+                    <label>
+                        Último Login:
+                    </label>
+                    <asp:Label ID="lblUltimoLogin" runat="server" Text="20/10/2013 ás 15:20:00"></asp:Label>
                 </div>
             </div>
         </div>
         <div class="menu">
             <ul>
-               <li><a href="/Default.aspx"> Início </a></li>
-               <li><a href="#" class="parent">Administrativo</a><div class="seta-baixo"> </div>
+                <li><a href="/Default.aspx">Início </a></li>
+                <li><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
+                </div>
                     <ul class="subimg">
                         <li class="first"><a href="" class="parent">Usuário</a></li>
                         <li><a href="" class="parent">Perfil</a></li>
                         <li><a href="" class="parent">Cliente</a></li>
                     </ul>
-               </li>
-               <li><a href="#" class="parent">Cadastros</a><div class="seta-baixo"> </div>
+                </li>
+                <li><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
+                </div>
                     <ul class="subimg">
                         <li class="first"><a href="" class="parent">Categoria de Equipamentos</a></li>
                         <li><a href="" class="parent">Equipamentos</a></li>
@@ -122,7 +184,18 @@
             </ul>
         </div>
         <div class="container">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+            <div id="Modal" style="display: none;">
+                <div id="teste" class="mensagemAlert">
+                </div>
+                <div id="alert" class="boxAlert">
+                    <img src="" alt="imagem" id="iconeAlert" class="iconeAlert" />
+                    <p id="mensagemAlert">
+                    </p>
+                    <div class="btnsAlert">
+                    </div>
+                </div>
+            </div>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         </div>
     </div>
     </form>

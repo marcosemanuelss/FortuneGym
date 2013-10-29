@@ -242,3 +242,64 @@ li:hover ul, li li:hover ul, li.over ul, li li.over ul { display: block; } /* Th
     width:100%;
     float:left;
 }
+/*-----------alert POPUP--------------*/
+.mensagemAlert
+{
+    background: #000 repeat;  
+    width: 100%; 
+    height: 100%; 
+    z-index: 900; 
+    position: fixed; 
+    left: 0; 
+    top: 0;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+.boxAlert
+{
+    background: #fff no-repeat; 
+    height: 120px; 
+    position: absolute; 
+    width: 400px; 
+    top: 50%;
+    left: 50%; 
+    margin-left: -200px; 
+    margin-top: -60px;
+    display:table;
+    z-index: 999;
+    -webkit-box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    7px 7px 5px rgba(50, 50, 50, 0.75);
+    box-shadow:         7px 7px 5px rgba(50, 50, 50, 0.75);
+}
+#iconeAlert
+{
+    float: left;
+    margin-left: 7px;
+    margin-right: 4px;
+    margin-top: 12px;   
+}
+#mensagemAlert
+{
+    font-size:14px;
+    display:block;
+    float:left;
+    width:339px;
+    margin-top:24px;
+}
+.btnsAlert
+{
+    bottom: 11px;
+    position: absolute;
+    right: 17px;
+}
+.btnsAlert input
+{
+    float: left;
+    margin-right:5px;
+}
+.campObrigatorio{
+    color:Red;
+    font-size:0.8em;
+    float:left;
+    margin-left: 2.9em;
+}

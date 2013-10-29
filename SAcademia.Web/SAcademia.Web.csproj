@@ -51,9 +51,15 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrativo\CadastraCliente.aspx" />
     <Content Include="Administrativo\CadastroUsuario.aspx" />
+    <Content Include="Administrativo\ConsultaCliente.aspx" />
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
     <Content Include="img\btn-sair.jpg" />
+    <Content Include="img\icon-atencao.png" />
+    <Content Include="img\icon-erro.png" />
+    <Content Include="img\icon-ok.png" />
+    <Content Include="img\icon-question.png" />
     <Content Include="img\logo.jpg" />
     <Content Include="img\marca.jpg" />
     <Content Include="img\softgym.jpg" />
@@ -64,6 +70,7 @@
     <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.maskMoney.js" />
     <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jValidate.js" />
     <Content Include="Scripts\shadowbox\close.png" />
     <Content Include="Scripts\shadowbox\expressInstall.swf" />
     <Content Include="Scripts\shadowbox\index.html" />
@@ -91,12 +98,26 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\CadastraCliente.aspx.cs">
+      <DependentUpon>CadastraCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\CadastraCliente.aspx.designer.cs">
+      <DependentUpon>CadastraCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo\CadastroUsuario.aspx.cs">
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administrativo\CadastroUsuario.aspx.designer.cs">
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\ConsultaCliente.aspx.cs">
+      <DependentUpon>ConsultaCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\ConsultaCliente.aspx.designer.cs">
+      <DependentUpon>ConsultaCliente.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\ConsultaUsuario.aspx.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
