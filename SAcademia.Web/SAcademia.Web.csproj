@@ -51,10 +51,13 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Administrativo\CadastraAcademia.aspx" />
     <Content Include="Administrativo\CadastraCliente.aspx" />
     <Content Include="Administrativo\CadastroUsuario.aspx" />
+    <Content Include="Administrativo\ConsultaAcademia.aspx" />
     <Content Include="Administrativo\ConsultaCliente.aspx" />
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
+    <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
     <Content Include="Cadastros\CadastraTipoSerie.aspx" />
@@ -62,6 +65,7 @@
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
     <Content Include="img\btn-sair.jpg" />
+    <Content Include="img\btn-selecione.png" />
     <Content Include="img\icon-atencao.png" />
     <Content Include="img\icon-erro.png" />
     <Content Include="img\icon-ok.png" />
@@ -103,6 +107,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrativo\CadastraAcademia.aspx.cs">
+      <DependentUpon>CadastraAcademia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\CadastraAcademia.aspx.designer.cs">
+      <DependentUpon>CadastraAcademia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo\CadastraCliente.aspx.cs">
       <DependentUpon>CadastraCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -117,6 +128,13 @@
     <Compile Include="Administrativo\CadastroUsuario.aspx.designer.cs">
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrativo\ConsultaAcademia.aspx.cs">
+      <DependentUpon>ConsultaAcademia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\ConsultaAcademia.aspx.designer.cs">
+      <DependentUpon>ConsultaAcademia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Administrativo\ConsultaCliente.aspx.cs">
       <DependentUpon>ConsultaCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -130,6 +148,13 @@
     </Compile>
     <Compile Include="Administrativo\ConsultaUsuario.aspx.designer.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\Parametros.aspx.cs">
+      <DependentUpon>Parametros.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\Parametros.aspx.designer.cs">
+      <DependentUpon>Parametros.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\CadastraCategoria.aspx.cs">
       <DependentUpon>CadastraCategoria.aspx</DependentUpon>

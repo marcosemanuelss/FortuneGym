@@ -58,6 +58,56 @@
                 return false;
             return true;
         }
+        //Função para Validar CNPJ
+        function validarCNPJ(cnpj) {
+            cnpj = cnpj.replace(/[^\d]+/g, '');
+            if (cnpj == '') return true;
+            if (cnpj.length != 14)
+                return false;
+            // Elimina CNPJs invalidos conhecidos
+            if (cnpj == "00000000000000" ||
+                cnpj == "11111111111111" ||
+                cnpj == "22222222222222" ||
+                cnpj == "33333333333333" ||
+                cnpj == "44444444444444" ||
+                cnpj == "55555555555555" ||
+                cnpj == "66666666666666" ||
+                cnpj == "77777777777777" ||
+                cnpj == "88888888888888" ||
+                cnpj == "99999999999999")
+                return false;
+
+            // Valida DVs
+            tamanho = cnpj.length - 2
+            numeros = cnpj.substring(0, tamanho);
+            digitos = cnpj.substring(tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado != digitos.charAt(0))
+                return false;
+
+            tamanho = tamanho + 1;
+            numeros = cnpj.substring(0, tamanho);
+            soma = 0;
+            pos = tamanho - 7;
+            for (i = tamanho; i >= 1; i--) {
+                soma += numeros.charAt(tamanho - i) * pos--;
+                if (pos < 2)
+                    pos = 9;
+            }
+            resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+            if (resultado != digitos.charAt(1))
+                return false;
+
+            return true;
+
+        }
         //Função ALERT MENSAGEM PERSONALIZADO
         function mostraPopUpAlert(mensagemAlert, iconeAlert, bool, ID) {
             var IDNome = "'" + ID + "'";
@@ -119,6 +169,12 @@
                 return true;
             }
         }
+        //SE NOME DO ARQUIVO DE UPLOAD FOR MUITO GRANDE, A FUNÇÃO LIMITA.
+        function limitaCaracterArquivo(nome) {
+            if (nome.length >= 30) {
+                document.getElementById("fakeupload").value = document.getElementById("fakeupload").value.substr(0, 30);
+            }
+        }
         
     </script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
@@ -162,13 +218,14 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="/Default.aspx">Início </a></li>
+                <li><a href="/Inicio.aspx">Início </a></li>
                 <li><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
                         <li class="first"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
                         <li><a href="" class="parent">Perfil</a></li>
                         <li><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
+                        <li><a href="/Administrativo/ConsultaAcademia.aspx" class="parent">Academia</a></li>
                     </ul>
                 </li>
                 <li><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
