@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Entidade.Usuarios;
+using Persistencia.Usuarios;
+using Persistencia.Perfil;
+
+namespace Negocio.Usuarios
+{
+    public class NegUsuario
+    {
+        /// <summary>
+        /// Verifica se o login e a senha do usuário está correta, se sim já adiciona as páginas que ele possui permissão e
+        /// caso ainda ele seja um cliente obtem informações complementares.
+        /// </summary>
+        /// <param name="usuario">Login do Usuário</param>
+        /// <param name="senha">Senha do Usuário</param>
+        /// <returns>Objeto Usuário todo populado</returns>
+        public Entidade.Usuarios.Usuarios Logar(string Usuario, string Senha)
+        {
+            Entidade.Usuarios.Usuarios UsuarioRetorno = new PerUsuarios().Logar(Usuario, Senha);
+
+            if (UsuarioRetorno != null)
+            {
+                UsuarioRetorno.Paginas = new PerPaginas().ListarPaginas(UsuarioRetorno.CodigoTipo);
+
+                if (UsuarioRetorno.CodigoTipo == 1)
+                {
+                    UsuarioRetorno.Complemento = ObterComplemento(UsuarioRetorno.CodigoAcademia, UsuarioRetorno.Codigo);
+                }
+            }
+
+            return UsuarioRetorno;
+        }
+
+        private UsuarioComplemento ObterComplemento(int CodigoAcademia, int CodigoUsuario)
+        {
+            UsuarioComplemento Complemento = new PerUsuarios().ObterComplemento(CodigoAcademia, CodigoUsuario);
+            Complemento.Ficha = null;//Obtem a ficha do usuario
+            Complemento.Objetivo = null;//Obtem o objetivo do usuario
+            return Complemento;
+        }
+    }
+}

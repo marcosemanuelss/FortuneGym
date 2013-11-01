@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seguranca", "Seguranca\Segu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SAcademia.Web", "SAcademia.Web\SAcademia.Web.csproj", "{312187EC-575E-4AFB-AF67-528037322C40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{531ED82A-9070-4454-8BBF-A0FCE59BDC85}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{312187EC-575E-4AFB-AF67-528037322C40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{312187EC-575E-4AFB-AF67-528037322C40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{312187EC-575E-4AFB-AF67-528037322C40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531ED82A-9070-4454-8BBF-A0FCE59BDC85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531ED82A-9070-4454-8BBF-A0FCE59BDC85}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531ED82A-9070-4454-8BBF-A0FCE59BDC85}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531ED82A-9070-4454-8BBF-A0FCE59BDC85}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

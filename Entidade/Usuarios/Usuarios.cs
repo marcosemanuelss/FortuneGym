@@ -6,6 +6,7 @@ using Entidade.Perfil;
 
 namespace Entidade.Usuarios
 {
+    [Serializable]
     public class Usuarios
     {
         public int CodigoAcademia { get; set; }

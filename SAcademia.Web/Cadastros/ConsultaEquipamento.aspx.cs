@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.UI.WebControls;
 using System.Data;
+
 namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaEquipamento : System.Web.UI.Page
