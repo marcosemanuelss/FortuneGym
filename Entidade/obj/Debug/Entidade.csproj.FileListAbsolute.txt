@@ -1,5 +1,0 @@
-D:\FortuneGym\FortuneGym\Entidade\bin\Debug\Entidade.dll
-D:\FortuneGym\FortuneGym\Entidade\bin\Debug\Entidade.pdb
-D:\FortuneGym\FortuneGym\Entidade\obj\Debug\ResolveAssemblyReference.cache
-D:\FortuneGym\FortuneGym\Entidade\obj\Debug\Entidade.dll
-D:\FortuneGym\FortuneGym\Entidade\obj\Debug\Entidade.pdb
