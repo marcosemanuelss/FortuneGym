@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio.Usuarios;
+using Entidade.Usuarios;
 
 namespace SAcademia.Web
 {
@@ -14,9 +16,10 @@ namespace SAcademia.Web
 
         }
 
-        protected void Entrar_Click(object sender, EventArgs e)
+        protected void btnEntrar_Click(object sender, EventArgs e)
         {
-            
+            Usuarios usuario = new NegUsuario().Logar(txtLogin.Text, txtSenha.Text);
+            Session["Usuario"] = usuario;
         }
     }
 }

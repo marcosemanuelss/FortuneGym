@@ -51,15 +51,6 @@
     <Compile Include="Base\Mensagens.Designer.cs" />
     <Compile Include="Base\MethodExtensions.cs" />
     <Compile Include="Base\ParametroProcedureCache.cs" />
-    <Compile Include="Db\CNPJ.cs" />
-    <Compile Include="Db\ColunaAttribute.cs" />
-    <Compile Include="Db\CPF.cs" />
-    <Compile Include="Db\ExpressaoRegular.cs" />
-    <Compile Include="Db\Requerido.cs" />
-    <Compile Include="Db\RequeridoRange.cs" />
-    <Compile Include="Db\TabelaAttribute.cs" />
-    <Compile Include="Db\TamanhoString.cs" />
-    <Compile Include="Db\UsarNoAttribute.cs" />
     <Compile Include="Perfil\PerPaginas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuarios\PerUsuarios.cs" />

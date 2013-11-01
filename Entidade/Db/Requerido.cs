@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace Persistencia.Db
+namespace Entidade.Db
 {
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
-    public class ExpressaoRegular : ValidationAttribute
+    public class Requerido : ValidationAttribute
     {
-          #region "Privates"
+
+        #region "Privates"
             readonly String _rule;
             readonly String _resourc;
             readonly String _idresc;
-            readonly String _expressao;
         #endregion
 
         #region "Propriedades"
             public String RuleSet
-            {
+            {                
                 get { return _rule; }
             }
 
@@ -31,32 +31,25 @@ namespace Persistencia.Db
             {
                 get { return _idresc; }
             }
-
-            public String Expressao
-            {
-                get { return _expressao; }
-            }
         #endregion
+
 
         #region "Construtor"
             /// <summary>
             /// Construtor
             /// </summary>
-            /// <param name="_ruleSet"></param>
-            /// <param name="_Resource"></param>
-            /// <param name="_idResource"></param>
-            public ExpressaoRegular(String _ruleSet, String _Resource, String _idResource,String _Expressao)
+            public Requerido(String _ruleSet, String _Resource, String _idResource)
             {
                 this._rule = _ruleSet;
                 this._resourc = _Resource;
                 this._idresc = _idResource;
-                this._expressao = _Expressao;
             }
         #endregion
-           
 
+
+     
         /// <summary>
-        /// Logica de validação 
+        /// 
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

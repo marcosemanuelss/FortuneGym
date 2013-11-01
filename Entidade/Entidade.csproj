@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,6 +43,15 @@
   <ItemGroup>
     <Compile Include="Academias\Academia.cs" />
     <Compile Include="Academias\AcademiaParametros.cs" />
+    <Compile Include="Db\CNPJ.cs" />
+    <Compile Include="Db\ColunaAttribute.cs" />
+    <Compile Include="Db\CPF.cs" />
+    <Compile Include="Db\ExpressaoRegular.cs" />
+    <Compile Include="Db\Requerido.cs" />
+    <Compile Include="Db\RequeridoRange.cs" />
+    <Compile Include="Db\TabelaAttribute.cs" />
+    <Compile Include="Db\TamanhoString.cs" />
+    <Compile Include="Db\UsarNoAttribute.cs" />
     <Compile Include="Erros.cs" />
     <Compile Include="Exercicios\ExercicioCategoria.cs" />
     <Compile Include="Exercicios\Exercicio.cs" />

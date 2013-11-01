@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.ComponentModel.DataAnnotations;
 
-namespace Persistencia.Db
+namespace Entidade.Db
 {
     public class RequeridoRange :ValidationAttribute
     {

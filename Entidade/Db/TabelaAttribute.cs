@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Persistencia.Db
+namespace Entidade.Db
 {
     [AttributeUsage(AttributeTargets.Class , Inherited = false, AllowMultiple = false)]
     public sealed class TabelaAttribute : Attribute

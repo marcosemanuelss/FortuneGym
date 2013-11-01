@@ -44,10 +44,11 @@
                         </div>
                         <div class="row-login">
                             <label>Senha:</label>
-                            <asp:TextBox TextMode="Password" ID="TextBox1" runat="server"></asp:TextBox>
+                            <asp:TextBox TextMode="Password" ID="txtSenha" runat="server"></asp:TextBox>
                         </div>
                         <div class="links">
-                            <asp:Button Text="Entrar" ID="btnEntrar" ToolTip="Entrar" runat="server" />
+                            <asp:Button Text="Entrar" ID="btnEntrar" ToolTip="Entrar" runat="server" 
+                                onclick="btnEntrar_Click" />
                             <div class="esqueceu-senha"><a href="#" rel="shadowbox:;" onclick="esqueceuSenha();" title="Esqueceu sua senha?">Esqueceu sua senha?</a></div>
                         </div>
                     </div>
