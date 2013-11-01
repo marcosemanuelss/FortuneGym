@@ -60,6 +60,7 @@
     <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
+    <Content Include="Cadastros\CadastraRepeticoes.aspx" />
     <Content Include="Cadastros\CadastraTipoSerie.aspx" />
     <Content Include="Cadastros\ConsultaCategoria.aspx" />
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
@@ -169,6 +170,13 @@
     </Compile>
     <Compile Include="Cadastros\CadastraEquipamento.aspx.designer.cs">
       <DependentUpon>CadastraEquipamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\CadastraRepeticoes.aspx.cs">
+      <DependentUpon>CadastraRepeticoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastraRepeticoes.aspx.designer.cs">
+      <DependentUpon>CadastraRepeticoes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\CadastraTipoSerie.aspx.cs">
       <DependentUpon>CadastraTipoSerie.aspx</DependentUpon>
