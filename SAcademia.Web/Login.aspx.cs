@@ -16,30 +16,7 @@ namespace SAcademia.Web
 
         protected void Entrar_Click(object sender, EventArgs e)
         {
-            if (ValidaEntrada())
-            {
-                
-            }
-        }
-
-        private Boolean ValidaEntrada()
-        {
             
-            //if (txtLogin.Text.Equals(string.Empty))
-            //{
-            //    mensagemLabel.Text = "Insira um login válido";
-            //    txtLogin.Focus();
-            //    return false;
-            //}
-
-            //if (txtSenha.Text.Equals(string.Empty))
-            //{
-            //    mensagemLabel.Text = "Insira uma senha válida";
-            //    txtSenha.Focus();
-            //    return false;
-            //}
-
-            return true;
         }
     }
 }

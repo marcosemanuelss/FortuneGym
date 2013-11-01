@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Entidade.Perfil;
 
 namespace Entidade.Usuarios
 {
@@ -18,5 +19,7 @@ namespace Entidade.Usuarios
         public bool Ativo { get; set; }
         public int CodigoUsuarioAlteracao { get; set; }
         public UsuarioComplemento Complemento { get; set; }
+
+        public List<Paginas> Paginas { get; set; }
     }
 }

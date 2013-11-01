@@ -49,6 +49,7 @@
     <Compile Include="IP.cs" />
     <Compile Include="Objetivos\Objetivo.cs" />
     <Compile Include="Objetivos\ObjetivoTipo.cs" />
+    <Compile Include="Perfil\Paginas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repeticoes\Repeticao.cs" />
     <Compile Include="Repeticoes\TipoRepeticao.cs" />
