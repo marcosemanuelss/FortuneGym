@@ -52,10 +52,13 @@
     <Compile Include="Base\Mensagens.Designer.cs" />
     <Compile Include="Base\MethodExtensions.cs" />
     <Compile Include="Base\ParametroProcedureCache.cs" />
+    <Compile Include="Exercicios\PerExercicio.cs" />
     <Compile Include="Fichas\PerFicha.cs" />
+    <Compile Include="Fichas\PerSerie.cs" />
     <Compile Include="Objetivos\PerObjetivo.cs" />
     <Compile Include="Perfil\PerPaginas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repeticoes\PerRepeticao.cs" />
     <Compile Include="Usuarios\PerUsuarios.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,10 +70,7 @@
       <Name>Entidade</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exercicios\" />
-    <Folder Include="Repeticoes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

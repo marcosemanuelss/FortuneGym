@@ -217,23 +217,23 @@
             </div>
         </div>
         <div class="menu">
-            <ul>
+            <ul runat="server" id="MenuLista">
                 <li><a href="/Inicio.aspx">Início </a></li>
-                <li runat="server" id="Administrativo" ><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
+                <li runat="server" id="Administrativo" visible="false"><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
-                        <li class="first" runat="server" id="Usuario"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
-                        <li runat="server" id="Cliente"><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
-                        <li runat="server" id="Academia"><a href="/Administrativo/ConsultaAcademia.aspx" class="parent">Academia</a></li>
+                        <li class="first" runat="server" id="Usuario" visible="false"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
+                        <li runat="server" id="Cliente" visible="false"><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
+                        <li runat="server" id="Academia" visible="false"><a href="/Administrativo/ConsultaAcademia.aspx" class="parent">Academia</a></li>
                     </ul>
                 </li>
-                <li runat="server" id="Cadastro"><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
+                <li runat="server" id="Cadastro" visible="false"><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
-                        <li class="first" runat="server" id="Categoria"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
-                        <li runat="server" id="Equipamento"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
-                        <li runat="server" id="TipoSerie"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
-                        <li runat="server" id="Repeticao"><a href="" class="parent">Tipo de Repetições</a></li>
+                        <li class="first" runat="server" id="Categoria" visible="false"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
+                        <li runat="server" id="Equipamento" visible="false"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
+                        <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
+                        <li runat="server" id="Repeticao" visible="false"><a href="" class="parent">Tipo de Repetições</a></li>
                     </ul>
                 </li>
                 <li><a href="">Relatórios</a></li>
