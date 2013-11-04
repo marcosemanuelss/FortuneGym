@@ -1,6 +1,6 @@
 ﻿function valida() {
         /* Required message */
-        var requiredMsg = "Preencha todos os campos obrigatórios que possuem *.";
+        var requiredMsg = "Campo obrigatório não preenchido.";
         /* E-mail message */
         var mailMsg = "O e-mail informado é inválido!";
         var valid = true;

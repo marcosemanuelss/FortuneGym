@@ -5,6 +5,8 @@ using System.Text;
 using Entidade.Usuarios;
 using Persistencia.Usuarios;
 using Persistencia.Perfil;
+using Persistencia.Fichas;
+using Persistencia.Objetivos;
 
 namespace Negocio.Usuarios
 {
@@ -37,8 +39,8 @@ namespace Negocio.Usuarios
         private UsuarioComplemento ObterComplemento(int CodigoAcademia, int CodigoUsuario)
         {
             UsuarioComplemento Complemento = new PerUsuarios().ObterComplemento(CodigoAcademia, CodigoUsuario);
-            Complemento.Ficha = null;//Obtem a ficha do usuario
-            Complemento.Objetivo = null;//Obtem o objetivo do usuario
+            Complemento.Ficha = new PerFicha().ObterFicha(CodigoAcademia, CodigoUsuario);
+            Complemento.Objetivo = new PerObjetivo().ListarObjetivos(CodigoAcademia, CodigoUsuario);
             return Complemento;
         }
     }

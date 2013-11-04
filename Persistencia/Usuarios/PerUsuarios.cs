@@ -25,7 +25,7 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
             p.Add(Base.Db.CreateParameter("@ID_USUARIO", CodigoUsuario));
 
-            return Base.Db.Read<Entidade.Usuarios.UsuarioComplemento>("SP_LOGAR_USUARIO", GenericMake.Make<Entidade.Usuarios.UsuarioComplemento>, CommandType.StoredProcedure, p);
+            return Base.Db.Read<Entidade.Usuarios.UsuarioComplemento>("SP_OBTER_USUARIO_COMPLEMENTO", GenericMake.Make<Entidade.Usuarios.UsuarioComplemento>, CommandType.StoredProcedure, p);
         }
     }
 }
