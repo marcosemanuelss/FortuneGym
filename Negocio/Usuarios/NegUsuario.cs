@@ -44,5 +44,10 @@ namespace Negocio.Usuarios
             Complemento.Objetivo = new PerObjetivo().ListarObjetivos(CodigoAcademia, CodigoUsuario);
             return Complemento;
         }
+
+        public List<Entidade.Usuarios.UsuariosGrid> ListarUsuarios(int CodigoAcademia, string Filtro)
+        {
+            return new PerUsuarios().ListarUsuarios(CodigoAcademia, Filtro);
+        }
     }
 }

@@ -67,6 +67,7 @@
     <Compile Include="Fichas\SerieTipo.cs" />
     <Compile Include="Usuarios\UsuarioComplemento.cs" />
     <Compile Include="Usuarios\Usuarios.cs" />
+    <Compile Include="Usuarios\UsuariosGrid.cs" />
     <Compile Include="Usuarios\UsuarioTipo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

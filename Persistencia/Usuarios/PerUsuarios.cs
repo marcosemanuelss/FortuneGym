@@ -27,5 +27,14 @@ namespace Persistencia.Usuarios
 
             return Base.Db.Read<Entidade.Usuarios.UsuarioComplemento>("SP_OBTER_USUARIO_COMPLEMENTO", GenericMake.Make<Entidade.Usuarios.UsuarioComplemento>, CommandType.StoredProcedure, p);
         }
+
+        public List<Entidade.Usuarios.UsuariosGrid> ListarUsuarios(int CodigoAcademia, string Filtro)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@DS_FILTRO", Filtro));
+
+            return Base.Db.ReadList<Entidade.Usuarios.UsuariosGrid>("SP_LISTAR_USUARIOS_BUSCA", GenericMake.Make<Entidade.Usuarios.UsuariosGrid>, CommandType.StoredProcedure, p);
+        }
     }
 }
