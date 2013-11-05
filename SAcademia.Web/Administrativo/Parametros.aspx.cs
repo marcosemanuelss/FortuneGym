@@ -38,7 +38,7 @@ namespace SAcademia.Web.Administrativo
             int retorno = 0;
             AcademiaParametros academiaParametros = new AcademiaParametros();
             academiaParametros.Avaliacao = Convert.ToBoolean(rblistAvaliacao.SelectedValue);
-            academiaParametros.PrazoAvaliacao = Convert.ToInt32(txtTempoAvaliacao.Text);
+            academiaParametros.PrazoAvaliacao = txtTempoAvaliacao.Text == "" ? null : (int?)Convert.ToInt32(txtTempoAvaliacao.Text);
             academiaParametros.PrazoFicha = Convert.ToInt32(txtTempoFicha.Text);
             academiaParametros.Cor = hddCorMenu.Value == "" ? "#303030" : hddCorMenu.Value;
             academiaParametros.CodigoAcademia = ((Academia)Session["Academia"]).Codigo;

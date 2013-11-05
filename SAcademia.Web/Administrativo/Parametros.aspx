@@ -18,6 +18,7 @@
                     <label>Tempo de Duração da Ficha (meses)*:</label>
                     <asp:TextBox ID="txtTempoFicha" runat="server" CssClass="required" ToolTip="Tempo de Avaliação" />
                 </div>
+
                 <div class="row-290">
                     <label>Possui Avaliação?*</label>
                     <asp:RadioButtonList ID="rblistAvaliacao" CssClass="radio" runat="server">
@@ -28,12 +29,12 @@
                 <div class="row-290 tempo">
                     <label>Tempo de Avaliação*:</label>
                     <asp:TextBox ID="txtTempoAvaliacao" runat="server" CssClass="required" ToolTip="Tempo de Avaliação" />
-                </div>
+                </div>      
                 <div class="row-290">
                     <label>Cor:</label>
                     <input type='text' id="custom" />
                     <asp:HiddenField ID="hddCorMenu" runat="server" />
-                </div>                                
+                </div>                          
                 <div class="btnsCadastro">
                     <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
                         runat="server" Text="Salvar" Cssclass="buttons" onclick="btnSalvar_Click"/>
