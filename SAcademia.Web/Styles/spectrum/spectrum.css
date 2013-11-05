@@ -340,7 +340,7 @@ License: MIT
     background: #fff;
     color: #000;
     vertical-align: middle;
-	width:278px;
+	width:442px;
 }
 .sp-replacer:hover, .sp-replacer.sp-active {
     border-color: #F0C49B;
@@ -361,7 +361,7 @@ License: MIT
 .sp-preview
 {
     position:relative;
-    width:256px;
+    width:424px;
     height: 20px;
     border: solid 1px #222;
     margin-right: 5px;
