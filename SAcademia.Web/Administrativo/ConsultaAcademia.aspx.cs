@@ -20,7 +20,9 @@ namespace SAcademia.Web.Administrativo
 
         protected void CarregaGV(string Pesquisa)
         {
-            gvConsulta.DataSource = new NegAcademia().ListarAcademias(Pesquisa);
+            List<Academia> lista = new NegAcademia().ListarAcademias(Pesquisa);
+            Session["ListaAcademias"] = lista;
+            gvConsulta.DataSource = lista;
             gvConsulta.DataBind();
         }
 
@@ -31,6 +33,7 @@ namespace SAcademia.Web.Administrativo
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
+            Session["ListaAcademias"] = null;
             Response.Redirect("~/Inicio.aspx");
         }
 
@@ -49,6 +52,13 @@ namespace SAcademia.Web.Administrativo
                     AcademiaParametros parametros = new NegAcademia().ObterParametros(Convert.ToInt32(CodigoAcademia));
                     Session["ParametrosAcademia"] = parametros;
                     Response.Redirect("Parametros.aspx");
+
+                    break;
+
+                case "Editar":
+                    List<Academia> lista = (List<Academia>)Session["ListaAcademias"];
+                    Session["EditarAcademia"] = lista.Find(delegate(Academia acad) { return acad.Codigo == Convert.ToInt32(CodigoAcademia); });
+                    Response.Redirect("CadastraAcademia.aspx");
 
                     break;
             }

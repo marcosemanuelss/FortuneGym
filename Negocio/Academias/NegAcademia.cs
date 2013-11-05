@@ -34,5 +34,20 @@ namespace Negocio.Academias
         {
             return new PerAcademia().SalvarParametros(academiaParametros);
         }
+
+        public List<string> TipoSituacao()
+        {
+            List<string> lista = new List<string>();
+            lista.Add("");
+            lista.Add("Ativo");
+            lista.Add("Inativo");
+            
+            return lista;
+        }
+
+        public int InserirAcademia(Academia academia)
+        {
+            return new PerAcademia().InserirAcademia(academia);
+        }
     }
 }

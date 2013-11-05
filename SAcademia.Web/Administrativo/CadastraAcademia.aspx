@@ -22,6 +22,8 @@
         <div class="bg-tabela">
             <h3>
                 Dados da Academia</h3>
+            <img id="ImagemAcademia" alt="" src="" runat="server" />
+            <asp:HiddenField ID="hddCodigoAcademia" runat="server"/>
             <div class="row-290">
                 <label>
                     CNPJ*:</label>
@@ -46,7 +48,7 @@
             <div class="row-452">
                 <label>
                     CEP*:</label>
-                <asp:TextBox ID="txtCep" CssClass="required" onBlur="buscaCep(this.value);" runat="server"
+                <asp:TextBox ID="txtCep" CssClass="required" runat="server"
                     ToolTip="CEP" />
             </div>
             <div class="row-750">
@@ -87,11 +89,7 @@
             <div class="row-290">
                 <label>
                     Situação*:</label>
-                <asp:DropDownList ID="dpSituacao" Cssclass="required" runat="server">
-                    <asp:ListItem Text="Selecione" Value="" />
-                    <asp:ListItem Text="Ativo" Value="Ativo" />
-                    <asp:ListItem Text="Inativo" Value="Inativo" />
-                </asp:DropDownList>
+                <asp:DropDownList ID="dpSituacao" runat="server"></asp:DropDownList>
             </div>
             <div class="btnsCadastro">
                 <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" runat="server"
@@ -102,4 +100,37 @@
             <span class="campObrigatorio">(*) Campo Obrigatório</span>
         </div>
     </div>
+    <script type="text/javascript">
+            //BUSCA CEP
+            $("#<%=txtCep.ClientID%>").blur(function (event) {
+                var cep = $("#<%=txtCep.ClientID%>").val();
+                if ($.trim(cep) !== "") {
+                    $.getScript(
+                          "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=" + cep,
+                          function () {
+                              if (resultadoCEP["resultado"]) {
+                                  if (unescape(resultadoCEP["uf"]).toUpperCase() !== '') {
+
+                                      $('#<%=txtBairro.ClientID%>').val(unescape(resultadoCEP["bairro"]));
+                                      $('#<%=txtCidade.ClientID%>').val(unescape(resultadoCEP["cidade"]));
+                                      $('#<%=txtUf.ClientID%>').val(resultadoCEP["uf"]);
+                                      $('#<%=txtEndereco.ClientID%>').val(unescape(resultadoCEP["tipo_logradouro"]+" "+resultadoCEP["logradouro"]));
+                                  } else {
+                                      mostraPopUpAlert('CEP não encontrado.', '../img/icon-atencao.png', false, '');
+                                      //alert('CEP não encontrado.');   
+                                      $('#<%=txtCep.ClientID%>').val("");
+                                      $('#<%=txtBairro.ClientID%>').val("");
+                                      $('#<%=txtCidade.ClientID%>').val("");
+                                      $('#<%=txtUf.ClientID%>').val("");
+                                      $('#<%=txtEndereco.ClientID%>').val("");
+                                  }
+                              } else {
+                                  mostraPopUpAlert('Endereço não encontrado', '../img/icon-atencao.png', false, '');
+                                  //alert("Endereço não encontrado");
+                              }
+                          }
+                        );
+                }
+                  });
+       </script>
 </asp:Content>

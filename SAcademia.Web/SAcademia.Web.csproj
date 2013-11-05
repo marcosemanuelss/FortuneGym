@@ -57,6 +57,7 @@
     <Content Include="Administrativo\ConsultaAcademia.aspx" />
     <Content Include="Administrativo\ConsultaCliente.aspx" />
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
+    <Content Include="Administrativo\ImagemAcademia.aspx" />
     <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
@@ -153,6 +154,13 @@
     </Compile>
     <Compile Include="Administrativo\ConsultaUsuario.aspx.designer.cs">
       <DependentUpon>ConsultaUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrativo\ImagemAcademia.aspx.cs">
+      <DependentUpon>ImagemAcademia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrativo\ImagemAcademia.aspx.designer.cs">
+      <DependentUpon>ImagemAcademia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrativo\Parametros.aspx.cs">
       <DependentUpon>Parametros.aspx</DependentUpon>

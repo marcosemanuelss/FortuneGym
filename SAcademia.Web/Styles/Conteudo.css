@@ -231,3 +231,9 @@
 .btnsCadastro input{
     margin-left:6px;
 }
+
+#MainContent_ImagemAcademia {
+    float: right;
+    margin-right: 14px;
+    margin-top: 9px;
+}
