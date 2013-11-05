@@ -10,7 +10,7 @@
 namespace SAcademia.Web {
     
     
-    public partial class SiteMaster {
+    public partial class Site {
         
         /// <summary>
         /// HeadContent control.
@@ -22,7 +22,16 @@ namespace SAcademia.Web {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
-        /// lblNomeUser control.
+        /// Controle ScriptmanagerPopup.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptmanagerPopup;
+        
+        /// <summary>
+        /// Controle lblNomeUser.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

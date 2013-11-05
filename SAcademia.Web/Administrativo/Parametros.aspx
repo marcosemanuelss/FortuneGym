@@ -1,7 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Parametros.aspx.cs" Inherits="SAcademia.Web.Administrativo.Parametros" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" 
+        CodeBehind="Parametros.aspx.cs" Inherits="SAcademia.Web.Administrativo.Parametros" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-    <script type="text/javascript">
-    </script>
+
+    <script type="text/javascript" src='../Scripts/spectrum/spectrum.js'></script>
+    <link rel='stylesheet' href='../Styles/spectrum/spectrum.css' />
+
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
         <div class="conteudo">
@@ -28,7 +31,8 @@
                 </div>
                 <div class="row-290">
                     <label>Cor:</label>
-                    <asp:TextBox ID="txtCor" runat="server" ToolTip="cor"/>
+                    <input type='text' id="custom" />
+                    <asp:HiddenField ID="hddCorMenu" runat="server" />
                 </div>                                
                 <div class="btnsCadastro">
                     <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
@@ -40,6 +44,16 @@
             </div>
         </div>
         <script type="text/javascript">
+            $("#custom").spectrum({
+                color: "<%=hddCorMenu.Value%>"
+            });
+
+            function mudarCor() {
+                console.log(document.querySelector('.sp-preview-inner').style.background);
+                console.log(document.getElementById("<%=hddCorMenu.ClientID%>").value);
+                document.getElementById("<%=hddCorMenu.ClientID%>").value = document.querySelector('.sp-preview-inner').style.background;
+            }
+
             $("#MainContent_rblistAvaliacao").change(function () { // bind a function to the change event
                 var val = $("input[name='ctl00$MainContent$rblistAvaliacao']:checked").val(); //pega  valor do radio
                 if (val == "False") {

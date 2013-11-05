@@ -92,6 +92,7 @@
     <Content Include="Scripts\shadowbox\previous.png" />
     <Content Include="Scripts\shadowbox\shadowbox.css" />
     <Content Include="Scripts\shadowbox\shadowbox.js" />
+    <Content Include="Scripts\spectrum\spectrum.js" />
     <Content Include="SolicitaSenha.aspx" />
     <Content Include="Styles\atualizarBrowser.css" />
     <Content Include="Styles\Conteudo.css" />
@@ -99,6 +100,7 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Styles\spectrum\spectrum.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

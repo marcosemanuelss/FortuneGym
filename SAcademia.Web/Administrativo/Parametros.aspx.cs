@@ -40,13 +40,13 @@ namespace SAcademia.Web.Administrativo
             academiaParametros.Avaliacao = Convert.ToBoolean(rblistAvaliacao.SelectedValue);
             academiaParametros.PrazoAvaliacao = Convert.ToInt32(txtTempoAvaliacao.Text);
             academiaParametros.PrazoFicha = Convert.ToInt32(txtTempoFicha.Text);
-            academiaParametros.Cor = txtCor.Text;
+            academiaParametros.Cor = hddCorMenu.Value == "" ? "#303030" : hddCorMenu.Value;
             academiaParametros.CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
 
             retorno = new NegAcademia().SalvarParametros(academiaParametros);
             if (retorno > 0)
             {
-                //Implementar resposta ao usuário     
+                ((Site)Master).ExecutaResposta("Parâmetros salvos com sucesso!" , "../img/icon-ok.png", "../Administrativo/ConsultaAcademia.aspx");
             }
             else
             {
@@ -59,7 +59,7 @@ namespace SAcademia.Web.Administrativo
             rblistAvaliacao.SelectedValue = academiaParametros.Avaliacao.ToString();
             txtTempoAvaliacao.Text = academiaParametros.PrazoAvaliacao.ToString();
             txtTempoFicha.Text = academiaParametros.PrazoFicha.ToString();
-            txtCor.Text = academiaParametros.Cor.ToString();
+            hddCorMenu.Value = academiaParametros.Cor.ToString();
         }
     }
 }
