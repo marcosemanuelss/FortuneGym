@@ -9,7 +9,7 @@ using Entidade.Perfil;
 
 namespace SAcademia.Web
 {
-    public partial class SiteMaster : System.Web.UI.MasterPage
+    public partial class Site : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,7 +62,7 @@ namespace SAcademia.Web
         public void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
         {
             // Define the name and type of the client scripts on the page.
-            String csname1 = "PopupScript";
+            String csname1 = "Script";
             Type cstype = this.GetType();
 
             // Get a ClientScriptManager reference from the Page class.
