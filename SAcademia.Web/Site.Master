@@ -169,13 +169,20 @@
         }
 
         //FUNÇÃO PARA EXECUTAR O EVENTO DO BOTÃO DE SUBMIT DA PÁGINA, AO PRESSIONAR A TECLA ENTER
-        function BotaoEnter(e, id) {
-            if (OnEnter(e)) {
-                $('#' + id).click();
-                return false;
-            }
-            else {
-                return true;
+        function doClick(buttonName, e) {
+            //the purpose of this function is to allow the enter key to 
+            //point to the correct button to click.
+            var ev = e || window.event;
+            var key = ev.keyCode;
+
+            if (key == 13) {
+                //Get the button the user wants to have clicked
+                var btn = document.getElementById(buttonName);
+                if (btn != null) {
+                    //If we find the button click it
+                    btn.click();
+                    ev.preventDefault();
+                }
             }
         }
         //END
@@ -261,7 +268,7 @@
                         <li class="first" runat="server" id="Categoria" visible="false"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
                         <li runat="server" id="Equipamento" visible="false"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
                         <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
-                        <li runat="server" id="Repeticao" visible="true"><a href="" class="parent">Tipo de Repetições</a></li>
+                        <li runat="server" id="Repeticao" visible="true"><a href="/Cadastros/CadastraRepeticoes.aspx" class="parent">Tipo de Repetições</a></li>
                     </ul>
                 </li>
                 <li><a href="">Relatórios</a></li>

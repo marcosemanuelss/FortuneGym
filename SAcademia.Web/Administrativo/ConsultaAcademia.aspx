@@ -1,5 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="ConsultaAcademia.aspx.cs" Inherits="SAcademia.Web.Administrativo.ConsultaAcademia" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+<script type="text/javascript">
+    $(function () {
+        window.onload = function () {
+            document.getElementById('MainContent_txtPesquisa').onkeypress = function (e) {
+                doClick('MainContent_btnPesquisar', e);
+            };
+        };
+    });
+    </script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
         <div class="conteudo">

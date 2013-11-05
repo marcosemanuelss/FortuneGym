@@ -14,6 +14,15 @@
         Shadowbox.init();
     </script>
     <script type="text/javascript">
+
+        $(function () {
+            window.onload = function () {
+                document.getElementById('txtSenha').onkeypress = function (e) {
+                    doClick('btnEntrar', e);
+                };
+            };
+        });
+
         function esqueceuSenha() {
             Shadowbox.open({
                 content: '<div id="welcome-msg"><iframe name="interna" scrolling="no" height="180" frameborder="0" width="100%" allowtransparency="true" src="SolicitaSenha.aspx", null, 1); ?>" ></iframe></div>',
