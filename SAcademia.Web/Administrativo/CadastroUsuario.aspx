@@ -31,15 +31,14 @@
                     <label>Tipo de Usuário*:</label>
                     <asp:DropDownList ID="dpTipoUsuario" Cssclass="required" runat="server">
                         <asp:ListItem Text="Selecione" Value=""/>
-                        <asp:ListItem Text="Administrador" Value="Administrador"/>
-                        <asp:ListItem Text="Instrutor" Value="Instrutor"/>
+                        <asp:ListItem Text="Administrador" Value="2"/>
+                        <asp:ListItem Text="Instrutor" Value="3"/>
                     </asp:DropDownList>
                 </div>
                 <div class="row-452">
                     <label>Situação*:</label>
                     <asp:DropDownList ID="dpSituacao" Cssclass="required" runat="server">
-                        <asp:ListItem Text="Selecione" Value=""/>
-                        <asp:ListItem Text="Ativo" Value="Ativo"/>
+                        <asp:ListItem Text="Ativo" Value="Ativo" Selected="True"/>
                         <asp:ListItem Text="Inativo" Value="Inativo"/>
                     </asp:DropDownList>
                 </div>
