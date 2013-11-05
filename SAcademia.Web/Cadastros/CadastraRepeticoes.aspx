@@ -50,7 +50,10 @@
                 </div>
                 <div class="combinada">
                     <div class="bg-tabela">
+                        <div class="adicione"><a href="javascript:;" onclick="addItem();" title="Adicionar repetição">Adicionar repetição</a></div>
+                        <div id="tabela">
                         
+                        </div>
                     </div>
                 </div>
             </div>       
@@ -63,6 +66,53 @@
         </div>
     </div>   
     <script type="text/javascript">
+
+        function addItem() {
+
+            var html =   '<div class="item-1">' +
+                                    '<div class="row-265">' +
+                                        '<label>Nº de Vezes*:</label>'+
+                                        '<asp:TextBox ID="TextBox1" Cssclass="required" runat="server" ToolTip="Número de Vezes" />' +
+                                    '</div>' +
+                                    '<div class="row-265">' +
+                                        '<label>Repetição*:</label>' +
+                                        '<asp:TextBox ID="TextBox2" Cssclass="required" runat="server" ToolTip="Repetição" />' +
+                                    '</div>' +
+                                    '<div class="row-265">'+
+                                        '<label>Variação*:</label>' +
+                                        '<asp:DropDownList ID="DropDownList1" Cssclass="required" runat="server">'+
+                                            '<asp:ListItem Text="Selecione" Value="" />'+
+                                            '<asp:ListItem Text="teste" Value="teste" />'+
+                                        '</asp:DropDownList>'+
+                                    '</div>'+
+                                '</div>';
+            $('#tabela').append(html);
+        }
+
+        //EXECUTA QUANDO CARREGA A PÁGINA
+        $(document).ready(function () {
+            var val = $("input[name='ctl00$MainContent$rbtipoCombinacao']:checked").val(); //pega  valor do radio
+            if (val == "S") {
+                $(".combinada").hide(); //esconde a div combinada
+                $(".simples").show(); //mostra a div simples
+                //Atribui o campo obrigatorio para os campos da div simples
+                $("#MainContent_txtNumVezes").attr("class", "required");
+                $("#MainContent_txtRepeticao").attr("class", "required");
+                $("#MainContent_dpVariacao").attr("class", "required");
+                //end
+
+            } else {
+                $(".simples").hide(); //esconde a div simples
+                //Tira o campo obrigatorio para os campos da div simples
+                $("#MainContent_txtNumVezes").attr("class", "");
+                $("#MainContent_txtRepeticao").attr("class", "");
+                $("#MainContent_dpVariacao").attr("class", "");
+                //end
+                $(".combinada").show(); //mostra a div combinada
+            }
+        });
+
+        //EXECUTA QUANDO MUDA DE RADIOBUTTON
         $("#MainContent_rbtipoCombinacao").change(function () { // bind a function to the change event
             var val = $("input[name='ctl00$MainContent$rbtipoCombinacao']:checked").val(); //pega  valor do radio
             if (val == "S") {

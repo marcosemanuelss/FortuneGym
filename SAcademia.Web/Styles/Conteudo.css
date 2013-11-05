@@ -231,6 +231,16 @@
 .btnsCadastro input{
     margin-left:6px;
 }
+/*Cadastra Repetições*/
+.adicione{
+    margin:10px;  
+}
+
+.adicione a{
+    color:#000;
+    background:url('../img/icon-add-list.png') no-repeat left;
+    padding-left: 20px;
+}
 
 #MainContent_ImagemAcademia {
     float: right;
