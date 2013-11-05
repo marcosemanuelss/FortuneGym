@@ -206,22 +206,24 @@
             <div class="right">
                 <div class="one">
                     <asp:Button ID="btnDesconectar" OnClientClick="return mostraPopUpAlert('Deseja realmente sair?','../img/icon-question.png',true,this.id);"
-                        ToolTip="Sair" Text="Logout" runat="server" BorderStyle="None" TabIndex="1000" />
+                        ToolTip="Sair" Text="Logout" runat="server" BorderStyle="None" 
+                        TabIndex="1000" onclick="btnDesconectar_Click" />
                 </div>
                 <div class="one">
                     <label>
                         Último Login:
                     </label>
                     <asp:Label ID="lblUltimoLogin" runat="server" Text="20/10/2013 ás 15:20:00"></asp:Label>
+                    <asp:HiddenField ID="hddCor" runat="server" />
                 </div>
             </div>
         </div>
-        <div class="menu">
+        <div class="menu" style="background-color: <%= hddCor.Value %>">
             <ul runat="server" id="MenuLista">
                 <li><a href="/Inicio.aspx">Início </a></li>
                 <li runat="server" id="Administrativo" visible="false"><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
-                    <ul class="subimg">
+                    <ul class="subimg" style="border: 1px solid #fff; background-color: <%= hddCor.Value %>">
                         <li class="first" runat="server" id="Usuario" visible="false"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
                         <li runat="server" id="Cliente" visible="false"><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
                         <li runat="server" id="Academia" visible="false"><a href="/Administrativo/ConsultaAcademia.aspx" class="parent">Academia</a></li>
@@ -229,7 +231,7 @@
                 </li>
                 <li runat="server" id="Cadastro" visible="false"><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
                 </div>
-                    <ul class="subimg">
+                    <ul class="subimg" style="border: 1px solid #fff; background-color: <%= hddCor.Value %>">
                         <li class="first" runat="server" id="Categoria" visible="false"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
                         <li runat="server" id="Equipamento" visible="false"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
                         <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>

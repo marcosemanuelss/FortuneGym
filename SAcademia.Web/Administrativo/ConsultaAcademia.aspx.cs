@@ -5,33 +5,22 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Negocio.Academias;
+using Entidade.Academias;
+
 namespace SAcademia.Web.Administrativo
 {
     public partial class ConsultaAcademia : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaGV();
+            if (!IsPostBack)
+                gvConsulta.DataBind();
         }
 
-        protected void CarregaGV()
+        protected void CarregaGV(string Pesquisa)
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("CNPJ", System.Type.GetType("System.String"));
-            dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("Parâmetros", System.Type.GetType("System.String"));
-            dt.Columns.Add("Situação", System.Type.GetType("System.String"));
-            dt.Columns.Add("Ação", System.Type.GetType("System.String"));
-            dt.Columns.Add("Editar", System.Type.GetType("System.String"));
-            dt.Columns.Add("Excluir", System.Type.GetType("System.String"));
-
-            for (int i = 1; i < 10; i++)
-            {
-                dt.Rows.Add(new String[] { "99999999999999", "Dom Bosco", "img", "Inativo", "img", "img", "img" });
-            }
-
-            gvConsulta.DataSource = dt;
+            gvConsulta.DataSource = new NegAcademia().ListarAcademias(Pesquisa);
             gvConsulta.DataBind();
         }
 
@@ -43,6 +32,27 @@ namespace SAcademia.Web.Administrativo
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Inicio.aspx");
+        }
+
+        protected void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            CarregaGV(txtPesquisa.Text);
+        }
+
+        protected void gvConsulta_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string CodigoAcademia = e.CommandArgument.ToString();
+
+            switch (e.CommandName)
+            {
+                case "Parametros":
+                    AcademiaParametros parametros = new NegAcademia().ObterParametros(Convert.ToInt32(CodigoAcademia));
+                    Session["ParametrosAcademia"] = parametros;
+                    Response.Redirect("Parametros.aspx");
+
+                    break;
+            }
+
         }
     }
 }

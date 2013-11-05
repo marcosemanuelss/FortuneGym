@@ -11,11 +11,33 @@
                 <div class="filtrar">
                     <label>Digite um nome para pesquisa:</label>
                     <asp:TextBox ID="txtPesquisa" runat="server"/>
-                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" Text="Pesquisar" Cssclass="buttons"/>
+                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" 
+                        Text="Pesquisar" Cssclass="buttons" onclick="btnPesquisar_Click"/>
                     <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" Text="Limpar"/>
                 </div>
-                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server">
-                
+                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server" 
+                    AutoGenerateColumns="False" EmptyDataText="Nenhum Dado encontrado" 
+                    onrowcommand="gvConsulta_RowCommand">
+                    <Columns> 
+                        <asp:BoundField DataField="CNPJ" HeaderText="CNPJ" /> 
+                        <asp:BoundField DataField="Nome" HeaderText="Nome" /> 
+                        <asp:BoundField DataField="Ativo" HeaderText="Situação" />
+                        <asp:TemplateField HeaderText="Parâmetros"> 
+                            <ItemTemplate> 
+                                <asp:ImageButton ID="btnParametros" runat="server" ImageUrl="../img/icon-parametro.png" CommandName="Parametros" CommandArgument='<%#Eval("Codigo") %>' /> 
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Editar"> 
+                            <ItemTemplate> 
+                                <asp:ImageButton ID="btnEditar" runat="server" ImageUrl="../img/icon-editar.png" CommandName="Editar" Text="Editar" CommandArgument='<%#Eval("Codigo") %>' /> 
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ação">  
+                            <ItemTemplate> 
+                                <asp:ImageButton ID="btnAcao" runat="server" ImageUrl="../img/icon-bloqueado.png" CommandName="Acao" Text="Ação" CommandArgument='<%#Eval("Codigo") %>' /> 
+                            </ItemTemplate> 
+                        </asp:TemplateField> 
+                    </Columns>
                 </asp:GridView>
                 <div class="btnsConsulta">
                     <asp:Button ID="btnNovo" ToolTip="Novo" runat="server" Text="Novo" 

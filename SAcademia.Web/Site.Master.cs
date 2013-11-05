@@ -26,7 +26,10 @@ namespace SAcademia.Web
                 Entidade.Academias.Academia academia = (Entidade.Academias.Academia)Session["Academia"];
 
                 if (academia != null)
+                {
+                    hddCor.Value = academia.Parametros.Cor;
                     lblNomeAcademia.Text = academia.Nome;
+                }
             }
         }
 
@@ -47,6 +50,12 @@ namespace SAcademia.Web
                 }
             }
 
+        }
+
+        protected void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
     }
 }

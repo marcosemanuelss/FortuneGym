@@ -19,5 +19,20 @@ namespace Negocio.Academias
 
             return academia;
         }
+
+        public List<Academia> ListarAcademias(string Pesquisa)
+        {
+            return new PerAcademia().ListarAcademias(Pesquisa);
+        }
+
+        public AcademiaParametros ObterParametros(int CodigoAcademia)
+        {
+            return new PerAcademia().ObterParametros(CodigoAcademia);
+        }
+
+        public int SalvarParametros(AcademiaParametros academiaParametros)
+        {
+            return new PerAcademia().SalvarParametros(academiaParametros);
+        }
     }
 }

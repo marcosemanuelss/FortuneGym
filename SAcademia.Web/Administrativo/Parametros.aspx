@@ -12,9 +12,13 @@
             <div class="bg-tabela">
                 <h3>Dados dos Parâmetros</h3>
                 <div class="row-290">
+                    <label>Tempo de Duração da Ficha (meses)*:</label>
+                    <asp:TextBox ID="txtTempoFicha" runat="server" CssClass="required" ToolTip="Tempo de Avaliação" />
+                </div>
+                <div class="row-290">
                     <label>Possui Avaliação?*</label>
                     <asp:RadioButtonList ID="rblistAvaliacao" CssClass="radio" runat="server">
-                        <asp:ListItem Value="True" Selected>Sim</asp:ListItem>
+                        <asp:ListItem Value="True" >Sim</asp:ListItem>
                         <asp:ListItem Value="False">Não</asp:ListItem>
                     </asp:RadioButtonList>
                 </div>
