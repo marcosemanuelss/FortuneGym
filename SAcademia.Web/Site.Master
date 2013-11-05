@@ -109,8 +109,11 @@
 
         }
         //Função ALERT MENSAGEM PERSONALIZADO
-        function mostraPopUpAlert(mensagemAlert, iconeAlert, bool, ID) {
+        function mostraPopUpAlert(mensagemAlert, iconeAlert, bool, ID, paginaDestino) {
             var IDNome = "'" + ID + "'";
+            var paginaDestinoNome = "'" + paginaDestino + "'";
+
+
             $('#Modal').show();
             $('#iconeAlert').attr("src", iconeAlert);
             $('#mensagemAlert').html(mensagemAlert);
@@ -119,7 +122,7 @@
                 var input2 = '<input type="button" class="buttons" id="btnCancel" title="Cancelar" value="Cancelar" onclick="return fechar();" />';
                 $('.btnsAlert').html(input1 + input2);
             } else {
-                $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar();" />')
+                $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar(' + paginaDestinoNome + ');" />')
             }
             $("#btnOK").focus();
             $('html, body').animate({ scrollTop: $('#tudo').offset().top }, 500);
@@ -133,10 +136,15 @@
             return true;
         }
 
-        function fechar() {
+        function fechar(paginaDestino) {
             $('#Modal').hide();
+
+            if (paginaDestino != 'undefined') {
+                $(location).attr('href', paginaDestino);
+            }
         }
         // END
+
         //Função para remover máscara de campos CPF
         function removeCaracteres(cpf) {
             cpf = cpf.replace(".", "");
@@ -159,6 +167,7 @@
             //alert(tel);
             return tel;
         }
+
         //FUNÇÃO PARA EXECUTAR O EVENTO DO BOTÃO DE SUBMIT DA PÁGINA, AO PRESSIONAR A TECLA ENTER
         function BotaoEnter(e, id) {
             if (OnEnter(e)) {
@@ -169,13 +178,30 @@
                 return true;
             }
         }
+        //END
+
         //SE NOME DO ARQUIVO DE UPLOAD FOR MUITO GRANDE, A FUNÇÃO LIMITA.
         function limitaCaracterArquivo(nome) {
             if (nome.length >= 30) {
                 document.getElementById("fakeupload").value = document.getElementById("fakeupload").value.substr(0, 30);
             }
         }
-        
+        //END
+
+        //ALTERA A COR DO MENU PARA A CADASTRADA NOS PARAMETROS DA ACADEMIA
+        function alteraCor(cor) {
+            console.log(cor);
+
+            var subimg = document.querySelectorAll('.subimg');
+
+            for (var i = 0; i < subimg.length; i++) {
+                subimg[i].style.border = '1px solid #fff';
+                subimg[i].style.background = cor;
+            }
+
+            document.querySelector('.menu').style.background = cor;
+        }
+        //END
     </script>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -218,12 +244,12 @@
                 </div>
             </div>
         </div>
-        <div class="menu" style="background-color: <%= hddCor.Value %>">
+        <div class="menu">
             <ul runat="server" id="MenuLista">
                 <li><a href="/Inicio.aspx">Início </a></li>
                 <li runat="server" id="Administrativo" visible="false"><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
-                    <ul class="subimg" style="border: 1px solid #fff; background-color: <%= hddCor.Value %>">
+                    <ul class="subimg">
                         <li class="first" runat="server" id="Usuario" visible="false"><a href="/Administrativo/ConsultaUsuario.aspx" class="parent">Usuário</a></li>
                         <li runat="server" id="Cliente" visible="false"><a href="/Administrativo/ConsultaCliente.aspx" class="parent">Cliente</a></li>
                         <li runat="server" id="Academia" visible="false"><a href="/Administrativo/ConsultaAcademia.aspx" class="parent">Academia</a></li>
@@ -231,7 +257,7 @@
                 </li>
                 <li runat="server" id="Cadastro" visible="false"><a href="#" class="parent">Cadastros</a><div class="seta-baixo">
                 </div>
-                    <ul class="subimg" style="border: 1px solid #fff; background-color: <%= hddCor.Value %>">
+                    <ul class="subimg">
                         <li class="first" runat="server" id="Categoria" visible="false"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
                         <li runat="server" id="Equipamento" visible="false"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
                         <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>

@@ -27,10 +27,18 @@ namespace SAcademia.Web
 
                 if (academia != null)
                 {
+                    
                     hddCor.Value = academia.Parametros.Cor;
                     lblNomeAcademia.Text = academia.Nome;
                 }
             }
+            AlterarCor(hddCor.Value);
+        }
+
+        protected void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
         }
 
         private void AjustarPerfil(List<Paginas> lista)
@@ -40,8 +48,8 @@ namespace SAcademia.Web
                 Control c = FindControl(lista[i].Nome);
                 if (c != null)
                 {
-                    if ((c is System.Web.UI.HtmlControls.HtmlGenericControl) && 
-                        ((System.Web.UI.HtmlControls.HtmlGenericControl)c).InnerText.ToString().Split('"').Length >= 2 && 
+                    if ((c is System.Web.UI.HtmlControls.HtmlGenericControl) &&
+                        ((System.Web.UI.HtmlControls.HtmlGenericControl)c).InnerText.ToString().Split('"').Length >= 2 &&
                         ((System.Web.UI.HtmlControls.HtmlGenericControl)c).InnerText.ToString().Split('"')[1] == lista[i].Url)
                     {
                         c.Visible = true;
@@ -49,13 +57,40 @@ namespace SAcademia.Web
                     }
                 }
             }
-
         }
 
-        protected void btnDesconectar_Click(object sender, EventArgs e)
+        public void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
         {
-            Session.Abandon();
-            Response.Redirect("~/Login.aspx");
+            // Define the name and type of the client scripts on the page.
+            String csname1 = "PopupScript";
+            Type cstype = this.GetType();
+
+            // Get a ClientScriptManager reference from the Page class.
+            ClientScriptManager cs = Page.ClientScript;
+
+            // Check to see if the startup script is already registered.
+            if (!cs.IsStartupScriptRegistered(cstype, csname1))
+            {
+                String cstext1 = "mostraPopUpAlert('" + Mensagem + "', '" + CaminhoImagem + "',false,'', '" + PaginaDestino + "');";
+                cs.RegisterStartupScript(cstype, csname1, cstext1, true);
+            }
+        }
+
+        private void AlterarCor(string Cor)
+        {
+            // Define the name and type of the client scripts on the page.
+            String csname1 = "PopupScript";
+            Type cstype = this.GetType();
+
+            // Get a ClientScriptManager reference from the Page class.
+            ClientScriptManager cs = Page.ClientScript;
+
+            // Check to see if the startup script is already registered.
+            if (!cs.IsStartupScriptRegistered(cstype, csname1))
+            {
+                String cstext1 = "alteraCor('" + Cor + "');";
+                cs.RegisterStartupScript(cstype, csname1, cstext1, true);
+            }
         }
     }
 }
