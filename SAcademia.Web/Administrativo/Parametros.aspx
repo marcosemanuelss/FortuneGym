@@ -18,11 +18,11 @@
                 <div class="row-290">
                     <label>Possui Avaliação?*</label>
                     <asp:RadioButtonList ID="rblistAvaliacao" CssClass="radio" runat="server">
-                        <asp:ListItem Value="True" >Sim</asp:ListItem>
+                        <asp:ListItem Value="True" Selected="True" >Sim</asp:ListItem>
                         <asp:ListItem Value="False">Não</asp:ListItem>
                     </asp:RadioButtonList>
                 </div>
-                <div class="row-290">
+                <div class="row-290 tempo">
                     <label>Tempo de Avaliação*:</label>
                     <asp:TextBox ID="txtTempoAvaliacao" runat="server" CssClass="required" ToolTip="Tempo de Avaliação" />
                 </div>
@@ -39,5 +39,21 @@
                 <span class="campObrigatorio">(*) Campo Obrigatório</span>
             </div>
         </div>
+        <script type="text/javascript">
+            $("#MainContent_rblistAvaliacao").change(function () { // bind a function to the change event
+                var val = $("input[name='ctl00$MainContent$rblistAvaliacao']:checked").val(); //pega  valor do radio
+                if (val == "False") {
+                    $(".tempo").hide(); //esconde a div tempo de avaliação
+                    //Tira o campo obrigatorio para o campo da div tempo de avaliação
+                    $("#MainContent_txtTempoAvaliacao").attr("class", "");
+                    //end
+                } else {
+                    $(".tempo").show(); //mostra a div tempo de avaliação
+                    //Atribui o campo obrigatorio para o campo da div tempo de avaliação
+                    $("#MainContent_txtTempoAvaliacao").attr("class", "required");
+                    //end
+                }
+            });
+        </script>
 </asp:Content>
 
