@@ -47,6 +47,8 @@
                     //Tira o campo obrigatorio para o campo da div tempo de avaliação
                     $("#MainContent_txtTempoAvaliacao").attr("class", "");
                     //end
+                    //limpa campo
+                    $("#MainContent_txtTempoAvaliacao").val("");
                 } else {
                     $(".tempo").show(); //mostra a div tempo de avaliação
                     //Atribui o campo obrigatorio para o campo da div tempo de avaliação
