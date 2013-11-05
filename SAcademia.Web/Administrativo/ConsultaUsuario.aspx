@@ -25,7 +25,8 @@
                     <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
                         Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
-                <asp:GridView ID="gvConsulta" AutoGenerateColumns="False" CssClass="tabela" runat="server" DataKeyNames="Codigo">
+                <asp:GridView ID="gvConsulta" AutoGenerateColumns="False" CssClass="tabela" 
+                    runat="server" DataKeyNames="Codigo" onrowcommand="gvConsulta_RowCommand">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />
@@ -33,45 +34,31 @@
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="Login" HeaderText="Login" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                        <asp:TemplateField HeaderText="Academia">
-                            <ItemTemplate>
-                                <center>
-                                    <asp:ImageButton ID="imgAcademia" CommandName="Academia" CommandArgument='<%# Eval("Codigo") %>' ImageUrl="~/img/icon-academia.png" ToolTip="Academia" runat="server" />
-                                </center>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:BoundField HeaderText="Situação" DataField="Situcacao"/>
-                        <asp:TemplateField HeaderText="Ação">
-                            <ItemTemplate>
-                                <asp:ImageButton ID="bloqueioImageButton" runat="server" ToolTip="Bloquear usuário" 
-                                    OnClientClick="return mostraPopUpAlert('Confirma o bloqueio deste usuário?','../img/icon-question.png',true,this.id);" 
-                                    CommandName="Bloquear" ImageUrl="~\img\icon-bloqueado.png"
-                                    CommandArgument='<%# Container.DataItemIndex %>'/>
-                                <asp:ImageButton ID="desbloqueioImageButton" runat="server" ToolTip="Desbloquear usuário" 
-                                    OnClientClick="return mostraPopUpAlert('Confirma o desbloqueio deste usuário?','../img/icon-question.png',true,this.id);" 
-                                    CommandName="Desbloquear" ImageUrl="~\img\icon-desbloqueado.png"
-                                    CommandArgument='<%# Container.DataItemIndex %>'/>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Resetar Senha">
+                        <asp:TemplateField HeaderText="Redefinir Senha">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageResetar" runat="server"
                                     ImageUrl="~\img\icon-resetar.png"
                                     OnClientClick="return mostraPopUpAlert('Deseja resetar a senha deste usuário?','../img/icon-question.png',true,this.id);"
-                                    ToolTip="Resetar Senha" CommandName="Senha" CommandArgument='<%# Container.DataItemIndex + "|" + Eval("Login")%>'/>
+                                    ToolTip="Resetar Senha" CommandName="Senha" CommandArgument='<%# Eval("Codigo")%>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"
-                                    ToolTip="Editar Usuário" CommandName="Editar" CommandArgument='<%# Container.DataItemIndex %>'/>
+                                    ToolTip="Editar Usuário" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Excluir">
+                        <asp:TemplateField HeaderText="Bloquear">
                             <ItemTemplate>
-                                <asp:ImageButton ID="ImageExcluir" runat="server" ImageUrl="~\img\icon-excluir.png" 
-                                    OnClientClick="return mostraPopUpAlert('Confirma a exclusão deste usuário do sistema?','../img/icon-question.png',true,this.id);" 
-                                    ToolTip="Excluir Usuário" CommandName="Excluir" CommandArgument='<%# Container.DataItemIndex %>'/>
+                                <asp:ImageButton ID="bloqueioImageButton" runat="server" ToolTip="Bloquear usuário" 
+                                    OnClientClick="return mostraPopUpAlert('Confirma o bloqueio deste usuário?','../img/icon-question.png',true,this.id);" 
+                                    CommandName="Bloquear" ImageUrl="~\img\icon-bloqueado.png"
+                                    CommandArgument='<%# Eval("Codigo") %>'/>
+                                <asp:ImageButton ID="desbloqueioImageButton" runat="server" ToolTip="Desbloquear usuário" 
+                                    OnClientClick="return mostraPopUpAlert('Confirma o desbloqueio deste usuário?','../img/icon-question.png',true,this.id);" 
+                                    CommandName="Desbloquear" ImageUrl="~\img\icon-desbloqueado.png"
+                                    CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

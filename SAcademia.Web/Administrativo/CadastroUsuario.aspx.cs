@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidade.Usuarios;
+using Negocio.Usuarios;
 
 namespace SAcademia.Web.Administrativo
 {
@@ -16,8 +17,8 @@ namespace SAcademia.Web.Administrativo
             {
                 if (Session["UsuarioCadastrado"] != null)
                 {
-                    PreencherEdits((UsuariosGrid)Session["UsuarioCadastro"]);
-                    txtLogin.ReadOnly = true;
+                    PreencherEdits((UsuariosGrid)Session["UsuarioCadastrado"]);
+                    txtLogin.Enabled = false;
                 }
             }
         }
@@ -39,16 +40,17 @@ namespace SAcademia.Web.Administrativo
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
+            string Messagem = "";
             Usuarios NovoUsuario = new Usuarios();
             PreencherObjeto(ref NovoUsuario);
 
             if (Session["UsuarioCadastrado"] == null)
             {
-                //Inserir um novo
+                new NegUsuario().InserirUsuario(NovoUsuario, ref Messagem);
             }
             else
             {
-                //Atualizar existente
+                new NegUsuario().AtualizarUsuario(NovoUsuario, ((Usuarios)Session["Usuario"]).Codigo, ref Messagem);
             }
 
             Session["UsuarioCadastrado"] = null;

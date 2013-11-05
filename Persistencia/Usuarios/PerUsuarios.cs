@@ -36,5 +36,53 @@ namespace Persistencia.Usuarios
 
             return Base.Db.ReadList<Entidade.Usuarios.UsuariosGrid>("SP_LISTAR_USUARIOS_BUSCA", GenericMake.Make<Entidade.Usuarios.UsuariosGrid>, CommandType.StoredProcedure, p);
         }
+
+        public int InserirUsuario(Entidade.Usuarios.Usuarios NovoUsuario)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoUsuario.CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@NM_LOGIN", NovoUsuario.Login));
+            p.Add(Base.Db.CreateParameter("@CD_CPF", NovoUsuario.Cpf));
+            p.Add(Base.Db.CreateParameter("@DS_NOME", NovoUsuario.Nome));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO_TIPO", NovoUsuario.CodigoTipo));
+            p.Add(Base.Db.CreateParameter("@DT_CADASTRO", NovoUsuario.DataCadastro));
+            p.Add(Base.Db.CreateParameter("@IN_ATIVO", NovoUsuario.Ativo));
+
+            return Base.Db.Insert("SP_INSERIR_USUARIO", CommandType.StoredProcedure, p);
+        }
+
+        public int AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoUsuario.CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", NovoUsuario.Codigo));
+            p.Add(Base.Db.CreateParameter("@CD_CPF", NovoUsuario.Cpf));
+            p.Add(Base.Db.CreateParameter("@DS_NOME", NovoUsuario.Nome));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO_TIPO", NovoUsuario.CodigoTipo));
+            p.Add(Base.Db.CreateParameter("@IN_ATIVO", NovoUsuario.Ativo));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO_ALT", CodigoUsuarioAlteracao));
+
+            return Base.Db.Insert("SP_ATUALIZAR_USUARIO", CommandType.StoredProcedure, p);
+        }
+
+        public void BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", CodigoUsuario));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO_ALT", CodigoUsuarioAlteracao));
+
+            Base.Db.Insert("SP_BLOQUEAR_USUARIO", CommandType.StoredProcedure, p);
+        }
+
+        public int RedefinirSenha(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", CodigoUsuario));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO_ALT", CodigoUsuarioAlteracao));
+
+            return (int)Base.Db.Insert("SP_REDEFINIR_SENHA_USUARIO", CommandType.StoredProcedure, p);
+        }
     }
 }

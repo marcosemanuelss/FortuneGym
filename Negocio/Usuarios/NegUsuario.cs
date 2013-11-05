@@ -49,5 +49,55 @@ namespace Negocio.Usuarios
         {
             return new PerUsuarios().ListarUsuarios(CodigoAcademia, Filtro);
         }
+
+        public bool InserirUsuario(Entidade.Usuarios.Usuarios NovoUsuario, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerUsuarios().InserirUsuario(NovoUsuario);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Usuário inserido com sucesso. Sua senha é trocar@123 ";
+                    break;
+                case 2601: Mensagem = "Login já cadastrado no sistema, favor escolher outro.";
+                    break;
+                default: Mensagem = "Erro ao inserir usuário, favor verificar os dados informados e tentar novamente.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
+        }
+
+        public void BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao)
+        {
+            new PerUsuarios().BloquearUsuario(CodigoAcademia, CodigoUsuario, CodigoUsuarioAlteracao);
+        }
+
+        public void RedefinirSenha(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerUsuarios().RedefinirSenha(CodigoAcademia, CodigoUsuario, CodigoUsuarioAlteracao);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Senha redefinida com sucesso. A nova senha é trocar@123";
+                    break;
+                default: Mensagem = "Erro ao redefinir a senha, favor tentar novamente.";
+                    break;
+            }
+        }
+
+        public bool AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerUsuarios().AtualizarUsuario(NovoUsuario, CodigoUsuarioAlteracao);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Usuário atualizado com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao atualizar o usuário, favor verificar os dados informados e tentar novamente.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
+        }
     }
 }
