@@ -16,7 +16,7 @@ namespace SAcademia.Web.Administrativo
         {
             if (!IsPostBack)
             {
-                gvConsulta.DataSource = null;
+                gvConsulta.DataSource = Session["ListaAcademias"];
                 gvConsulta.DataBind();
             }
         }
@@ -48,6 +48,11 @@ namespace SAcademia.Web.Administrativo
         protected void gvConsulta_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             string CodigoAcademia = e.CommandArgument.ToString();
+            string Mensagem = "";
+            string Icone = "";
+            bool Valido = false;
+            Academia academia = new Academia();
+            List<Academia> lista = (List<Academia>)Session["ListaAcademias"];
 
             switch (e.CommandName)
             {
@@ -66,13 +71,75 @@ namespace SAcademia.Web.Administrativo
                     break;
 
                 case "Editar":
-                    List<Academia> lista = (List<Academia>)Session["ListaAcademias"];
                     Session["EditarAcademia"] = lista.Find(delegate(Academia acad) { return acad.Codigo == Convert.ToInt32(CodigoAcademia); });
                     Response.Redirect("CadastraAcademia.aspx");
 
                     break;
+
+                case "Bloquear":
+                    Valido = new NegAcademia().AlterarSituacao(Convert.ToInt32(CodigoAcademia), false, ref Mensagem);
+                    Icone = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+                    ((Site)Master).ExecutaResposta(Mensagem, Icone, "");
+
+                    if (Valido)
+                    {
+                        academia = lista.Find(delegate(Academia acad) { return acad.Codigo == Convert.ToInt32(CodigoAcademia); });
+                        academia.Ativo = false;
+                        Session["ListaAcademias"] = AtualizaListaAcademia(academia, lista);
+                    }
+                    break;
+
+                case "Desbloquear":
+                    Valido = new NegAcademia().AlterarSituacao(Convert.ToInt32(CodigoAcademia), true, ref Mensagem);
+                    Icone = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+                    ((Site)Master).ExecutaResposta(Mensagem, Icone, "");
+
+                    if (Valido)
+                    {
+                        academia = lista.Find(delegate(Academia acad) { return acad.Codigo == Convert.ToInt32(CodigoAcademia); });
+                        academia.Ativo = true;
+                        Session["ListaAcademias"] = AtualizaListaAcademia(academia, lista);
+                    }
+                    break;
             }
 
+        }
+
+        protected void gvConsulta_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                List<Academia> lista = (List<Academia>)Session["ListaAcademias"];
+
+                ImageButton imgBloquear = (ImageButton)e.Row.Cells[5].FindControl("btnBloquear");
+                ImageButton imgDesbloquear = (ImageButton)e.Row.Cells[5].FindControl("btnDesbloquear");
+
+                if (lista[e.Row.DataItemIndex].Ativo)
+                {
+                    imgBloquear.ToolTip = "Bloquear academia?";
+                    imgBloquear.Visible = true;
+                    imgDesbloquear.Visible = false;
+                    e.Row.Cells[2].Text = "Desbloqueada";
+                }
+                else
+                {
+                    imgDesbloquear.ToolTip = "Desbloquear academia?";
+                    imgDesbloquear.Visible = true;
+                    imgBloquear.Visible = false;
+                    e.Row.Cells[2].Text = "Bloqueada";
+                }
+            }
+        }
+
+        private List<Academia> AtualizaListaAcademia(Academia academia, List<Academia> lista)
+        {
+            for (int i = 0; i < lista.Count; i++)
+            {
+                if (lista[i].Codigo == academia.Codigo)
+                    lista[i] = academia;
+            }
+
+            return lista;
         }
     }
 }

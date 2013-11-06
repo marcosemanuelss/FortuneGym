@@ -26,7 +26,8 @@
                 </div>
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server" 
                     AutoGenerateColumns="False" EmptyDataText="Nenhum Dado encontrado" 
-                    onrowcommand="gvConsulta_RowCommand">
+                    onrowcommand="gvConsulta_RowCommand" 
+                    onrowdatabound="gvConsulta_RowDataBound">
                     <Columns> 
                         <asp:BoundField DataField="CNPJ" HeaderText="CNPJ" /> 
                         <asp:BoundField DataField="Nome" HeaderText="Nome" /> 
@@ -43,7 +44,10 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Ação">  
                             <ItemTemplate> 
-                                <asp:ImageButton ID="btnAcao" runat="server" ImageUrl="../img/icon-bloqueado.png" CommandName="Acao" Text="Ação" CommandArgument='<%#Eval("Codigo") %>' /> 
+                                <asp:ImageButton ID="btnBloquear" runat="server" ImageUrl="../img/icon-bloqueado.png" CommandName="Bloquear" CommandArgument='<%#Eval("Codigo") %>' 
+                                    OnClientClick="return mostraPopUpAlert('Confirma o bloqueio desta academia?','../img/icon-question.png',true,this.id);" /> 
+                                <asp:ImageButton ID="btnDesbloquear" runat="server" ImageUrl="../img/icon-desbloqueado.png" CommandName="Desbloquear" CommandArgument='<%#Eval("Codigo") %>' 
+                                     OnClientClick="return mostraPopUpAlert('Confirma o desbloqueio desta academia?','../img/icon-question.png',true,this.id);" /> 
                             </ItemTemplate> 
                         </asp:TemplateField> 
                     </Columns>

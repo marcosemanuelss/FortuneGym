@@ -71,6 +71,7 @@
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\btn-selecione.png" />
     <Content Include="img\icon-atencao.png" />
+    <Content Include="img\icon-desbloqueado.png" />
     <Content Include="img\icon-erro.png" />
     <Content Include="img\icon-ok.png" />
     <Content Include="img\icon-question.png" />

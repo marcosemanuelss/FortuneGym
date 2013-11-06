@@ -87,5 +87,14 @@ namespace Persistencia.Academias
 
             return Base.Db.Insert("SP_ATUALIZAR_ACADEMIA", CommandType.StoredProcedure, p);
         }
+
+        public int AlterarSituacao(int CodigoAcademia, bool Situacao)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@IN_ATIVO", Situacao));
+
+            return Base.Db.Insert("SP_ALTERAR_SITUACAO_ACADEMIA", CommandType.StoredProcedure, p);
+        }
     }
 }

@@ -30,9 +30,19 @@ namespace Negocio.Academias
             return new PerAcademia().ObterParametros(CodigoAcademia);
         }
 
-        public int SalvarParametros(AcademiaParametros academiaParametros)
+        public bool SalvarParametros(AcademiaParametros academiaParametros, ref string Mensagem)
         {
-            return new PerAcademia().SalvarParametros(academiaParametros);
+            int CodigoRetorno = new PerAcademia().SalvarParametros(academiaParametros);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Parâmetros salvos com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao salvar parâmetros. Cadastro cancelado.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
         }
 
         public List<string> TipoSituacao()
@@ -45,14 +55,57 @@ namespace Negocio.Academias
             return lista;
         }
 
-        public int InserirAcademia(Academia academia)
+        public bool InserirAcademia(Academia academia, ref string Mensagem)
         {
-            return new PerAcademia().InserirAcademia(academia);
+            int CodigoRetorno = new PerAcademia().InserirAcademia(academia);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Academia inserida com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao inserir academia. Cadastro cancelado.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
         }
 
-        public int AtualizarAcademia(Academia academia)
+        public bool AtualizarAcademia(Academia academia, ref string Mensagem)
         {
-            return new PerAcademia().AtualizarAcademia(academia);    
+            int CodigoRetorno = new PerAcademia().AtualizarAcademia(academia);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Academia atualizada com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao atualizar academia. Cadastro cancelado.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
+        }
+
+        public bool AlterarSituacao(int CodigoAcademia, bool Situacao, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerAcademia().AlterarSituacao(CodigoAcademia, Situacao);
+
+            switch (CodigoRetorno)
+            {
+                case 1: 
+                    if (Situacao)
+                        Mensagem = "Academia desbloqueada com sucesso.";
+                    else
+                        Mensagem = "Academia bloqueada com sucesso.";
+                    break;
+                default:
+                    if (Situacao)
+                        Mensagem = "Erro ao desbloquear academia.";
+                    else
+                        Mensagem = "Erro ao bloquear academia.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
         }
     }
 }

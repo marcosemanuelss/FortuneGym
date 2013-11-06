@@ -37,7 +37,11 @@ namespace SAcademia.Web.Administrativo
 
         private void Salvar()
         {
-            int retorno = 0;
+            string Mensagem = "";
+            string PaginaRetorno = "";
+            string Icone = "";
+            bool Valido = false;
+
             Academia academia = new Academia();
 
             if (FUpload.HasFile)
@@ -47,6 +51,13 @@ namespace SAcademia.Web.Administrativo
                 HttpPostedFile img = FUpload.PostedFile;
                 img.InputStream.Read(imgbyte, 0, tamanho);
                 academia.Logotipo = imgbyte;
+            }
+            else
+            {
+                if (Session["LogotipoAcademia"] != null)
+                {
+                    academia.Logotipo = (byte[])Session["LogotipoAcademia"];
+                }
             }
             if (hddCodigoAcademia.Value != "")
                 academia.Codigo = Convert.ToInt32(hddCodigoAcademia.Value);
@@ -66,24 +77,39 @@ namespace SAcademia.Web.Administrativo
 
             if (academia.Codigo == 0)
             {
-                retorno = new NegAcademia().InserirAcademia(academia);
+                Valido = new NegAcademia().InserirAcademia(academia, ref Mensagem);
                 ExibirImagem(academia.Logotipo);
             }
             else
             {
-                retorno = new NegAcademia().AtualizarAcademia(academia);
+                Valido = new NegAcademia().AtualizarAcademia(academia, ref Mensagem);
                 ExibirImagem(academia.Logotipo);
+                AtualizaLista(academia);
             }
 
-            if (retorno > 0)
-                ((Site)Master).ExecutaResposta("Academia salva com sucesso!", "../img/icon-ok.png", "../Administrativo/ConsultaAcademia.aspx");
-            else
-                ((Site)Master).ExecutaResposta("Erro ao salvar academia. Cadastro cancelado.", "../img/icon-erro.png", "");
+            Icone = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+            PaginaRetorno =  Valido ? "../Administrativo/ConsultaAcademia.aspx" : "";
+
+            ((Site)Master).ExecutaResposta(Mensagem, Icone, PaginaRetorno);
+        }
+
+        private void AtualizaLista(Academia academia)
+        {
+            if (Session["ListaAcademias"] != null)
+            {
+                List<Academia> lista = (List<Academia>)Session["ListaAcademias"];
+                for (int i = 0; i < lista.Count; i++)
+                {
+                    if (lista[i].Codigo == academia.Codigo)
+                        lista[i] = academia;
+                }
+            }
         }
 
         private void CarregaCampos(Academia academia)
         {
             hddCodigoAcademia.Value = academia.Codigo.ToString();
+            Session["LogotipoAcademia"] = academia.Logotipo;
             txtCnpj.Text = academia.CNPJ;
             txtNome.Text = academia.Nome;
             txtEmail.Text = academia.Email;

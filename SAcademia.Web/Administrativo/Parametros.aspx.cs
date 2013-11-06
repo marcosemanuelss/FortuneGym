@@ -35,7 +35,10 @@ namespace SAcademia.Web.Administrativo
 
         private void Salvar()
         {
-            int retorno = 0;
+            string Mensagem = "";
+            string PaginaRetorno = "";
+            string Icone = "";
+            bool Valido = false;
             AcademiaParametros academiaParametros = new AcademiaParametros();
             academiaParametros.Avaliacao = Convert.ToBoolean(rblistAvaliacao.SelectedValue);
             academiaParametros.PrazoAvaliacao = txtTempoAvaliacao.Text == "" ? null : (int?)Convert.ToInt32(txtTempoAvaliacao.Text);
@@ -43,15 +46,11 @@ namespace SAcademia.Web.Administrativo
             academiaParametros.Cor = hddCorMenu.Value == "" ? "#303030" : hddCorMenu.Value;
             academiaParametros.CodigoAcademia = Convert.ToInt32(hddCodigoAcademia.Value);
 
-            retorno = new NegAcademia().SalvarParametros(academiaParametros);
-            if (retorno > 0)
-            {
-                ((Site)Master).ExecutaResposta("Parâmetros salvos com sucesso!" , "../img/icon-ok.png", "../Administrativo/ConsultaAcademia.aspx");
-            }
-            else
-            {
-                ((Site)Master).ExecutaResposta("Erro ao salvar parâmetros. Cadastro cancelado.", "../img/icon-erro.png", "");
-            }
+            Valido = new NegAcademia().SalvarParametros(academiaParametros, ref Mensagem);
+            Icone = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+            PaginaRetorno = Valido ? "../Administrativo/ConsultaAcademia.aspx" : "";
+            
+            ((Site)Master).ExecutaResposta(Mensagem , Icone, PaginaRetorno);
         }
 
         private void CarregaCampos(AcademiaParametros academiaParametros)
