@@ -31,31 +31,76 @@ namespace SAcademia.Web.Cadastros {
         protected global::System.Web.UI.WebControls.RadioButtonList rbtipoCombinacao;
         
         /// <summary>
-        /// txtNumVezes control.
+        /// txtNumVezesSimples control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNumVezes;
+        protected global::System.Web.UI.WebControls.TextBox txtNumVezesSimples;
         
         /// <summary>
-        /// txtRepeticao control.
+        /// txtRepetSimples control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRepeticao;
+        protected global::System.Web.UI.WebControls.TextBox txtRepetSimples;
         
         /// <summary>
-        /// dpVariacao control.
+        /// dpVariacaoSimples control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dpVariacao;
+        protected global::System.Web.UI.WebControls.DropDownList dpVariacaoSimples;
+        
+        /// <summary>
+        /// txtNumVezesCombinada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNumVezesCombinada;
+        
+        /// <summary>
+        /// txtRepetCombinada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtRepetCombinada;
+        
+        /// <summary>
+        /// dpVariacaoCombinada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dpVariacaoCombinada;
+        
+        /// <summary>
+        /// btnAdicionar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAdicionar;
+        
+        /// <summary>
+        /// gvCombinada control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCombinada;
         
         /// <summary>
         /// btnSalvar control.

@@ -260,6 +260,12 @@
     background:url('../img/icon-add-list.png') no-repeat left;
     padding-left: 20px;
 }
+#MainContent_btnAdicionar
+{
+    float: right;
+    margin-bottom: 20px;
+    margin-right: 36px;    
+}
 /*Academia*/
 #MainContent_ImagemAcademia {
     float: right;
