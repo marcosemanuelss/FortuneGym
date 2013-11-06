@@ -19,7 +19,12 @@ namespace SAcademia.Web.Administrativo
                 if (Session["UsuarioCadastrado"] != null)
                 {
                     PreencherEdits((UsuariosGrid)Session["UsuarioCadastrado"]);
-                    txtLogin.Enabled = false;
+                    if (Session["NaoValido"] == null || (!(bool)Session["NaoValido"]))
+                        txtLogin.Enabled = false;
+                    else
+                        Session["ClienteCadastrado"] = null;
+
+                    Session["NaoValido"] = null;
                 }
             }
         }
@@ -39,6 +44,7 @@ namespace SAcademia.Web.Administrativo
 
             if (Session["UsuarioCadastrado"] == null)
             {
+                Session["UsuarioCadastrado"] = AtualizarUsuario(NovoUsuario);
                 Valido = new NegUsuario().InserirUsuario(NovoUsuario, ref Mensagem);
             }
             else
@@ -48,9 +54,12 @@ namespace SAcademia.Web.Administrativo
 
                 if (Valido)
                     AtualizarUsuario((UsuariosGrid)Session["UsuarioCadastrado"], NovoUsuario);
-            }            
+            }
 
-            Session["UsuarioCadastrado"] = null;
+            if (Valido)
+                Session["UsuarioCadastrado"] = null;
+            else
+                Session["NaoValido"] = true;
 
             string icon = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
             string TelaRetorno = Valido ? "../Administrativo/ConsultaUsuario.aspx" : "";
@@ -69,6 +78,17 @@ namespace SAcademia.Web.Administrativo
             List<UsuariosGrid> lista = (List<UsuariosGrid>)Session["ListaUsuarios"];
             UsuariosGrid UsuarioGrid = lista.Find(delegate(UsuariosGrid u) { return u.Codigo == Usuario.Codigo; });
             UsuarioGrid = Usuario;
+        }
+
+        private UsuariosGrid AtualizarUsuario(Usuarios NovoUsuario)
+        {
+            UsuariosGrid Usuario = new UsuariosGrid();
+            Usuario.Nome = NovoUsuario.Nome;
+            Usuario.Situcacao = NovoUsuario.Ativo ? "Ativo" : "Inativo";
+            Usuario.CodigoTipo = NovoUsuario.CodigoTipo;
+            Usuario.DescricaoTipo = dpTipoUsuario.Text;
+
+            return Usuario;
         }
 
 

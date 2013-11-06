@@ -5,6 +5,7 @@ using System.Text;
 using System.Data.Common;
 using Persistencia.Base;
 using System.Data;
+using Entidade.Usuarios;
 
 namespace Persistencia.Usuarios
 {
@@ -83,6 +84,48 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@ID_USUARIO_ALT", CodigoUsuarioAlteracao));
 
             return (int)Base.Db.GetScalar("SP_REDEFINIR_SENHA_USUARIO", CommandType.StoredProcedure, p);
+        }
+
+        public int InserirUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", UsuarioComplemento.CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", UsuarioComplemento.Codigo));
+            p.Add(Base.Db.CreateParameter("@NR_MATRICULA", UsuarioComplemento.Complemento.Matricula));
+            p.Add(Base.Db.CreateParameter("@DT_NASCIMENTO", UsuarioComplemento.Complemento.DataNascimento));
+            p.Add(Base.Db.CreateParameter("@DS_CEP", UsuarioComplemento.Complemento.Cep));
+            p.Add(Base.Db.CreateParameter("@DS_ENDERECO", UsuarioComplemento.Complemento.Endereco));
+            p.Add(Base.Db.CreateParameter("@NR_ENDERECO", UsuarioComplemento.Complemento.Numero));
+            p.Add(Base.Db.CreateParameter("@DS_COMPLEMENTO", UsuarioComplemento.Complemento.Complemento));
+            p.Add(Base.Db.CreateParameter("@DS_BAIRRO", UsuarioComplemento.Complemento.Bairro));
+            p.Add(Base.Db.CreateParameter("@DS_CIDADE", UsuarioComplemento.Complemento.Cidade));
+            p.Add(Base.Db.CreateParameter("@SG_UF", UsuarioComplemento.Complemento.Uf));
+            p.Add(Base.Db.CreateParameter("@NR_TELEFONE", UsuarioComplemento.Complemento.Telefone));
+            p.Add(Base.Db.CreateParameter("@NR_CELULAR", UsuarioComplemento.Complemento.Celular));
+            p.Add(Base.Db.CreateParameter("@DS_EMAIL", UsuarioComplemento.Complemento.Email));
+
+            return Base.Db.Insert("SP_INSERIR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
+        }
+
+        public int AtualizarUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", UsuarioComplemento.CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", UsuarioComplemento.Codigo));
+            p.Add(Base.Db.CreateParameter("@NR_MATRICULA", UsuarioComplemento.Complemento.Matricula));
+            p.Add(Base.Db.CreateParameter("@DT_NASCIMENTO", UsuarioComplemento.Complemento.DataNascimento));
+            p.Add(Base.Db.CreateParameter("@DS_CEP", UsuarioComplemento.Complemento.Cep));
+            p.Add(Base.Db.CreateParameter("@DS_ENDERECO", UsuarioComplemento.Complemento.Endereco));
+            p.Add(Base.Db.CreateParameter("@NR_ENDERECO", UsuarioComplemento.Complemento.Numero));
+            p.Add(Base.Db.CreateParameter("@DS_COMPLEMENTO", UsuarioComplemento.Complemento.Complemento));
+            p.Add(Base.Db.CreateParameter("@DS_BAIRRO", UsuarioComplemento.Complemento.Bairro));
+            p.Add(Base.Db.CreateParameter("@DS_CIDADE", UsuarioComplemento.Complemento.Cidade));
+            p.Add(Base.Db.CreateParameter("@SG_UF", UsuarioComplemento.Complemento.Uf));
+            p.Add(Base.Db.CreateParameter("@NR_TELEFONE", UsuarioComplemento.Complemento.Telefone));
+            p.Add(Base.Db.CreateParameter("@NR_CELULAR", UsuarioComplemento.Complemento.Celular));
+            p.Add(Base.Db.CreateParameter("@DS_EMAIL", UsuarioComplemento.Complemento.Email));
+
+            return Base.Db.Insert("SP_ATUALIZAR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
         }
     }
 }

@@ -25,7 +25,9 @@
                     <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
                         Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
-                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server" DataKeyNames="Codigo" AutoGenerateColumns="False">
+                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server" 
+                    DataKeyNames="Codigo" AutoGenerateColumns="False" 
+                    onrowcommand="gvConsulta_RowCommand" onrowdatabound="gvConsulta_RowDataBound">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />
