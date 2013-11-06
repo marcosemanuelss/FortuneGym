@@ -43,6 +43,9 @@ namespace Entidade.Usuarios
         [Coluna("ID_USUARIO_ALT")]
         public int? CodigoUsuarioAlteracao { get; set; }
 
+        [Coluna("IN_ALTERAR_SENHA")]
+        public bool AlteraSenha { get; set; }
+
         public UsuarioComplemento Complemento { get; set; }
 
         public List<Paginas> Paginas { get; set; }

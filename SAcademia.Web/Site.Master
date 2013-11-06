@@ -197,16 +197,17 @@
 
         //ALTERA A COR DO MENU PARA A CADASTRADA NOS PARAMETROS DA ACADEMIA
         function alteraCor(cor) {
-            console.log(cor);
+            var color = 'linear-gradient(to bottom, ' + cor + ', #303030 200%)';
+            console.log(color);
 
             var subimg = document.querySelectorAll('.subimg');
 
             for (var i = 0; i < subimg.length; i++) {
                 subimg[i].style.border = '1px solid #fff';
-                subimg[i].style.background = cor;
+                subimg[i].style.background = color;
             }
 
-            document.querySelector('.menu').style.background = cor;
+            document.querySelector('.menu').style.background = color;
         }
         //END
     </script>
@@ -256,7 +257,9 @@
         </div>
         <div class="menu">
             <ul runat="server" id="MenuLista">
-                <li><a href="/Inicio.aspx">Início </a></li>
+                <li>
+                    <asp:LinkButton ID="lnkInicio" runat="server" PostBackUrl="~/Inicio.aspx">Início</asp:LinkButton>
+                </li>
                 <li runat="server" id="Administrativo" visible="false"><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
                     <ul class="subimg">
@@ -275,7 +278,9 @@
                         <li runat="server" id="Ficha" visible="true"><a href="/Cadastros/ConsultaFicha.aspx" class="parent">Fichas</a></li>
                     </ul>
                 </li>
-                <li><a href="">Relatórios</a></li>
+                <li>
+                    <asp:LinkButton ID="lnkRelatorios" runat="server" PostBackUrl="#">Relatórios</asp:LinkButton>
+                </li>
             </ul>
         </div>
         <div class="container">

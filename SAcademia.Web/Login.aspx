@@ -37,6 +37,43 @@
         $(document).ready(function () {
             $("#txtLogin").focus();
         });
+
+        //Função ALERT MENSAGEM PERSONALIZADO
+        function mostraPopUpAlert(mensagemAlert, iconeAlert, bool, ID, paginaDestino) {
+            var IDNome = "'" + ID + "'";
+            var paginaDestinoNome = "'" + paginaDestino + "'";
+
+            $('#Modal').show();
+            $('#iconeAlert').attr("src", iconeAlert);
+            $('#mensagemAlert').html(mensagemAlert);
+            if (bool) {
+                var input1 = '<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="confirmaAlert(' + IDNome + ');" />';
+                var input2 = '<input type="button" class="buttons" id="btnCancel" title="Cancelar" value="Cancelar" onclick="return fechar();" />';
+                $('.btnsAlert').html(input1 + input2);
+            } else {
+                $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar(' + paginaDestinoNome + ');" />')
+            }
+            $("#btnOK").focus();
+            $('html, body').animate({ scrollTop: $('#tudo').offset().top }, 500);
+            return false;
+        }
+
+        function confirmaAlert(ID) {
+            $('#' + ID).attr("onclick", "return true;");
+            $('#' + ID).click();
+            fechar();
+            return true;
+        }
+
+        function fechar(paginaDestino) {
+            $('#Modal').hide();
+
+            if (paginaDestino != 'undefined') {
+                $(location).attr('href', paginaDestino);
+            }
+        }
+        // END
+
     </script>
     <!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -69,7 +106,18 @@
                 </div>
             </div>
         </div>
-        
+        <div id="Modal" style="display: none;">
+            <div id="teste" class="mensagemAlert">
+            </div>
+            <div id="alert" class="boxAlert">
+                <img src="" alt="imagem" id="iconeAlert" class="iconeAlert" />
+                <p id="mensagemAlert">
+                </p>
+                <div class="btnsAlert">
+                </div>
+            </div>
+        </div>
     </form>
+
 </body>
 </html>

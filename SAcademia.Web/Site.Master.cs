@@ -27,14 +27,7 @@ namespace SAcademia.Web
 
                 if (academia != null)
                 {
-                    if (Page.Request.RawUrl != "/Inicio.aspx")
-                    {
-                        ExibirImagem(academia.Logotipo);
-                    }
-                    else
-                    {
-                        logo.Src = "/img/softgym.jpg";
-                    }
+                    ExibirImagem(academia.Logotipo);
                     hddCor.Value = academia.Parametros.Cor;
                     lblNomeAcademia.Text = academia.Nome;
                 }

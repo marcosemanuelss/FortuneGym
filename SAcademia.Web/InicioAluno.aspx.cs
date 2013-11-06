@@ -11,7 +11,11 @@ namespace SAcademia.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                ((LinkButton)Master.FindControl("lnkInicio")).Visible = false;
+                ((LinkButton)Master.FindControl("lnkRelatorios")).Visible = false;
+            }
         }
     }
 }
