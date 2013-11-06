@@ -52,6 +52,7 @@
     <Compile Include="Base\Mensagens.Designer.cs" />
     <Compile Include="Base\MethodExtensions.cs" />
     <Compile Include="Base\ParametroProcedureCache.cs" />
+    <Compile Include="Exercicios\PerCategoria.cs" />
     <Compile Include="Exercicios\PerExercicio.cs" />
     <Compile Include="Fichas\PerFicha.cs" />
     <Compile Include="Fichas\PerSerie.cs" />

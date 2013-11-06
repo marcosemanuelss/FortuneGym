@@ -5,38 +5,42 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Entidade.Academias;
+using Entidade.Exercicios;
+using Negocio.Exercicios;
 namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaCategoria : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaGV();
+            if (!IsPostBack)
+            {
+                if (Session["ListaCategorias"] != null)
+                {
+                    gvConsulta.DataSource = (List<ExercicioCategoria>)Session["ListaCategorias"];
+                    gvConsulta.DataBind();
+                }
+            }
         }
         protected void CarregaGV()
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("Editar", System.Type.GetType("System.String"));
-            dt.Columns.Add("Excluir", System.Type.GetType("System.String"));
-
-            for (int i = 1; i < 10; i++)
-            {
-                dt.Rows.Add(new String[] { "Nome Teste", "img", "img" });
-            }
-
-            gvConsulta.DataSource = dt;
+            int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            List<ExercicioCategoria> lista = new NegCategoria().ListarCategorias(CodigoAcademia, txtPesquisa.Text);
+            Session["ListaCategorias"] = lista;
+            gvConsulta.DataSource = lista;
             gvConsulta.DataBind();
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)
         {
+            Session["ListaCategorias"] = null;
             Response.Redirect("~/Cadastros/CadastraCategoria.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
+            Session["ListaCategorias"] = null;
             Response.Redirect("~/Inicio.aspx");
         }
     }

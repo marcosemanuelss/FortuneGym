@@ -17,5 +17,8 @@ namespace Entidade.Exercicios
 
         [Coluna("DS_CATEGORIA")]
         public int Descricao { get; set; }
+
+        [Coluna("IN_ATIVO")]
+        public bool Ativo { get; set; }
     }
 }

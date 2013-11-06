@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academias\NegAcademia.cs" />
+    <Compile Include="Exercicios\NegCategoria.cs" />
     <Compile Include="Fichas\NegFicha.cs" />
     <Compile Include="Fichas\NegSerie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,7 +50,6 @@
     <Compile Include="Usuarios\NegUsuario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Exercicios\" />
     <Folder Include="Objetivos\" />
     <Folder Include="Perfil\" />
   </ItemGroup>
