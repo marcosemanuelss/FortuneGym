@@ -45,8 +45,7 @@
                 <label>
                     Situação*:</label>
                 <asp:DropDownList ID="dpSituacao" Cssclass="required" runat="server">
-                    <asp:ListItem Text="Selecione" Value="" />
-                    <asp:ListItem Text="Ativo" Value="Ativo" />
+                    <asp:ListItem Text="Ativo" Value="Ativo" Selected="True"/>
                     <asp:ListItem Text="Inativo" Value="Inativo" />
                 </asp:DropDownList>
             </div>

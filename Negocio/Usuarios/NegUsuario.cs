@@ -54,17 +54,14 @@ namespace Negocio.Usuarios
         {
             int CodigoRetorno = new PerUsuarios().InserirUsuario(NovoUsuario);
 
-            switch (CodigoRetorno)
-            {
-                case 1: Mensagem = "Usuário inserido com sucesso. Sua senha é trocar@123 ";
-                    break;
-                case 2601: Mensagem = "Login já cadastrado no sistema, favor escolher outro.";
-                    break;
-                default: Mensagem = "Erro ao inserir usuário, favor verificar os dados informados e tentar novamente.";
-                    break;
-            }
+            if (CodigoRetorno > 0)
+                Mensagem = "Usuário inserido com sucesso. Sua senha é trocar@123 ";
+            else if (CodigoRetorno == -2601)
+                Mensagem = "Login já cadastrado no sistema, favor escolher outro.";
+            else
+                Mensagem = "Erro ao inserir usuário, favor verificar os dados informados e tentar novamente.";
 
-            return CodigoRetorno == 1;
+            return CodigoRetorno > 0;
         }
 
         public bool BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
