@@ -65,6 +65,7 @@
     <Compile Include="Repeticoes\TipoRepeticao.cs" />
     <Compile Include="Fichas\Series.cs" />
     <Compile Include="Fichas\SerieTipo.cs" />
+    <Compile Include="Usuarios\ClientesGrid.cs" />
     <Compile Include="Usuarios\UsuarioComplemento.cs" />
     <Compile Include="Usuarios\Usuarios.cs" />
     <Compile Include="Usuarios\UsuariosGrid.cs" />

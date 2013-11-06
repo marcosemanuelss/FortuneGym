@@ -20,8 +20,10 @@
                 <div class="filtrar">
                     <label>Digite um nome ou cpf ou matrícula para pesquisa:</label>
                     <asp:TextBox ID="txtPesquisa" runat="server"/>
-                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" Text="Pesquisar" Cssclass="buttons"/>
-                    <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" Text="Limpar"/>
+                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" 
+                        Text="Pesquisar" Cssclass="buttons" onclick="btnPesquisar_Click"/>
+                    <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
+                        Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server">
                 
