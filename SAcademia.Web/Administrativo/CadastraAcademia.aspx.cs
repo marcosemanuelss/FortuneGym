@@ -117,8 +117,8 @@ namespace SAcademia.Web.Administrativo
         {
             Session["Logotipo"] = imagem;
             ImagemAcademia.Src = "~/Administrativo/ImagemAcademia.aspx";
-            ImagemAcademia.Width = 50;
-            ImagemAcademia.Height = 50;
+            ImagemAcademia.Width = 36;
+            ImagemAcademia.Height = 36;
         }
     }
 }

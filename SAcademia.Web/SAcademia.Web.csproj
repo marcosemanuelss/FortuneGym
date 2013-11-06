@@ -63,8 +63,10 @@
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
     <Content Include="Cadastros\CadastraRepeticoes.aspx" />
     <Content Include="Cadastros\CadastraTipoSerie.aspx" />
+    <Content Include="Cadastros\CadastroFicha.aspx" />
     <Content Include="Cadastros\ConsultaCategoria.aspx" />
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
+    <Content Include="Cadastros\ConsultaFicha.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\btn-selecione.png" />
@@ -198,6 +200,13 @@
     <Compile Include="Cadastros\CadastraTipoSerie.aspx.designer.cs">
       <DependentUpon>CadastraTipoSerie.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\CadastroFicha.aspx.cs">
+      <DependentUpon>CadastroFicha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastroFicha.aspx.designer.cs">
+      <DependentUpon>CadastroFicha.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\ConsultaCategoria.aspx.cs">
       <DependentUpon>ConsultaCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -211,6 +220,13 @@
     </Compile>
     <Compile Include="Cadastros\ConsultaEquipamento.aspx.designer.cs">
       <DependentUpon>ConsultaEquipamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaFicha.aspx.cs">
+      <DependentUpon>ConsultaFicha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaFicha.aspx.designer.cs">
+      <DependentUpon>ConsultaFicha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\ConsultaTipoSerie.aspx.cs">
       <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>
