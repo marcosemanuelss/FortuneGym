@@ -45,6 +45,7 @@
     <Compile Include="Fichas\NegSerie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repeticoes\NegRepeticao.cs" />
+    <Compile Include="Usuarios\NegCliente.cs" />
     <Compile Include="Usuarios\NegUsuario.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -59,6 +59,7 @@
     <Compile Include="Perfil\PerPaginas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repeticoes\PerRepeticao.cs" />
+    <Compile Include="Usuarios\PerCliente.cs" />
     <Compile Include="Usuarios\PerUsuarios.cs" />
   </ItemGroup>
   <ItemGroup>

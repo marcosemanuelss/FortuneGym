@@ -79,6 +79,9 @@
     <Content Include="img\marca.jpg" />
     <Content Include="img\softgym.jpg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="InicioAdmin.aspx" />
+    <Content Include="InicioAluno.aspx" />
+    <Content Include="InicioInstrutor.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logotipo.aspx" />
     <Content Include="Scripts\jAtualizarBrowser.js" />
@@ -252,6 +255,27 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioAdmin.aspx.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioAdmin.aspx.designer.cs">
+      <DependentUpon>InicioAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioAluno.aspx.cs">
+      <DependentUpon>InicioAluno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioAluno.aspx.designer.cs">
+      <DependentUpon>InicioAluno.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioInstrutor.aspx.cs">
+      <DependentUpon>InicioInstrutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioInstrutor.aspx.designer.cs">
+      <DependentUpon>InicioInstrutor.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

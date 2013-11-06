@@ -255,14 +255,16 @@
 .adicione{
     margin:10px;  
 }
-
 .adicione a{
     color:#000;
     background:url('../img/icon-add-list.png') no-repeat left;
     padding-left: 20px;
 }
-
+/*Academia*/
 #MainContent_ImagemAcademia {
     float: right;
-    margin-top: 14px;
+}
+/*FICHAS*/
+#MainContent_btnAdicionarExercicios{
+    float:right;
 }

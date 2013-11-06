@@ -66,29 +66,6 @@
         </div>
     </div>   
     <script type="text/javascript">
-
-//        function addItem() {
-
-//            var html =   '<div class="item-1">' +
-//                                    '<div class="row-265">' +
-//                                        '<label>Nº de Vezes*:</label>'+
-//                                        '<asp:TextBox ID="TextBox1" Cssclass="required" runat="server" ToolTip="Número de Vezes" />' +
-//                                    '</div>' +
-//                                    '<div class="row-265">' +
-//                                        '<label>Repetição*:</label>' +
-//                                        '<asp:TextBox ID="TextBox2" Cssclass="required" runat="server" ToolTip="Repetição" />' +
-//                                    '</div>' +
-//                                    '<div class="row-265">'+
-//                                        '<label>Variação*:</label>' +
-//                                        '<asp:DropDownList ID="DropDownList1" Cssclass="required" runat="server">'+
-//                                            '<asp:ListItem Text="Selecione" Value="" />'+
-//                                            '<asp:ListItem Text="teste" Value="teste" />'+
-//                                        '</asp:DropDownList>'+
-//                                    '</div>'+
-//                                '</div>';
-//            $('#tabela').append(html);
-//        }
-
         //EXECUTA QUANDO CARREGA A PÁGINA
         $(document).ready(function () {
             var val = $("input[name='ctl00$MainContent$rbtipoCombinacao']:checked").val(); //pega  valor do radio

@@ -2,9 +2,9 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-        <div class="marca">
+        <%--<div class="marca">
             <div class="imgMarca">
                 <img src="" id="imagemAcad" alt="Imagem" runat="server" />
             </div>
-        </div>
+        </div>--%>
 </asp:Content>

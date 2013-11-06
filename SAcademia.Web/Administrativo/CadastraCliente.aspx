@@ -98,7 +98,36 @@
             <div class="row-290">
                 <label>
                     UF*:</label>
-                <asp:TextBox ID="txtUf" Cssclass="required" runat="server" MaxLength="2" ToolTip="UF" />
+                <asp:DropDownList ID="dpUf" runat="server">
+                    	<asp:ListItem Value="Selecione">Selecione</asp:ListItem>
+                        <asp:ListItem value="AC">Acre</asp:ListItem>
+                        <asp:ListItem value="AL">Alagoas</asp:ListItem>
+                        <asp:ListItem value="AP">Amapá</asp:ListItem>
+                        <asp:ListItem value="AM">Amazonas</asp:ListItem>
+                        <asp:ListItem value="BA">Bahia</asp:ListItem>
+                        <asp:ListItem value="CE">Ceará</asp:ListItem>
+                        <asp:ListItem value="DF">Distrito Federal</asp:ListItem>
+                        <asp:ListItem value="ES">Espirito Santo</asp:ListItem>
+                        <asp:ListItem value="GO">Goiás</asp:ListItem>
+                        <asp:ListItem value="MA">Maranhão</asp:ListItem>
+                        <asp:ListItem value="MT">Mato Grosso</asp:ListItem>
+                        <asp:ListItem value="MS">Mato Grosso do Sul</asp:ListItem>
+                        <asp:ListItem value="MG">Minas Gerais</asp:ListItem>
+                        <asp:ListItem value="PA">Pará</asp:ListItem>
+                        <asp:ListItem value="PB">Paraiba</asp:ListItem>
+                        <asp:ListItem value="PR">Paraná</asp:ListItem>
+                        <asp:ListItem value="PE">Pernambuco</asp:ListItem>
+                        <asp:ListItem value="PI">Piauí</asp:ListItem>
+                        <asp:ListItem value="RJ">Rio de Janeiro</asp:ListItem>
+                        <asp:ListItem value="RN">Rio Grande do Norte</asp:ListItem>
+                        <asp:ListItem value="RS">Rio Grande do Sul</asp:ListItem>
+                        <asp:ListItem value="RO">Rondônia</asp:ListItem>
+                        <asp:ListItem value="RR">Roraima</asp:ListItem>
+                        <asp:ListItem value="SC">Santa Catarina</asp:ListItem>
+                        <asp:ListItem value="SP">São Paulo</asp:ListItem>
+                        <asp:ListItem value="SE">Sergipe</asp:ListItem>
+                        <asp:ListItem value="TO">Tocantis</asp:ListItem>
+                </asp:DropDownList>
             </div>
             <div class="row-290">
                 <label>
@@ -126,20 +155,10 @@
                           "http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=" + cep,
                           function () {
                               if (resultadoCEP["resultado"]) {
-                                  if (unescape(resultadoCEP["uf"]).toUpperCase() !== '') {
-
-                                      $('#<%=txtBairro.ClientID%>').val(unescape(resultadoCEP["bairro"]));
-                                      $('#<%=txtCidade.ClientID%>').val(unescape(resultadoCEP["cidade"]));
-                                      $('#<%=txtUf.ClientID%>').val(resultadoCEP["uf"]);
-                                      $('#<%=txtEndereco.ClientID%>').val(unescape(resultadoCEP["tipo_logradouro"] + " " + resultadoCEP["logradouro"]));
-                                  } else {
-                                      mostraPopUpAlert('CEP não encontrado.', '../img/icon-atencao.png', false, '');
-                                      $('#<%=txtCep.ClientID%>').val("");
-                                      $('#<%=txtBairro.ClientID%>').val("");
-                                      $('#<%=txtCidade.ClientID%>').val("");
-                                      $('#<%=txtUf.ClientID%>').val("");
-                                      $('#<%=txtEndereco.ClientID%>').val("");
-                                  }
+                                  $('#<%=txtBairro.ClientID%>').val(unescape(resultadoCEP["bairro"]));
+                                  $('#<%=txtCidade.ClientID%>').val(unescape(resultadoCEP["cidade"]));
+                                  $('#<%=dpUf.ClientID%>').val(unescape(resultadoCEP["uf"]));
+                                  $('#<%=txtEndereco.ClientID%>').val(unescape(resultadoCEP["tipo_logradouro"] + " " + resultadoCEP["logradouro"]));
                               } else {
                                   mostraPopUpAlert('Endereço não encontrado', '../img/icon-atencao.png', false, '');
                               }
@@ -147,7 +166,5 @@
                         );
             }
         }
-        // VALIDA DATA DE NASCIMENTO
-//       
     </script>
 </asp:Content>
