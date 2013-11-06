@@ -11,6 +11,7 @@ namespace SAcademia.Web.Administrativo
 {
     public partial class CadastroUsuario : System.Web.UI.Page
     {
+        #region "Eventos"
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -23,6 +24,54 @@ namespace SAcademia.Web.Administrativo
             }
         }
 
+        protected void btnVoltar_Click(object sender, EventArgs e)
+        {
+            Session["UsuarioCadastrado"] = null;
+            Response.Redirect("~/Administrativo/ConsultaUsuario.aspx");
+        }
+
+        protected void btnSalvar_Click(object sender, EventArgs e)
+        {
+            string Mensagem = "";
+            bool Valido = false;
+            Usuarios NovoUsuario = new Usuarios();
+            PreencherObjeto(ref NovoUsuario);
+
+            if (Session["UsuarioCadastrado"] == null)
+            {
+                Valido = new NegUsuario().InserirUsuario(NovoUsuario, ref Mensagem);
+            }
+            else
+            {
+                NovoUsuario.Codigo = ((UsuariosGrid)Session["UsuarioCadastrado"]).Codigo;
+                Valido = new NegUsuario().AtualizarUsuario(NovoUsuario, ((Usuarios)Session["Usuario"]).Codigo, ref Mensagem);
+
+                if (Valido)
+                    AtualizarUsuario((UsuariosGrid)Session["UsuarioCadastrado"], NovoUsuario);
+            }            
+
+            Session["UsuarioCadastrado"] = null;
+
+            string icon = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+            string TelaRetorno = Valido ? "../Administrativo/ConsultaUsuario.aspx" : "";
+            ((Site)Master).ExecutaResposta(Mensagem, icon, TelaRetorno);
+        }
+        #endregion
+
+        #region "Métodos"
+        private void AtualizarUsuario(UsuariosGrid Usuario, Usuarios NovoUsuario)
+        {
+            Usuario.Nome = NovoUsuario.Nome;
+            Usuario.Situcacao = NovoUsuario.Ativo ? "Ativo" : "Inativo";
+            Usuario.CodigoTipo = NovoUsuario.CodigoTipo;
+            Usuario.DescricaoTipo = dpTipoUsuario.Text;
+
+            List<UsuariosGrid> lista = (List<UsuariosGrid>)Session["ListaUsuarios"];
+            UsuariosGrid UsuarioGrid = lista.Find(delegate(UsuariosGrid u) { return u.Codigo == Usuario.Codigo; });
+            UsuarioGrid = Usuario;
+        }
+
+
         private void PreencherEdits(UsuariosGrid UsuariosEdit)
         {
             dpTipoUsuario.SelectedValue = UsuariosEdit.CodigoTipo.ToString();
@@ -32,30 +81,6 @@ namespace SAcademia.Web.Administrativo
             txtNome.Text = UsuariosEdit.Nome;
         }
 
-        protected void btnVoltar_Click(object sender, EventArgs e)
-        {
-            Session["UsuarioCadastrado"] = null;
-            Response.Redirect("~/Administrativo/ConsultaUsuario.aspx");
-        }
-
-        protected void btnSalvar_Click(object sender, EventArgs e)
-        {
-            string Messagem = "";
-            Usuarios NovoUsuario = new Usuarios();
-            PreencherObjeto(ref NovoUsuario);
-
-            if (Session["UsuarioCadastrado"] == null)
-            {
-                new NegUsuario().InserirUsuario(NovoUsuario, ref Messagem);
-            }
-            else
-            {
-                new NegUsuario().AtualizarUsuario(NovoUsuario, ((Usuarios)Session["Usuario"]).Codigo, ref Messagem);
-            }
-
-            Session["UsuarioCadastrado"] = null;
-            Response.Redirect("~/Administrativo/ConsultaUsuario.aspx");
-        }
 
         private void PreencherObjeto(ref Usuarios NovoUsuario)
         {
@@ -67,5 +92,6 @@ namespace SAcademia.Web.Administrativo
             NovoUsuario.Login = txtLogin.Text;
             NovoUsuario.Nome = txtNome.Text;
         }
+        #endregion
     }
 }

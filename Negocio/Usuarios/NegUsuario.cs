@@ -67,12 +67,22 @@ namespace Negocio.Usuarios
             return CodigoRetorno == 1;
         }
 
-        public void BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao)
+        public bool BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
         {
-            new PerUsuarios().BloquearUsuario(CodigoAcademia, CodigoUsuario, CodigoUsuarioAlteracao);
+            int CodigoRetorno = new PerUsuarios().BloquearUsuario(CodigoAcademia, CodigoUsuario, CodigoUsuarioAlteracao);
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Usuário bloqueado com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao bloquear usuário, favor tentar novamente.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
         }
 
-        public void RedefinirSenha(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
+        public bool RedefinirSenha(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
         {
             int CodigoRetorno = new PerUsuarios().RedefinirSenha(CodigoAcademia, CodigoUsuario, CodigoUsuarioAlteracao);
 
@@ -83,6 +93,8 @@ namespace Negocio.Usuarios
                 default: Mensagem = "Erro ao redefinir a senha, favor tentar novamente.";
                     break;
             }
+
+            return CodigoRetorno == 1;
         }
 
         public bool AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
