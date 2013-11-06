@@ -41,7 +41,7 @@ namespace SAcademia.Web.Administrativo
             academiaParametros.PrazoAvaliacao = txtTempoAvaliacao.Text == "" ? null : (int?)Convert.ToInt32(txtTempoAvaliacao.Text);
             academiaParametros.PrazoFicha = Convert.ToInt32(txtTempoFicha.Text);
             academiaParametros.Cor = hddCorMenu.Value == "" ? "#303030" : hddCorMenu.Value;
-            academiaParametros.CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            academiaParametros.CodigoAcademia = Convert.ToInt32(hddCodigoAcademia.Value);
 
             retorno = new NegAcademia().SalvarParametros(academiaParametros);
             if (retorno > 0)
@@ -50,16 +50,17 @@ namespace SAcademia.Web.Administrativo
             }
             else
             {
-                //Implementar resposta ao usuário²
+                ((Site)Master).ExecutaResposta("Erro ao salvar parâmetros. Cadastro cancelado.", "../img/icon-erro.png", "");
             }
         }
 
         private void CarregaCampos(AcademiaParametros academiaParametros)
         {
+            hddCodigoAcademia.Value = academiaParametros.CodigoAcademia.ToString();
             rblistAvaliacao.SelectedValue = academiaParametros.Avaliacao.ToString();
             txtTempoAvaliacao.Text = academiaParametros.PrazoAvaliacao.ToString();
             txtTempoFicha.Text = academiaParametros.PrazoFicha.ToString();
-            hddCorMenu.Value = academiaParametros.Cor.ToString();
+            hddCorMenu.Value = academiaParametros.Cor == null ? "#303030" : academiaParametros.Cor;
         }
     }
 }

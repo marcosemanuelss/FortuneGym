@@ -22,16 +22,25 @@ namespace SAcademia.Web {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder HeadContent;
         
         /// <summary>
-        /// Controle ScriptmanagerPopup.
+        /// ScriptmanagerPopup control.
         /// </summary>
         /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.ScriptManager ScriptmanagerPopup;
         
         /// <summary>
-        /// Controle lblNomeUser.
+        /// logo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage logo;
+        
+        /// <summary>
+        /// lblNomeUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

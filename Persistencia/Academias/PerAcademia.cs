@@ -50,11 +50,10 @@ namespace Persistencia.Academias
         public int InserirAcademia(Academia academia)
         {
             List<DbParameter> p = new List<DbParameter>();
-            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", academia.Codigo));
             p.Add(Base.Db.CreateParameter("@NR_CNPJ", academia.CNPJ));
             p.Add(Base.Db.CreateParameter("@DS_NOME", academia.Nome));
-            p.Add(Base.Db.CreateParameter("@DS_EMAIL", academia.Email));
-            p.Add(Base.Db.CreateParameter("@NR_CEP", academia.Cep));
+            p.Add(Base.Db.CreateParameter("@IM_LOGO", academia.Logotipo));
+            p.Add(Base.Db.CreateParameter("@DS_CEP", academia.Cep));
             p.Add(Base.Db.CreateParameter("@DS_ENDERECO", academia.Endereco));
             p.Add(Base.Db.CreateParameter("@NR_ENDERECO", academia.Numero));
             p.Add(Base.Db.CreateParameter("@DS_COMPLEMENTO", academia.Complemento));
@@ -62,10 +61,31 @@ namespace Persistencia.Academias
             p.Add(Base.Db.CreateParameter("@DS_CIDADE", academia.Cidade));
             p.Add(Base.Db.CreateParameter("@SG_UF", academia.Uf));
             p.Add(Base.Db.CreateParameter("@NR_TELEFONE", academia.Telefone));
+            p.Add(Base.Db.CreateParameter("@DS_EMAIL", academia.Email));
             p.Add(Base.Db.CreateParameter("@IN_ATIVO", academia.Ativo));
 
-            //Falta criar a Store Procedure no banco
             return Base.Db.Insert("SP_INSERIR_ACADEMIA", CommandType.StoredProcedure, p);
+        }
+
+        public int AtualizarAcademia(Academia academia)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", academia.Codigo));
+            p.Add(Base.Db.CreateParameter("@NR_CNPJ", academia.CNPJ));
+            p.Add(Base.Db.CreateParameter("@DS_NOME", academia.Nome));
+            p.Add(Base.Db.CreateParameter("@IM_LOGO", academia.Logotipo));
+            p.Add(Base.Db.CreateParameter("@DS_CEP", academia.Cep));
+            p.Add(Base.Db.CreateParameter("@DS_ENDERECO", academia.Endereco));
+            p.Add(Base.Db.CreateParameter("@NR_ENDERECO", academia.Numero));
+            p.Add(Base.Db.CreateParameter("@DS_COMPLEMENTO", academia.Complemento));
+            p.Add(Base.Db.CreateParameter("@DS_BAIRRO", academia.Bairro));
+            p.Add(Base.Db.CreateParameter("@DS_CIDADE", academia.Cidade));
+            p.Add(Base.Db.CreateParameter("@SG_UF", academia.Uf));
+            p.Add(Base.Db.CreateParameter("@NR_TELEFONE", academia.Telefone));
+            p.Add(Base.Db.CreateParameter("@DS_EMAIL", academia.Email));
+            p.Add(Base.Db.CreateParameter("@IN_ATIVO", academia.Ativo));
+
+            return Base.Db.Insert("SP_ATUALIZAR_ACADEMIA", CommandType.StoredProcedure, p);
         }
     }
 }

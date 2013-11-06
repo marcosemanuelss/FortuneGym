@@ -49,5 +49,10 @@ namespace Negocio.Academias
         {
             return new PerAcademia().InserirAcademia(academia);
         }
+
+        public int AtualizarAcademia(Academia academia)
+        {
+            return new PerAcademia().AtualizarAcademia(academia);    
+        }
     }
 }

@@ -15,7 +15,10 @@ namespace SAcademia.Web.Administrativo
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
+                gvConsulta.DataSource = null;
                 gvConsulta.DataBind();
+            }
         }
 
         protected void CarregaGV(string Pesquisa)
@@ -50,7 +53,14 @@ namespace SAcademia.Web.Administrativo
             {
                 case "Parametros":
                     AcademiaParametros parametros = new NegAcademia().ObterParametros(Convert.ToInt32(CodigoAcademia));
-                    Session["ParametrosAcademia"] = parametros;
+                    if (parametros != null)
+                        Session["ParametrosAcademia"] = parametros;
+                    else
+                    {
+                        AcademiaParametros param = new AcademiaParametros();
+                        param.CodigoAcademia = Convert.ToInt32(CodigoAcademia);
+                        Session["ParametrosAcademia"] = param;
+                    }
                     Response.Redirect("Parametros.aspx");
 
                     break;

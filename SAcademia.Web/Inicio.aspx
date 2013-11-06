@@ -4,7 +4,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
         <div class="marca">
             <div class="imgMarca">
-                <img src="img/marca.jpg" id="imagemAcad" alt="Imagem" />
+                <img src="" id="imagemAcad" alt="Imagem" runat="server" />
             </div>
         </div>
 </asp:Content>

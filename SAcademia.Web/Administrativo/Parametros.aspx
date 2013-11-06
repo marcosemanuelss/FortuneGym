@@ -14,6 +14,7 @@
             </div>
             <div class="bg-tabela">
                 <h3>Dados dos Parâmetros</h3>
+                <asp:HiddenField ID="hddCodigoAcademia" runat="server" />
                 <div class="row-452">
                     <label>Tempo de Duração da Ficha (meses)*:</label>
                     <asp:TextBox ID="txtTempoFicha" runat="server" CssClass="required" ToolTip="Tempo de Avaliação" />

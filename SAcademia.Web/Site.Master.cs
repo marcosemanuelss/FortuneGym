@@ -27,12 +27,28 @@ namespace SAcademia.Web
 
                 if (academia != null)
                 {
-                    
+                    if (Page.Request.RawUrl != "/Inicio.aspx")
+                    {
+                        ExibirImagem(academia.Logotipo);
+                    }
+                    else
+                    {
+                        logo.Src = "/img/softgym.jpg";
+                    }
                     hddCor.Value = academia.Parametros.Cor;
                     lblNomeAcademia.Text = academia.Nome;
                 }
             }
             AlterarCor(hddCor.Value);
+        }
+
+        private void ExibirImagem(byte[] imagem)
+        {
+            Session["Logo"] = imagem;
+            logo.Src = "~/Logotipo.aspx";
+            //logo.Width = 300;
+            logo.Height = 54;
+            logo.Attributes.Add("style", "position: relative; left:100px;");
         }
 
         protected void btnDesconectar_Click(object sender, EventArgs e)
@@ -92,5 +108,7 @@ namespace SAcademia.Web
                 cs.RegisterStartupScript(cstype, csname1, cstext1, true);
             }
         }
+
+
     }
 }

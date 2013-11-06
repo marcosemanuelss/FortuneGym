@@ -221,7 +221,7 @@
     <div id="tudo">
         <div class="topo">
             <div class="left">
-                <img src="/img/softgym.jpg" alt="logo" /></div>
+                <img src="" id="logo" alt="logo" runat="server" /></div>
             <div class="middle">
                 <div class="one">
                     <strong>

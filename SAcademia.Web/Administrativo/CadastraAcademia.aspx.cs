@@ -32,10 +32,10 @@ namespace SAcademia.Web.Administrativo
 
         protected void btnSalvar_Click(object sender, EventArgs e)
         {
-            Salvar(Convert.ToInt32(hddCodigoAcademia.Value));
+            Salvar();
         }
 
-        private void Salvar(int CodigoAcademia)
+        private void Salvar()
         {
             int retorno = 0;
             Academia academia = new Academia();
@@ -48,28 +48,37 @@ namespace SAcademia.Web.Administrativo
                 img.InputStream.Read(imgbyte, 0, tamanho);
                 academia.Logotipo = imgbyte;
             }
-            academia.Codigo = CodigoAcademia;
-            academia.CNPJ = txtCnpj.Text;
+            if (hddCodigoAcademia.Value != "")
+                academia.Codigo = Convert.ToInt32(hddCodigoAcademia.Value);
+
+            academia.CNPJ = txtCnpj.Text.Replace(".", "").Replace("/", "").Replace("-", "");
             academia.Nome = txtNome.Text;
             academia.Email = txtEmail.Text;
-            academia.Cep = txtCep.Text;
+            academia.Cep = txtCep.Text.Replace(".", "").Replace("-", "");
             academia.Endereco = txtEndereco.Text;
             academia.Numero = Convert.ToInt32(txtNumero.Text);
             academia.Complemento = txtComplemento.Text;
             academia.Bairro = txtBairro.Text;
             academia.Cidade = txtCidade.Text;
             academia.Uf = txtUf.Text;
-            academia.Telefone = txtTelefone.Text;
+            academia.Telefone = txtTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "");
             academia.Ativo = dpSituacao.SelectedIndex == 1 ? true : false;
 
-            if (academia.Codigo == null)
+            if (academia.Codigo == 0)
             {
                 retorno = new NegAcademia().InserirAcademia(academia);
+                ExibirImagem(academia.Logotipo);
             }
             else
-            { 
-                
+            {
+                retorno = new NegAcademia().AtualizarAcademia(academia);
+                ExibirImagem(academia.Logotipo);
             }
+
+            if (retorno > 0)
+                ((Site)Master).ExecutaResposta("Academia salva com sucesso!", "../img/icon-ok.png", "../Administrativo/ConsultaAcademia.aspx");
+            else
+                ((Site)Master).ExecutaResposta("Erro ao salvar academia. Cadastro cancelado.", "../img/icon-erro.png", "");
         }
 
         private void CarregaCampos(Academia academia)
