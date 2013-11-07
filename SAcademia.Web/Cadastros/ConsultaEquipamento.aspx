@@ -25,14 +25,16 @@
                     <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
                         Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
-                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server"  AutoGenerateColumns="False" DataKeyNames="Codigo">
+                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server"  
+                    AutoGenerateColumns="False" DataKeyNames="Codigo" 
+                    onrowcommand="gvConsulta_RowCommand">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                        <asp:BoundField DataField="CodigoCategoria" HeaderText="Categoria" />
+                        <asp:BoundField DataField="Categoria" HeaderText="Categoria" />
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"

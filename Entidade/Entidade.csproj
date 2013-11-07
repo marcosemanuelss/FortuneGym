@@ -55,6 +55,7 @@
     <Compile Include="Erros.cs" />
     <Compile Include="Exercicios\ExercicioCategoria.cs" />
     <Compile Include="Exercicios\Exercicio.cs" />
+    <Compile Include="Exercicios\ExercicioGrid.cs" />
     <Compile Include="Fichas\Ficha.cs" />
     <Compile Include="IP.cs" />
     <Compile Include="Objetivos\Objetivo.cs" />

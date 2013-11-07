@@ -12,6 +12,8 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class CadastraCategoria : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -25,11 +27,6 @@ namespace SAcademia.Web.Cadastros
                     Session["NaoValido"] = null;
                 }
             }
-        }
-
-        private void PreencherEdits(ExercicioCategoria Categoria)
-        {
-            txtNome.Text = Categoria.Descricao;
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
@@ -69,13 +66,17 @@ namespace SAcademia.Web.Cadastros
             ((Site)Master).ExecutaResposta(Mensagem, icon, TelaRetorno);
         }
 
+        #endregion
+
+        #region "Métodos"
+
         private void AtualizarCategoria(ExercicioCategoria Categoria, ExercicioCategoria NovaCategoria)
         {
             Categoria.Descricao = NovaCategoria.Descricao;
 
-            List<ExercicioCategoria> lista = (List<ExercicioCategoria>)Session["ListaCategorias"];
-            ExercicioCategoria CategoriaGrid = lista.Find(delegate(ExercicioCategoria u) { return u.Codigo == Categoria.Codigo; });
-            CategoriaGrid = Categoria;
+            //List<ExercicioCategoria> lista = (List<ExercicioCategoria>)Session["ListaCategorias"];
+            //ExercicioCategoria CategoriaGrid = lista.Find(delegate(ExercicioCategoria u) { return u.Codigo == NovaCategoria.Codigo; });
+            //CategoriaGrid = Categoria;
         }
 
         private void PreencherObjeto(ref ExercicioCategoria NovaCategoria)
@@ -84,5 +85,12 @@ namespace SAcademia.Web.Cadastros
             NovaCategoria.Descricao = txtNome.Text;
             NovaCategoria.Ativo = true;
         }
+
+        private void PreencherEdits(ExercicioCategoria Categoria)
+        {
+            txtNome.Text = Categoria.Descricao;
+        }
+
+        #endregion
     }
 }

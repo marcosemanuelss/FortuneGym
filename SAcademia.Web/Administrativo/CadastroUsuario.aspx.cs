@@ -75,9 +75,9 @@ namespace SAcademia.Web.Administrativo
             Usuario.CodigoTipo = NovoUsuario.CodigoTipo;
             Usuario.DescricaoTipo = dpTipoUsuario.Text;
 
-            List<UsuariosGrid> lista = (List<UsuariosGrid>)Session["ListaUsuarios"];
-            UsuariosGrid UsuarioGrid = lista.Find(delegate(UsuariosGrid u) { return u.Codigo == Usuario.Codigo; });
-            UsuarioGrid = Usuario;
+            //List<UsuariosGrid> lista = (List<UsuariosGrid>)Session["ListaUsuarios"];
+            //UsuariosGrid UsuarioGrid = lista.Find(delegate(UsuariosGrid u) { return u.Codigo == Usuario.Codigo; });
+            //UsuarioGrid = Usuario;
         }
 
         private UsuariosGrid AtualizarUsuario(Usuarios NovoUsuario)
