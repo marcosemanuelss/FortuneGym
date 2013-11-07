@@ -19,5 +19,14 @@ namespace Persistencia.Exercicios
 
             return Base.Db.Read<Exercicio>("SP_OBTER_EXERCICIO", GenericMake.Make<Exercicio>, CommandType.StoredProcedure, p);
         }
+
+        public List<Exercicio> ListarExercicios(int CodigoAcademia, string Filtro)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@DS_FILTRO", Filtro));
+
+            return Base.Db.ReadList<Exercicio>("SP_LISTAR_EXERCICIO", GenericMake.Make<Exercicio>, CommandType.StoredProcedure, p);
+        }
     }
 }

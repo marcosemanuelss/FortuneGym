@@ -43,5 +43,16 @@ namespace SAcademia.Web.Cadastros
             Session["ListaCategorias"] = null;
             Response.Redirect("~/Inicio.aspx");
         }
+
+        protected void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            CarregaGV();
+        }
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = String.Empty;
+            CarregaGV();
+        }
     }
 }

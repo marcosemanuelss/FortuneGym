@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using Entidade.Exercicios;
+using Entidade.Academias;
+using Negocio.Exercicios;
 
 namespace SAcademia.Web.Cadastros
 {
@@ -12,36 +15,45 @@ namespace SAcademia.Web.Cadastros
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaGV();
+            if (!IsPostBack)
+            {
+                if (Session["ListaExercicios"] != null)
+                {
+                    gvConsulta.DataSource = (List<Exercicio>)Session["ListaExercicios"];
+                    gvConsulta.DataBind();
+                }
+            }
         }
         protected void CarregaGV()
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("Categoria", System.Type.GetType("System.String"));
-            dt.Columns.Add("Situação", System.Type.GetType("System.String"));
-            dt.Columns.Add("Ação", System.Type.GetType("System.String"));
-            dt.Columns.Add("Editar", System.Type.GetType("System.String"));
-            dt.Columns.Add("Excluir", System.Type.GetType("System.String"));
-
-            for (int i = 1; i < 10; i++)
-            {
-                dt.Rows.Add(new String[] { "Nome Teste", "Categoria A", "Ativo", "img", "img", "img" });
-            }
-
-            gvConsulta.DataSource = dt;
+            int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            List<Exercicio> lista = new NegExercicio().ListarExercicios(CodigoAcademia, txtPesquisa.Text);
+            Session["ListaExercicios"] = lista;
+            gvConsulta.DataSource = lista;
             gvConsulta.DataBind();
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)
         {
+            Session["ListaExercicios"] = null;
             Response.Redirect("~/Cadastros/CadastraEquipamento.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
+            Session["ListaExercicios"] = null;
             Response.Redirect("~/Inicio.aspx");
+        }
+
+        protected void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            CarregaGV();
+        }
+
+        protected void btnLimpar_Click(object sender, EventArgs e)
+        {
+            txtPesquisa.Text = String.Empty;
+            CarregaGV();
         }
     }
 }

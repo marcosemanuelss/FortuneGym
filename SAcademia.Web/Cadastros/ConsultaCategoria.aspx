@@ -14,14 +14,16 @@
         <div class="conteudo">
             <div class="cabecalho">
                 <div class="seta-right"></div>
-                <h2>Categoria de Equipamentos</h2>
+                <h2>Categoria de Exercícios</h2>
             </div>
             <div class="bg-tabela">
                 <div class="filtrar">
                     <label>Digite uma categoria para pesquisa:</label>
                     <asp:TextBox ID="txtPesquisa" runat="server"/>
-                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" Text="Pesquisar" Cssclass="buttons"/>
-                    <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" Text="Limpar"/>
+                    <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" 
+                        Text="Pesquisar" Cssclass="buttons" onclick="btnPesquisar_Click"/>
+                    <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
+                        Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server">
                 
