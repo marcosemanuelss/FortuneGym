@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SolicitaSenha.aspx.cs" Inherits="SAcademia.Web.SolicitaSenha" %>
 
+<%@ Register Src="~/Controls/ucEnviaEmail.ascx" TagName="ucEnviaEmail" TagPrefix="uc1" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -115,6 +117,8 @@
         function fechar(paginaDestino) {
             $('#Modal').hide();
 
+            parent.closePopUp();
+
             if (paginaDestino != 'undefined') {
                 $(location).attr('href', paginaDestino);
             }
@@ -125,6 +129,7 @@
 </head>
 <body>
     <form id="formEsqueciSenha" runat="server">
+    <uc1:ucEnviaEmail ID="ucEnviaEmail1" runat="server" />
     <div>
         <h2 class="senha">ESQUECI MINHA SENHA</h2>
         <div class="bg-tabela">
@@ -137,7 +142,8 @@
                 <asp:TextBox runat="server" ID="txtEmail" CssClass="input-senha required mail"/>
             </div>
             <div class="btn">
-                <asp:Button ID="btnEnviarSenha" OnClientClick="return valida();" runat="server" Text="Enviar Senha" />
+                <asp:Button ID="btnEnviarSenha" OnClientClick="return valida();" runat="server" 
+                    Text="Enviar Senha" onclick="btnEnviarSenha_Click" />
             </div>
         </div>
          <div id="Modal" style="display: none;">
@@ -153,5 +159,12 @@
         </div>
     </div>
     </form>
+        <script type="text/javascript">
+            function closePopUp() {
+                console.log("test");
+                //cocument.querySelector('#welcome-msg').style.display = none;
+                parent.Shadowbox.close();
+            }
+    </script>
 </body>
 </html>

@@ -122,6 +122,12 @@
             </div>
         </div>
     </form>
-
+    <script type="text/javascript">
+        function closePopUp() {
+            console.log("test");
+            //cocument.querySelector('#welcome-msg').style.display = none;
+            Shadowbox.close();
+        }
+    </script>
 </body>
 </html>

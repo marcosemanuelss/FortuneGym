@@ -127,5 +127,13 @@ namespace Persistencia.Usuarios
 
             return Base.Db.Insert("SP_ATUALIZAR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
         }
+
+        public int ObterUsuario(string CPF)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@CD_CPF", CPF));
+
+            return (int)Base.Db.GetScalar("SP_OBTER_USUARIO", CommandType.StoredProcedure, p);
+        }
     }
 }

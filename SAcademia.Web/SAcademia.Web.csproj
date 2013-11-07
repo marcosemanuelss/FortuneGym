@@ -68,6 +68,7 @@
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
     <Content Include="Cadastros\ConsultaFicha.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
+    <Content Include="Controls\ucEnviaEmail.ascx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\btn-selecione.png" />
     <Content Include="img\icon-atencao.png" />
@@ -238,6 +239,13 @@
     </Compile>
     <Compile Include="Cadastros\ConsultaTipoSerie.aspx.designer.cs">
       <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucEnviaEmail.ascx.cs">
+      <DependentUpon>ucEnviaEmail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ucEnviaEmail.ascx.designer.cs">
+      <DependentUpon>ucEnviaEmail.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

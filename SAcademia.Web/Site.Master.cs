@@ -116,18 +116,18 @@ namespace SAcademia.Web
         }
 
             private void AlterarCor(string Cor)
-        {
-            String csname1 = "PopupScript";
-            Type cstype = this.GetType();
-
-            ClientScriptManager cs = Page.ClientScript;
-
-            if (!cs.IsStartupScriptRegistered(cstype, csname1))
             {
-                String cstext1 = "alteraCor('" + Cor + "');";
-                cs.RegisterStartupScript(cstype, csname1, cstext1, true);
+                String csname1 = "PopupScript";
+                Type cstype = this.GetType();
+
+                ClientScriptManager cs = Page.ClientScript;
+
+                if (!cs.IsStartupScriptRegistered(cstype, csname1))
+                {
+                    String cstext1 = "alteraCor('" + Cor + "');";
+                    cs.RegisterStartupScript(cstype, csname1, cstext1, true);
+                }
             }
-        }
 
             /// <summary>
             /// Verifica se existe um usuário em sessão. Se existir, verificar se a página informada 

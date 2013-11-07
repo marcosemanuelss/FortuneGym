@@ -108,5 +108,21 @@ namespace Negocio.Usuarios
 
             return CodigoRetorno == 1;
         }
+
+        public bool ObterUsuario(string CPF, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerUsuarios().ObterUsuario(CPF);
+
+            switch(CodigoRetorno)
+            {
+                case 1:
+                    Mensagem = "Email enviado com sucesso.";
+                    break;
+                default:
+                    Mensagem = "Não existe esse usuário no sistema.";
+                    break;
+            }
+            return CodigoRetorno == 1;
+        }
     }
 }
