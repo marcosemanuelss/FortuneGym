@@ -95,7 +95,7 @@ ul,ol{
     margin:auto;
     overflow:hidden;
 }
-#btnEntrar{
+.btnsLogin{
     background: none no-repeat scroll 0 0 #F4F4F4;
     font-weight: bold;
     margin-top: 25px;
@@ -116,6 +116,17 @@ ul,ol{
 }
 .esqueceu-senha a:hover{
     text-decoration:underline;
+}
+.cabecalhoAlterarSenha{
+    padding-top:1em!important;
+}
+.campObrigatorioLogin{
+    color: #fff;
+    float: left;
+    font-size: 0.8em;
+    margin-bottom: -21px;
+    margin-top: 9px;
+    width: 74%;
 }
 /*SHADOWBOX ESQUECEU SENHA*/
 .input-senha{
