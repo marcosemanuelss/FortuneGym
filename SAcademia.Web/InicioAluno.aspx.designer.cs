@@ -22,13 +22,13 @@ namespace SAcademia.Web {
         protected global::System.Web.UI.WebControls.GridView gvAvisos;
         
         /// <summary>
-        /// gvFichaAtual control.
+        /// gvFichas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvFichaAtual;
+        protected global::System.Web.UI.WebControls.GridView gvFichas;
         
         /// <summary>
         /// gvFichasAnteriores control.

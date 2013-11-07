@@ -6,7 +6,7 @@
 .cabecalho{
     width:100%;
 }
-.cabecalho .seta-right{
+.seta-right{
     width: 0;
     height: 0;
     border-top: 8px solid transparent;
@@ -274,4 +274,26 @@
 /*FICHAS*/
 #MainContent_btnAdicionarExercicios{
     float:right;
+}
+/*INICIO - INSTRUTOR E ALUNO*/
+h2 span{
+    float: left;
+    font-size: 27px;
+    margin-top: -6px;
+    padding-right: 3px;
+}
+.efeito{
+    display:inline;
+    cursor:pointer;
+}
+.box{
+    width:100%;
+    float:left;
+    margin-bottom:50px;
+}
+#easyTooltip{
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background-color: #fff;
+    color: #000;
 }
