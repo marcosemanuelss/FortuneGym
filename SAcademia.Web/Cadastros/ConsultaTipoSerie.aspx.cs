@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data;
 namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaTipoSerie : System.Web.UI.Page
@@ -15,19 +14,7 @@ namespace SAcademia.Web.Cadastros
         }
         protected void CarregaGV()
         {
-            DataTable dt = new DataTable();
-
-            dt.Columns.Add("Nome", System.Type.GetType("System.String"));
-            dt.Columns.Add("Editar", System.Type.GetType("System.String"));
-            dt.Columns.Add("Excluir", System.Type.GetType("System.String"));
-
-            for (int i = 1; i < 10; i++)
-            {
-                dt.Rows.Add(new String[] { "Nome Teste", "img", "img" });
-            }
-
-            gvConsulta.DataSource = dt;
-            gvConsulta.DataBind();
+            
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)

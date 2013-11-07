@@ -25,8 +25,28 @@
                     <asp:Button ID="btnLimpar" ToolTip="Limpar" Cssclass="buttons" runat="server" 
                         Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
-                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server">
-                
+                <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server"  AutoGenerateColumns="False" DataKeyNames="Codigo">
+                    <FooterStyle Wrap="False" />
+                    <HeaderStyle Wrap="False" />
+                    <RowStyle Wrap="False" />
+                    <Columns>
+                        <asp:BoundField DataField="Codigo" HeaderText="Código" />
+                        <asp:BoundField DataField="Descricao" HeaderText="Descrição" />
+                        <asp:TemplateField HeaderText="Editar">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"
+                                    ToolTip="Editar Ficha" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Excluir">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="excluirImageButton" runat="server" ToolTip="Excluir" 
+                                    OnClientClick="return mostraPopUpAlert('Confirma a exclusão desta categoria?','../img/icon-question.png',true,this.id);" 
+                                    CommandName="Excluir" ImageUrl="~\img\icon-excluir.png"
+                                    CommandArgument='<%# Eval("Codigo") %>'/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
                 </asp:GridView>
                 <div class="btnsConsulta">
                     <asp:Button ID="btnNovo" ToolTip="Novo" runat="server" Text="Novo" 
