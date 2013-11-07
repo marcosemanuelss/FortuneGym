@@ -118,7 +118,7 @@ ul,ol{
     text-decoration:underline;
 }
 /*SHADOWBOX ESQUECEU SENHA*/
-#txtEmail{
+.input-senha{
     border-color:#000;
     border-style:solid;
     border-width:1px;
@@ -138,6 +138,13 @@ ul,ol{
 .senha{
     margin-top:10px;
     margin-left:10px;
+}
+#mensagemLabel{
+    color: #FF0000;
+    display: block;
+    font-size: 9px;
+    margin-bottom: -12px;
+    text-align: center;
 }
 /*MASTER PAGE*/
 #tudo .topo{
