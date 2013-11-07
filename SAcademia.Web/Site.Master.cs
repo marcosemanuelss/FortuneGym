@@ -21,6 +21,7 @@ namespace SAcademia.Web
                 {
                     lblNomeUser.Text = usuario.Nome;
                     AjustarPerfil(usuario.Paginas);
+                    AjustarMenu(usuario.CodigoTipo);
                 }
 
                 Entidade.Academias.Academia academia = (Entidade.Academias.Academia)Session["Academia"];
@@ -33,6 +34,26 @@ namespace SAcademia.Web
                 }
             }
             AlterarCor(hddCor.Value);
+        }
+
+        private void AjustarMenu(int Tipo)
+        {
+            switch (Tipo)
+            {
+                case 1:
+                    lnkInicio.Visible = lnkRelatorios.Visible = false;
+                    break;
+                case 2:
+                    lnkInicio.PostBackUrl = "~/InicioAdmin.aspx";
+                    break;
+                case 3:
+                    lnkInicio.PostBackUrl = "~/InicioInstrutor.aspx";
+                    lnkRelatorios.Visible = false;
+                    break;
+                default:
+                    lnkInicio.PostBackUrl = "~/Inicio.aspx";
+                    break;
+            }
         }
 
         private void ExibirImagem(byte[] imagem)

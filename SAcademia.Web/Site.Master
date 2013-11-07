@@ -258,7 +258,7 @@
         <div class="menu">
             <ul runat="server" id="MenuLista">
                 <li>
-                    <asp:LinkButton ID="lnkInicio" runat="server" PostBackUrl="~/Inicio.aspx">Início</asp:LinkButton>
+                    <asp:LinkButton ID="lnkInicio" runat="server" PostBackUrl="">Início</asp:LinkButton>
                 </li>
                 <li runat="server" id="Administrativo" visible="false"><a href="#" class="parent">Administrativo</a><div class="seta-baixo">
                 </div>
@@ -274,8 +274,8 @@
                         <li class="first" runat="server" id="Categoria" visible="false"><a href="/Cadastros/ConsultaCategoria.aspx" class="parent">Categoria de Exercicios</a></li>
                         <li runat="server" id="Equipamento" visible="false"><a href="/Cadastros/ConsultaEquipamento.aspx" class="parent">Exercicios</a></li>
                         <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
-                        <li runat="server" id="Repeticao" visible="true"><a href="/Cadastros/CadastraRepeticoes.aspx" class="parent">Tipo de Repetições</a></li>
-                        <li runat="server" id="Ficha" visible="true"><a href="/Cadastros/ConsultaFicha.aspx" class="parent">Fichas</a></li>
+                        <li runat="server" id="Repeticao" visible="false"><a href="/Cadastros/CadastraRepeticoes.aspx" class="parent">Tipo de Repetições</a></li>
+                        <li runat="server" id="Ficha" visible="false"><a href="/Cadastros/ConsultaFicha.aspx" class="parent">Fichas</a></li>
                     </ul>
                 </li>
                 <li>

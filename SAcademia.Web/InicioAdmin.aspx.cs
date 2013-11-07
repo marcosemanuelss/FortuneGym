@@ -10,7 +10,10 @@ namespace SAcademia.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            CarregaGV();
+            if (!IsPostBack)
+            {
+                CarregaGV();   
+            }
         }
         protected void CarregaGV()
         {

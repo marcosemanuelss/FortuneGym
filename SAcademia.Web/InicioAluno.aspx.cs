@@ -13,8 +13,7 @@ namespace SAcademia.Web
         {
             if (!IsPostBack)
             {
-                ((LinkButton)Master.FindControl("lnkInicio")).Visible = false;
-                ((LinkButton)Master.FindControl("lnkRelatorios")).Visible = false;
+
             }
         }
     }
