@@ -13,12 +13,14 @@ namespace SAcademia.Web
 {
     public partial class Login : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        #region "Eventos"
+
+            protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void btnEntrar_Click(object sender, EventArgs e)
+            protected void btnEntrar_Click(object sender, EventArgs e)
         {
             string Mensagem = "";
             bool TrocarSenha = false;
@@ -34,7 +36,11 @@ namespace SAcademia.Web
             }
         }
 
-        private void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
+        #endregion
+
+        #region "Métodos"
+
+            private void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
         {
             // Define the name and type of the client scripts on the page.
             String csname1 = "ScriptPopUp";
@@ -51,7 +57,7 @@ namespace SAcademia.Web
             }
         }
 
-        private bool LogarUsuario(string Login, string Senha, ref string Mensagem, ref bool TrocarSenha)
+            private bool LogarUsuario(string Login, string Senha, ref string Mensagem, ref bool TrocarSenha)
         {
             if (Login.Equals("") && Senha.Equals(""))
             {
@@ -84,5 +90,7 @@ namespace SAcademia.Web
                 return true;
             }
         }
+
+        #endregion
     }
 }

@@ -10,9 +10,13 @@ namespace SAcademia.Web
 {
     public partial class Inicio : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        #region "Eventos"
+
+            protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
     }
 }

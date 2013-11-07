@@ -9,12 +9,16 @@ namespace SAcademia.Web
 {
     public partial class InicioAluno : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        #region "Eventos"
+
+            protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
 
             }
         }
+
+        #endregion
     }
 }

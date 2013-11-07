@@ -11,52 +11,67 @@ namespace SAcademia.Web
 {
     public partial class Site : System.Web.UI.MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                Usuarios usuario = (Usuarios)Session["Usuario"];
+        #region "Eventos"
 
-                if (usuario != null)
+            protected void Page_Load(object sender, EventArgs e)
+            {
+                if (!IsPostBack)
                 {
-                    lblNomeUser.Text = usuario.Nome;
-                    AjustarPerfil(usuario.Paginas);
-                    AjustarMenu(usuario.CodigoTipo);
+                    Usuarios usuario = (Usuarios)Session["Usuario"];
+
+                    if (usuario != null)
+                    {
+                        lblNomeUser.Text = usuario.Nome;
+                        AjustarPerfil(usuario.Paginas);
+                        AjustarMenu(usuario.CodigoTipo);
+                    }
+
+                    Entidade.Academias.Academia academia = (Entidade.Academias.Academia)Session["Academia"];
+
+                    if (academia != null)
+                    {
+                        ExibirImagem(academia.Logotipo);
+                        hddCor.Value = academia.Parametros.Cor;
+                        lblNomeAcademia.Text = academia.Nome;
+                    }
+
+                    VerificaUsuarioLogado(usuario, Page.Request.FilePath);
                 }
 
-                Entidade.Academias.Academia academia = (Entidade.Academias.Academia)Session["Academia"];
+                AlterarCor(hddCor.Value);
+            }
 
-                if (academia != null)
+            protected void btnDesconectar_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("~/Login.aspx");
+        }
+
+        #endregion
+
+        #region "Métodos"
+
+            private void AjustarMenu(int Tipo)
+            {
+                switch (Tipo)
                 {
-                    ExibirImagem(academia.Logotipo);
-                    hddCor.Value = academia.Parametros.Cor;
-                    lblNomeAcademia.Text = academia.Nome;
+                    case 1:
+                        lnkInicio.Visible = lnkRelatorios.Visible = false;
+                        break;
+                    case 2:
+                        lnkInicio.PostBackUrl = "~/InicioAdmin.aspx";
+                        break;
+                    case 3:
+                        lnkInicio.PostBackUrl = "~/InicioInstrutor.aspx";
+                        lnkRelatorios.Visible = false;
+                        break;
+                    default:
+                        lnkInicio.PostBackUrl = "~/Inicio.aspx";
+                        break;
                 }
             }
-            AlterarCor(hddCor.Value);
-        }
 
-        private void AjustarMenu(int Tipo)
-        {
-            switch (Tipo)
-            {
-                case 1:
-                    lnkInicio.Visible = lnkRelatorios.Visible = false;
-                    break;
-                case 2:
-                    lnkInicio.PostBackUrl = "~/InicioAdmin.aspx";
-                    break;
-                case 3:
-                    lnkInicio.PostBackUrl = "~/InicioInstrutor.aspx";
-                    lnkRelatorios.Visible = false;
-                    break;
-                default:
-                    lnkInicio.PostBackUrl = "~/Inicio.aspx";
-                    break;
-            }
-        }
-
-        private void ExibirImagem(byte[] imagem)
+            private void ExibirImagem(byte[] imagem)
         {
             Session["Logo"] = imagem;
             logo.Src = "~/Logotipo.aspx";
@@ -65,13 +80,7 @@ namespace SAcademia.Web
             logo.Attributes.Add("style", "position: relative; left:100px;");
         }
 
-        protected void btnDesconectar_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            Response.Redirect("~/Login.aspx");
-        }
-
-        private void AjustarPerfil(List<Paginas> lista)
+            private void AjustarPerfil(List<Paginas> lista)
         {
             for (int i = 0; i < lista.Count; i++)
             {
@@ -89,16 +98,16 @@ namespace SAcademia.Web
             }
         }
 
-        public void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
+            public void ExecutaResposta(string Mensagem, string CaminhoImagem, string PaginaDestino)
         {
-            // Define the name and type of the client scripts on the page.
+            //Define o nome e o tipo de scripts de cliente na página.
             String csname1 = "Script";
             Type cstype = this.GetType();
 
-            // Get a ClientScriptManager reference from the Page class.
+            //Obtém uma referência ClientScriptManager da classe Page.
             ClientScriptManager cs = Page.ClientScript;
 
-            // Check to see if the startup script is already registered.
+            //Verifique se o script de inicialização já está registrado.
             if (!cs.IsStartupScriptRegistered(cstype, csname1))
             {
                 String cstext1 = "mostraPopUpAlert('" + Mensagem + "', '" + CaminhoImagem + "',false,'', '" + PaginaDestino + "');";
@@ -106,16 +115,13 @@ namespace SAcademia.Web
             }
         }
 
-        private void AlterarCor(string Cor)
+            private void AlterarCor(string Cor)
         {
-            // Define the name and type of the client scripts on the page.
             String csname1 = "PopupScript";
             Type cstype = this.GetType();
 
-            // Get a ClientScriptManager reference from the Page class.
             ClientScriptManager cs = Page.ClientScript;
 
-            // Check to see if the startup script is already registered.
             if (!cs.IsStartupScriptRegistered(cstype, csname1))
             {
                 String cstext1 = "alteraCor('" + Cor + "');";
@@ -123,6 +129,46 @@ namespace SAcademia.Web
             }
         }
 
+            /// <summary>
+            /// Verifica se existe um usuário em sessão. Se existir, verificar se a página informada 
+            /// pertence ao perfil do usuário. Se não, redirecionar para a página inicial do perfil.
+            /// </summary>
+            /// <param name="usuario">Session["Usuario"]</param>
+            /// <param name="PaginaAcessada">Pagina a ser acessada</param>
+            private void VerificaUsuarioLogado(Usuarios usuario, string PaginaAcessada)
+            {
+                if (usuario == null)
+                {
+                    Response.Redirect("~/Login.aspx");
+                }
+                else
+                {
+                    List<Paginas> lista = usuario.Paginas;
+                    Paginas pagina = new Paginas();
 
+                    pagina = lista.Find(delegate(Paginas pag) { return pag.Url == PaginaAcessada; });
+
+                    if (pagina == null)
+                    {
+                        switch (usuario.CodigoTipo)
+                        {
+                            case 1:
+                                Response.Redirect("~/InicioAluno.aspx");
+                                break;
+                            case 2:
+                                Response.Redirect("~/InicioAdmin.aspx");
+                                break;
+                            case 3:
+                                Response.Redirect("~/InicioInstrutor.aspx");
+                                break;
+                            default:
+                                Response.Redirect("~/Inicio.aspx");
+                                break;
+                        }
+                    }
+                }
+            }
+
+        #endregion
     }
 }

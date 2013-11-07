@@ -10,7 +10,9 @@ namespace SAcademia.Web
 {
     public partial class _Default : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        #region "Eventos"
+
+            protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
@@ -18,23 +20,29 @@ namespace SAcademia.Web
             }
         }
 
-        private void ValidarTipoUsuario(int TipoUsuario)
-        {
-            switch(TipoUsuario)
+        #endregion
+
+        #region "Métodos"
+
+            private void ValidarTipoUsuario(int TipoUsuario)
             {
-                case 1:
-                    Response.Redirect("InicioAluno.aspx");
-                    break;
-                case 2:
-                    Response.Redirect("InicioAdmin.aspx");
-                    break;
-                case 3:
-                    Response.Redirect("InicioInstrutor.aspx");
-                    break;
-                default:
-                    Response.Redirect("Inicio.aspx");
-                    break;
+                switch(TipoUsuario)
+                {
+                    case 1:
+                        Response.Redirect("InicioAluno.aspx");
+                        break;
+                    case 2:
+                        Response.Redirect("InicioAdmin.aspx");
+                        break;
+                    case 3:
+                        Response.Redirect("InicioInstrutor.aspx");
+                        break;
+                    default:
+                        Response.Redirect("Inicio.aspx");
+                        break;
+                }
             }
-        }
+
+        #endregion
     }
 }
