@@ -56,6 +56,7 @@
     <Compile Include="Exercicios\PerExercicio.cs" />
     <Compile Include="Fichas\PerFicha.cs" />
     <Compile Include="Fichas\PerSerie.cs" />
+    <Compile Include="Fichas\PerSerieTipo.cs" />
     <Compile Include="Objetivos\PerObjetivo.cs" />
     <Compile Include="Perfil\PerPaginas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
