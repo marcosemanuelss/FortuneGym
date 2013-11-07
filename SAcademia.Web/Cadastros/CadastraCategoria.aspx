@@ -8,7 +8,7 @@
             <div class="seta-right">
             </div>
             <h2>
-                Cadastro/Alteração de Categoria de Equipamentos</h2>
+                Cadastro/Alteração de Categoria de Exercícios</h2>
         </div>
         <div class="bg-tabela">
             <h3>
@@ -20,8 +20,10 @@
             </div>            
             <div class="btnsCadastro">
                 <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
-                    runat="server" Text="Salvar" CssClass="buttons" />
-                <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" Text="Voltar" />
+                    runat="server" Text="Salvar" CssClass="buttons" 
+                    onclick="btnSalvar_Click" />
+                <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" 
+                    Text="Voltar" onclick="btnVoltar_Click" />
             </div>
             <span class="campObrigatorio">(*) Campo Obrigatório</span>
         </div>

@@ -22,7 +22,7 @@ namespace SAcademia.Web.Administrativo
                     if (Session["NaoValido"] == null || (!(bool)Session["NaoValido"]))
                         txtLogin.Enabled = false;
                     else
-                        Session["ClienteCadastrado"] = null;
+                        Session["UsuarioCadastrado"] = null;
 
                     Session["NaoValido"] = null;
                 }
