@@ -8,7 +8,7 @@
             /* required */
             if ($(this).hasClass('required') && $.trim($(this).val()) == "") {
                 $(this).removeClass('valid').addClass('invalid');
-                $(this).focus();
+                //$(this).focus();
                 //MENSAGEM ALERTA PERSONALIZADO
                 mostraPopUpAlert(requiredMsg, '../img/icon-erro.png', false, this.id);
                 valid = false;

@@ -53,7 +53,11 @@
             } else {
                 $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar(' + paginaDestinoNome + ');" />')
             }
-            $("#btnOK").focus();
+
+            $(document).ready(function () {
+                $("#btnOK").focus();
+            });
+
             $('html, body').animate({ scrollTop: $('#tudo').offset().top }, 500);
             return false;
         }
