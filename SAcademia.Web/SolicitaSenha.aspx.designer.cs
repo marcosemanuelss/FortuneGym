@@ -31,6 +31,15 @@ namespace SAcademia.Web {
         protected global::SFF.Web.Controls.ucEnviaEmail ucEnviaEmail1;
         
         /// <summary>
+        /// Controle txtLogin.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtLogin;
+        
+        /// <summary>
         /// Controle txtCpf.
         /// </summary>
         /// <remarks>

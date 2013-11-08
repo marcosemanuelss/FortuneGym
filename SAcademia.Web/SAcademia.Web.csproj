@@ -59,6 +59,7 @@
     <Content Include="Administrativo\ConsultaUsuario.aspx" />
     <Content Include="Administrativo\ImagemAcademia.aspx" />
     <Content Include="Administrativo\Parametros.aspx" />
+    <Content Include="AlterarSenha.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
     <Content Include="Cadastros\CadastraRepeticoes.aspx" />
@@ -177,6 +178,13 @@
     </Compile>
     <Compile Include="Administrativo\Parametros.aspx.designer.cs">
       <DependentUpon>Parametros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.designer.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\CadastraCategoria.aspx.cs">
       <DependentUpon>CadastraCategoria.aspx</DependentUpon>

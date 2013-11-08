@@ -18,20 +18,19 @@ namespace SAcademia.Web
 
         protected void btnEnviarSenha_Click(object sender, EventArgs e)
         {
-            ValidaUsuarioCPF(txtCpf.Text.Replace(".","").Replace("-",""));
+            ValidaUsuarioCPF(txtLogin.Text, txtCpf.Text.Replace(".","").Replace("-",""), txtEmail.Text);
         }
 
-        private void ValidaUsuarioCPF(string CPF)
+        private void ValidaUsuarioCPF(string Login, string CPF, string Email)
         {
             string Mensagem = "";
             string Icone = "";
-            //string Pagina = "";
 
-            bool Valido = new NegUsuario().ObterUsuario(CPF, ref Mensagem);
+            bool Valido = new NegUsuario().ObterUsuario(Login, CPF, ref Mensagem);
 
             if (Valido)
             {
-                EnviarEmail(txtCpf.Text, txtEmail.Text);
+                EnviarEmail(Email, Login);
                 Icone = "../img/icon-ok.png";
                 //Pagina = "Login.aspx";
             }
@@ -43,9 +42,9 @@ namespace SAcademia.Web
             ExecutaResposta(Mensagem, Icone, "");
         }
 
-        private void EnviarEmail(string CPF, string Email)
+        private void EnviarEmail(string Email, string Login)
         {
-            string Mensagem = "O usuário de CPF: " + CPF + ", solicitou uma troca senha às " + DateTime.Now.ToShortTimeString() +
+            string Mensagem = "O usuário: " + Login + ", solicitou uma troca senha às " + DateTime.Now.ToShortTimeString() +
                               " do dia " + DateTime.Now.ToShortDateString() + " \n";
             Mensagem += "Nova senha para acesso: trocar@123 \n";
 

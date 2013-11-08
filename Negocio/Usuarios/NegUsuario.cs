@@ -109,20 +109,40 @@ namespace Negocio.Usuarios
             return CodigoRetorno == 1;
         }
 
-        public bool ObterUsuario(string CPF, ref string Mensagem)
+        public bool ObterUsuario(string Login, string CPF, ref string Mensagem)
         {
-            int CodigoRetorno = new PerUsuarios().ObterUsuario(CPF);
+            int CodigoRetorno = new PerUsuarios().ObterUsuario(Login, CPF);
 
-            switch(CodigoRetorno)
+            bool Valido = false;
+
+            if (CodigoRetorno == 1)
             {
-                case 1:
-                    Mensagem = "Email enviado com sucesso.";
-                    break;
-                default:
-                    Mensagem = "Não existe esse usuário no sistema.";
-                    break;
+                Mensagem = "Email enviado com sucesso. Verifique sua caixa de entrada";
+                Valido = true;
             }
-            return CodigoRetorno == 1;
+            else
+            {
+                Mensagem = "Não existe esse usuário no sistema.";
+            }
+            
+            return Valido;
+        }
+
+        public bool AlterarSenhaUsuario(int CodigoAcademia, int CodigoUsuario, string NovaSenha, ref string Mensagem)
+        {
+            int CodigoRetorno = new PerUsuarios().AlterarSenhaUsuario(CodigoAcademia, CodigoUsuario, NovaSenha);
+            bool Valido = false;
+            if (CodigoRetorno == 1)
+            {
+                Mensagem = "Senha alterada com sucesso. O sistema será redirecionado para a tela de login.";
+                Valido = true;
+            }
+            else
+            {
+                Mensagem = "Erro ao alterar senha.";
+                Valido = false;
+            }
+            return Valido;
         }
     }
 }

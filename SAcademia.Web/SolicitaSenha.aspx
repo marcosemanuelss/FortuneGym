@@ -78,7 +78,7 @@
 
         //END
         $(function () {
-            $('#txtCpf').focus();
+            $('#txtLogin').focus();
             //MÁSCARAS
             $('#txtCpf').mask('999.999.999-99');
         });
@@ -133,6 +133,10 @@
     <div>
         <h2 class="senha">ESQUECI MINHA SENHA</h2>
         <div class="bg-tabela">
+            <div class="row-login">
+                <label>Digite seu Login*:</label>
+                <asp:TextBox runat="server" ID="txtLogin" CssClass="input-senha required"/>
+            </div>
             <div class="row-login">
                 <label>Digite seu CPF*:</label>
                 <asp:TextBox runat="server" ID="txtCpf" onBlur="if(!validarCPF(this.value)){limpaCampo(this.id); mostraPopUpAlert('CPF inválido! Digite novamente.','../img/icon-erro.png',false,this.id);}" CssClass="input-senha required"/>

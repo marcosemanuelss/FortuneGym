@@ -34,7 +34,7 @@ namespace SAcademia.Web
                 else
                 {
                     if (TrocarSenha)
-                        Response.Redirect("~/TrocaSenha.aspx");
+                        Response.Redirect("~/AlterarSenha.aspx");
                     else
                         Response.Redirect("~/Default.aspx");
                 }

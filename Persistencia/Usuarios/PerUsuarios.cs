@@ -128,12 +128,23 @@ namespace Persistencia.Usuarios
             return Base.Db.Insert("SP_ATUALIZAR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
         }
 
-        public int ObterUsuario(string CPF)
+        public int ObterUsuario(string Login, string CPF)
         {
             List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@NM_LOGIN", Login));
             p.Add(Base.Db.CreateParameter("@CD_CPF", CPF));
 
             return (int)Base.Db.GetScalar("SP_OBTER_USUARIO", CommandType.StoredProcedure, p);
+        }
+
+        public int AlterarSenhaUsuario(int CodigoAcademia, int CodigoUsuario, string NovaSenha)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_USUARIO", CodigoUsuario));
+            p.Add(Base.Db.CreateParameter("@DS_SENHA", NovaSenha));
+
+            return (int)Base.Db.GetScalar("SP_ALTERAR_SENHA_USUARIO", CommandType.StoredProcedure, p);
         }
     }
 }

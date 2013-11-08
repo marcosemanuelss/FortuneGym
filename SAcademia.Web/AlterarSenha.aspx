@@ -44,7 +44,11 @@
             } else {
                 $('.btnsAlert').html('<input type="button" class="buttons" id="btnOK" title="OK" value="OK" onclick="return fechar(' + paginaDestinoNome + ');" />')
             }
-            $("#btnOK").focus();
+
+            $(document).ready(function () {
+                $("#btnOK").focus();
+            });
+
             return false;
         }
 
@@ -93,7 +97,8 @@
                         </div>
                         <span class="campObrigatorioLogin">(*) Campo Obrigatório</span>
                         <div class="links">
-                            <asp:Button Text="Salvar" ID="btnSalvar" OnClientClick="return valida();" CssClass="btnsLogin" ToolTip="Salvar" runat="server" />
+                            <asp:Button Text="Salvar" ID="btnSalvar"  CssClass="btnsLogin" ToolTip="Salvar" runat="server" 
+                            OnClientClick="return comparaStrings();" onclick="btnSalvar_Click" />
                         </div>
                     </div>
                 </div>
@@ -111,7 +116,28 @@
             </div>
         </div>
     </form>
+    <script type="text/javascript">
 
+        //FUNÇÃO PARA COMPARAR AS STRING DE NOVA SENHA
+        function comparaStrings() {
+            var mensagem = "";
+
+            if ($('#txtSenhaNova').val() == "" || $('#txtSenhaNovaRepeat').val() == "" || $('#txtSenhaAntiga').val() == "") {
+                console.log(mensagem);
+                mensagem = "Campo obrigatório não preenchido.";
+                mostraPopUpAlert(mensagem, '../img/icon-erro.png', false, this.id, '');
+                return false;
+            }
+            if ($('#txtSenhaNova').val() != $('#txtSenhaNovaRepeat').val()) {
+                console.log(mensagem);
+                mensagem = "A nova senha e a confirmação de senha devem ser iguais.";
+                mostraPopUpAlert(mensagem, '../img/icon-erro.png', false, this.id, '');
+                return false;
+            }
+            return true;
+        }
+        //END
+    </script>
 </body>
 </html>
 

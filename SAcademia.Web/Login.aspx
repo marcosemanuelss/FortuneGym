@@ -25,10 +25,10 @@
 
         function esqueceuSenha() {
             Shadowbox.open({
-                content: '<div id="welcome-msg"><iframe name="interna" scrolling="no" height="250" frameborder="0" width="100%" allowtransparency="true" src="SolicitaSenha.aspx", null, 1); ?>" ></iframe></div>',
+                content: '<div id="welcome-msg"><iframe name="interna" scrolling="no" height="310" frameborder="0" width="100%" allowtransparency="true" src="SolicitaSenha.aspx", null, 1); ?>" ></iframe></div>',
                 player: "html",
                 title: "",
-                height: 260,
+                height: 320,
                 width: 520
             });
         }
