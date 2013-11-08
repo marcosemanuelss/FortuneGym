@@ -34,16 +34,22 @@
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" />
+                        <asp:TemplateField HeaderText="Categoria">
+                            <ItemTemplate>
+                                <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-add-list.png"
+                                    ToolTip="Editar Ficha" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"
-                                    ToolTip="Editar Ficha" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
+                                    ToolTip="Editar" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Excluir">
                             <ItemTemplate>
                                 <asp:ImageButton ID="excluirImageButton" runat="server" ToolTip="Excluir" 
-                                    OnClientClick="return mostraPopUpAlert('Confirma a exclusão desta categoria?','../img/icon-question.png',true,this.id);" 
+                                    OnClientClick="return mostraPopUpAlert('Confirma a exclusão desta série?','../img/icon-question.png',true,this.id);" 
                                     CommandName="Excluir" ImageUrl="~\img\icon-excluir.png"
                                     CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
