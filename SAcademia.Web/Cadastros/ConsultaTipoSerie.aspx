@@ -34,10 +34,10 @@
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="Nome" HeaderText="Nome" />
-                        <asp:TemplateField HeaderText="Categoria">
+                        <asp:TemplateField HeaderText="Vincular Categoria">
                             <ItemTemplate>
-                                <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-add-list.png"
-                                    ToolTip="Editar Ficha" CommandName="Editar" CommandArgument='<%# Eval("Codigo") %>'/>
+                                <asp:ImageButton ID="VincularCatEditar" runat="server" ImageUrl="~\img\icon-vincular.png"
+                                    ToolTip="Vincular Categoria" CommandName="Vincular Categoria" CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Editar">

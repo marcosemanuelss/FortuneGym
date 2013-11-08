@@ -74,6 +74,10 @@ namespace SAcademia.Web.Cadastros
                 icon = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
                 ((Site)Master).ExecutaResposta(Mensagem, icon, "");
             }
+            else if (e.CommandName == "Vincular Categoria")
+            {
+                Server.Transfer("~/Cadastros/TipoSerieCategoria.aspx");
+            }
         }
 
 
