@@ -281,6 +281,7 @@
                         <li runat="server" id="TipoSerie" visible="false"><a href="/Cadastros/ConsultaTipoSerie.aspx" class="parent">Tipo de Séries</a></li>
                         <li runat="server" id="Repeticao" visible="false"><a href="/Cadastros/ConsultaRepeticoes.aspx" class="parent">Tipo de Repetições</a></li>
                         <li runat="server" id="Ficha" visible="false"><a href="/Cadastros/ConsultaFicha.aspx" class="parent">Fichas</a></li>
+                        <li runat="server" id="Avisos" visible="false"><a href="/Cadastros/ConsultaAviso.aspx" class="parent">Avisos</a></li>
                     </ul>
                 </li>
                 <li>

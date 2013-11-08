@@ -100,11 +100,58 @@
     float:left;
     margin:0px 0 13px 34px;
 }
+.row-936 input{
+    width:926px;
+    height:29px;
+    background: #fff no-repeat;
+    border:1px solid #000;
+    padding:0 5px 0 5px;
+}
 .row-936 select{
     width:938px;
     height:29px;
     background: #fff no-repeat;
     border:1px solid #000;
+}
+.row-936 textarea{
+    width:926px;
+    height:112px;
+    background: #fff no-repeat;
+    border:1px solid #000;
+    padding:0 5px 0 5px;
+    resize:none;
+}
+.row-936-btn
+{
+    width:936px;
+    min-height:49px;
+    float:left;
+    margin:0px 0 13px 34px;
+}
+.row-936-btn select{
+    width:795px;
+    height:29px;
+    background: #fff no-repeat;
+    border:1px solid #000;
+}
+.row-936-btn .fakeupload
+{
+    width:288px;
+    height:29px;
+    border:1px solid #000;
+	background: #fff url("../img/btn-selecione.png") no-repeat 99% 51%!important;
+	cursor: default;   
+}
+.row-936-btn .realupload 
+{
+    height: 29px;
+    left: -293px;
+    opacity: 0;
+    position: relative;
+    top: 0;
+    width: 288px;
+	-moz-opacity:0;
+	filter:alpha(opacity:0);
 }
 .row-750{
     width:750px;
@@ -118,6 +165,12 @@
     background: #fff no-repeat;
     border:1px solid #000;
     padding:0 5px 0 5px;
+}
+.row-750 select{
+    width:749px;
+    height:29px;
+    background: #fff no-repeat;
+    border:1px solid #000;
 }
 .row-452{
     width:452px;
@@ -300,4 +353,18 @@ h2 span{
 /*Serie Categoria*/
 .tabCad{
     margin-top:22px;
+}
+/*Avisos*/
+#MainContent_btnAdicionarPerfil
+{
+    float: right;
+    margin-bottom: 20px;
+    margin-right: -1px;
+    margin-top: -1px; 
+}
+#MainContent_btnAdicionarAnexo
+{
+    float: right;
+    margin-right: 385px;
+    margin-top: -31px;
 }

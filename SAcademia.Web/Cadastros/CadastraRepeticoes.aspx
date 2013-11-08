@@ -78,7 +78,7 @@
                             </asp:DropDownList>
                         </div>           
                         <asp:Button ID="btnAdicionar" CssClass="buttons" runat="server" Text="Adicionar Combinação" ToolTip="Adicionar Combinação" />      
-                        <asp:GridView ID="gvCombinada" runat="server" CssClass="tabela" AutoGenerateColumns="True">
+                        <asp:GridView ID="gvCombinada" runat="server" CssClass="tabela" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="QtdVezes"  HeaderText="Número de Vezes" />
                                 <asp:BoundField DataField="QtdRepeticao"  HeaderText="Repetição" />
