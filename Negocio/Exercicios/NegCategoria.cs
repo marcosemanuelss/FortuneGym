@@ -22,7 +22,7 @@ namespace Negocio.Exercicios
             {
                 case 1: Mensagem = "Categoria excluida com sucesso.";
                     break;
-                default: Mensagem = "Não foi possivel excluir está categoria." +
+                default: Mensagem = "Não foi possivel excluir esta categoria." +
                    "Certifique-se que não existe Exercícios vinculadas a mesma e tente novamente.";
                     break;
             }
