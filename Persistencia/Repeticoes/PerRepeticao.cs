@@ -28,5 +28,14 @@ namespace Persistencia.Repeticoes
 
             return Base.Db.ReadList<Repeticao>("SP_LISTAR_REPETICAO", GenericMake.Make<Repeticao>, CommandType.StoredProcedure, p);
         }
+
+        public static List<TipoRepeticao> ListarTipoRepeticao(int CodigoAcademia, string Filtro)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@DS_FILTRO", Filtro));
+
+            return Base.Db.ReadList<TipoRepeticao>("SP_LISTAR_TIPO_REPETICAO", GenericMake.Make<TipoRepeticao>, CommandType.StoredProcedure, p);
+        }
     }
 }

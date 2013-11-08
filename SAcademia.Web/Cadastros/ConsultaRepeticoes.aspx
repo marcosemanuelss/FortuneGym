@@ -18,7 +18,7 @@
             </div>
             <div class="bg-tabela">
                 <div class="filtrar">
-                    <label>Digite um usuário ou código da ficha para pesquisa:</label>
+                    <label>Digite o nome da repetição para pesquisa:</label>
                     <asp:TextBox ID="txtPesquisa" runat="server"/>
                     <asp:Button ID="btnPesquisar" ToolTip="Pesquisar" runat="server" 
                         Text="Pesquisar" Cssclass="buttons" onclick="btnPesquisar_Click"/>

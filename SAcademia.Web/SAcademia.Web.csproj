@@ -67,6 +67,7 @@
     <Content Include="Cadastros\ConsultaCategoria.aspx" />
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
     <Content Include="Cadastros\ConsultaFicha.aspx" />
+    <Content Include="Cadastros\ConsultaRepeticoes.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
     <Content Include="Controls\ucEnviaEmail.ascx" />
     <Content Include="img\btn-sair.jpg" />
@@ -232,6 +233,13 @@
     </Compile>
     <Compile Include="Cadastros\ConsultaFicha.aspx.designer.cs">
       <DependentUpon>ConsultaFicha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaRepeticoes.aspx.cs">
+      <DependentUpon>ConsultaRepeticoes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaRepeticoes.aspx.designer.cs">
+      <DependentUpon>ConsultaRepeticoes.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\ConsultaTipoSerie.aspx.cs">
       <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>

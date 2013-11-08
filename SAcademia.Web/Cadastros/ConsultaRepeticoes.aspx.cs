@@ -4,26 +4,45 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidade.Repeticoes;
+using Entidade.Academias;
+using Negocio.Repeticoes;
 
 namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaRepeticoes : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                if (Session["ListaRepeticao"] != null)
+                {
+                    gvConsulta.DataSource = (List<TipoRepeticao>)Session["ListaRepeticao"];
+                    gvConsulta.DataBind();
+                }
+            }
+        }
+
         protected void CarregaGV()
         {
-
+            int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            List<TipoRepeticao> lista = new NegRepeticao().ListarRepeticoes(CodigoAcademia, txtPesquisa.Text);
+            Session["ListaRepeticao"] = lista;
+            gvConsulta.DataSource = lista;
+            gvConsulta.DataBind();
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)
         {
-            Session["ListaFichas"] = null;
+            Session["ListaRepeticao"] = null;
             Response.Redirect("~/Cadastros/CadastraRepeticoes.aspx");
         }
 
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
-            Session["ListaFichas"] = null;
-            Response.Redirect("~/Inicio.aspx");
+            Session["ListaRepeticao"] = null;
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void btnPesquisar_Click(object sender, EventArgs e)
@@ -41,7 +60,11 @@ namespace SAcademia.Web.Cadastros
         {
             if (e.CommandName == "Editar")
             {
+                List<TipoRepeticao> lista = (List<TipoRepeticao>)Session["ListaRepeticao"];
+                TipoRepeticao categoria = lista.Find(delegate(TipoRepeticao p) { return p.Codigo == Convert.ToInt32(e.CommandArgument); });
+                Session["ListaRepeticao"] = categoria;
 
+                Server.Transfer("~/Cadastros/CadastraRepeticoes.aspx");
             }
         }
     }

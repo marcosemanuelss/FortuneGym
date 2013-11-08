@@ -18,5 +18,16 @@ namespace Negocio.Repeticoes
 
             return tipo;
         }
+
+        public List<TipoRepeticao> ListarRepeticoes(int CodigoAcademia, string Filtro)
+        {
+            PerRepeticao PerRepeticao = new PerRepeticao();
+            List<TipoRepeticao> lista = PerRepeticao.ListarTipoRepeticao(CodigoAcademia, Filtro);
+
+            for (int i = 0; i < lista.Count; i++)
+                lista[i].Repeticoes = PerRepeticao.ListarRepeticao(CodigoAcademia, lista[i].Codigo);
+
+            return lista;
+        }
     }
 }
