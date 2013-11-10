@@ -14,17 +14,17 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaEquipamento : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["ListaExercicios"] != null)
-                {
-                    gvConsulta.DataSource = (List<ExercicioGrid>)Session["ListaExercicios"];
-                    gvConsulta.DataBind();
-                }
+                gvConsulta.DataSource = Session["ListaExercicios"];
+                gvConsulta.DataBind();
             }
         }
+
         protected void CarregaGV()
         {
             int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
@@ -82,5 +82,7 @@ namespace SAcademia.Web.Cadastros
                 ((Site)Master).ExecutaResposta(Mensagem, icon, "");
             }
         }
+
+        #endregion
     }
 }

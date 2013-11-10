@@ -9,6 +9,8 @@ namespace SFF.Web
 {
     public partial class Logotipo : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -17,6 +19,10 @@ namespace SFF.Web
                 //Session["Logotipo"] = null;
             }
         }
+
+        #endregion
+
+        #region "Métodos"
 
         public void RecuperarImagemAcademia()
         {
@@ -29,5 +35,7 @@ namespace SFF.Web
                 Response.BinaryWrite(imagem);
             }
         }
+
+        #endregion
     }
 }

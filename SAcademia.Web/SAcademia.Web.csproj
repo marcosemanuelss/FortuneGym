@@ -60,16 +60,20 @@
     <Content Include="Administrativo\ImagemAcademia.aspx" />
     <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="AlterarSenha.aspx" />
+    <Content Include="Cadastros\CadastraAviso.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
     <Content Include="Cadastros\CadastraRepeticoes.aspx" />
     <Content Include="Cadastros\CadastraTipoSerie.aspx" />
     <Content Include="Cadastros\CadastroFicha.aspx" />
+    <Content Include="Cadastros\ConsultaAnexoAviso.aspx" />
+    <Content Include="Cadastros\ConsultaAviso.aspx" />
     <Content Include="Cadastros\ConsultaCategoria.aspx" />
     <Content Include="Cadastros\ConsultaEquipamento.aspx" />
     <Content Include="Cadastros\ConsultaFicha.aspx" />
     <Content Include="Cadastros\ConsultaRepeticoes.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
+    <Content Include="Cadastros\TipoSerieCategoria.aspx" />
     <Content Include="Controls\ucEnviaEmail.ascx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\btn-selecione.png" />
@@ -186,6 +190,13 @@
     <Compile Include="AlterarSenha.aspx.designer.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\CadastraAviso.aspx.cs">
+      <DependentUpon>CadastraAviso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\CadastraAviso.aspx.designer.cs">
+      <DependentUpon>CadastraAviso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\CadastraCategoria.aspx.cs">
       <DependentUpon>CadastraCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -221,6 +232,20 @@
     <Compile Include="Cadastros\CadastroFicha.aspx.designer.cs">
       <DependentUpon>CadastroFicha.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Cadastros\ConsultaAnexoAviso.aspx.cs">
+      <DependentUpon>ConsultaAnexoAviso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaAnexoAviso.aspx.designer.cs">
+      <DependentUpon>ConsultaAnexoAviso.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaAviso.aspx.cs">
+      <DependentUpon>ConsultaAviso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\ConsultaAviso.aspx.designer.cs">
+      <DependentUpon>ConsultaAviso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Cadastros\ConsultaCategoria.aspx.cs">
       <DependentUpon>ConsultaCategoria.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -255,6 +280,13 @@
     </Compile>
     <Compile Include="Cadastros\ConsultaTipoSerie.aspx.designer.cs">
       <DependentUpon>ConsultaTipoSerie.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\TipoSerieCategoria.aspx.cs">
+      <DependentUpon>TipoSerieCategoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\TipoSerieCategoria.aspx.designer.cs">
+      <DependentUpon>TipoSerieCategoria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Controls\ucEnviaEmail.ascx.cs">
       <DependentUpon>ucEnviaEmail.ascx</DependentUpon>

@@ -12,6 +12,8 @@ namespace SAcademia.Web.Administrativo
 {
     public partial class ConsultaAcademia : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -131,6 +133,10 @@ namespace SAcademia.Web.Administrativo
             }
         }
 
+        #endregion
+
+        #region "Métodos"
+
         private List<Academia> AtualizaListaAcademia(Academia academia, List<Academia> lista)
         {
             for (int i = 0; i < lista.Count; i++)
@@ -141,5 +147,7 @@ namespace SAcademia.Web.Administrativo
 
             return lista;
         }
+
+        #endregion
     }
 }

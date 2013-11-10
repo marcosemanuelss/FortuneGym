@@ -9,9 +9,15 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaAviso : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                gvConsulta.DataSource = Session["ListaAvisos"];
+                gvConsulta.DataBind();
+            }
         }
 
         protected void CarregaGV()
@@ -49,5 +55,7 @@ namespace SAcademia.Web.Cadastros
 
             }
         }
+
+        #endregion
     }
 }

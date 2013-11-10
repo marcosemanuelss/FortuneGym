@@ -10,7 +10,8 @@ namespace SAcademia.Web
 {
     public partial class SolicitaSenha : System.Web.UI.Page
     {
-        
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,6 +21,10 @@ namespace SAcademia.Web
         {
             ValidaUsuarioCPF(txtLogin.Text, txtCpf.Text.Replace(".","").Replace("-",""), txtEmail.Text);
         }
+
+        #endregion
+
+        #region "Métodos"
 
         private void ValidaUsuarioCPF(string Login, string CPF, string Email)
         {
@@ -77,5 +82,7 @@ namespace SAcademia.Web
                 cs.RegisterStartupScript(cstype, csname1, cstext1, true);
             }
         }
+
+        #endregion
     }
 }

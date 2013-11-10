@@ -131,7 +131,7 @@
     <form id="formEsqueciSenha" runat="server">
     <uc1:ucEnviaEmail ID="ucEnviaEmail1" runat="server" />
     <div>
-        <h2 class="senha">ESQUECI MINHA SENHA</h2>
+        <h2 class="senha">Esqueci minha senha</h2>
         <div class="bg-tabela">
             <div class="row-login">
                 <label>Digite seu Login*:</label>

@@ -9,9 +9,13 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class CadastraTipoSerie : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
+        #endregion
     }
 }

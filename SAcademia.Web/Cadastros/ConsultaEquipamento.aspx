@@ -26,7 +26,7 @@
                         Text="Limpar" onclick="btnLimpar_Click"/>
                 </div>
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server"  
-                    AutoGenerateColumns="False" DataKeyNames="Codigo" 
+                    AutoGenerateColumns="False" DataKeyNames="Codigo" EmptyDataText="Nenhum Dado encontrado"
                     onrowcommand="gvConsulta_RowCommand">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />

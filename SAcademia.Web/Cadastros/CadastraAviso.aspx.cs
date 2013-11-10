@@ -8,6 +8,8 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class CadastraAviso : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CarregaGV();
@@ -17,5 +19,7 @@ namespace SAcademia.Web.Cadastros
         {
 
         }
+
+        #endregion
     }
 }

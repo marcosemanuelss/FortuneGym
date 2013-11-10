@@ -18,11 +18,8 @@ namespace SAcademia.Web.Administrativo
         {
             if (!IsPostBack)
             {
-                if (Session["ListaClientes"] != null)
-                {
-                    gvConsulta.DataSource = (List<ClientesGrid>)Session["ListaClientes"];
-                    gvConsulta.DataBind();
-                }
+                gvConsulta.DataSource = Session["ListaClientes"];
+                gvConsulta.DataBind();
             }
         }
         

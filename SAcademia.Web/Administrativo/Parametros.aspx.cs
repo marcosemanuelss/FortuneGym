@@ -11,6 +11,8 @@ namespace SAcademia.Web.Administrativo
 {
     public partial class Parametros : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,6 +34,10 @@ namespace SAcademia.Web.Administrativo
         {
             Salvar();
         }
+
+        #endregion
+
+        #region "Métodos"
 
         private void Salvar()
         {
@@ -61,5 +67,7 @@ namespace SAcademia.Web.Administrativo
             txtTempoFicha.Text = academiaParametros.PrazoFicha.ToString();
             hddCorMenu.Value = academiaParametros.Cor == null ? "#303030" : academiaParametros.Cor;
         }
+
+        #endregion
     }
 }

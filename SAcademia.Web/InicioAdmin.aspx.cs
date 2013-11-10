@@ -8,6 +8,8 @@ namespace SAcademia.Web
 {
     public partial class InicioAdmin : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -15,9 +17,12 @@ namespace SAcademia.Web
                 CarregaGV();   
             }
         }
+
         protected void CarregaGV()
         {
-            
+
         }
+
+        #endregion
     }
 }

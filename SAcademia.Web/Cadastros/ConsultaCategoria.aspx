@@ -27,7 +27,7 @@
                 </div>
                 <asp:GridView ID="gvConsulta" CssClass="tabela" runat="server"  
                     AutoGenerateColumns="False" DataKeyNames="Codigo" 
-                    onrowcommand="gvConsulta_RowCommand">
+                    onrowcommand="gvConsulta_RowCommand" EmptyDataText="Nenhum Dado encontrado">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />

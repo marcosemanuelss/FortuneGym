@@ -10,7 +10,7 @@
             </div>
             <div class="bg-tabela">
                 <asp:GridView ID="gvConsulta" AutoGenerateColumns="True" CssClass="tabela tabCad" 
-                    runat="server">
+                    runat="server" EmptyDataText="Nenhum Dado encontrado">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />
                     <RowStyle Wrap="False" />

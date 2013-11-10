@@ -12,15 +12,14 @@ namespace SAcademia.Web.Cadastros
 {
     public partial class ConsultaRepeticoes : System.Web.UI.Page
     {
+        #region "Eventos"
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                if (Session["ListaRepeticao"] != null)
-                {
-                    gvConsulta.DataSource = (List<TipoRepeticao>)Session["ListaRepeticao"];
-                    gvConsulta.DataBind();
-                }
+                gvConsulta.DataSource = Session["ListaRepeticao"];
+                gvConsulta.DataBind();
             }
         }
 
@@ -67,5 +66,7 @@ namespace SAcademia.Web.Cadastros
                 Server.Transfer("~/Cadastros/CadastraRepeticoes.aspx");
             }
         }
+
+        #endregion
     }
 }

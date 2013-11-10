@@ -19,11 +19,8 @@ namespace SAcademia.Web.Cadastros
         {
             if (!IsPostBack)
             {
-                if (Session["ListaCategorias"] != null)
-                {
-                    gvConsulta.DataSource = (List<ExercicioCategoria>)Session["ListaCategorias"];
-                    gvConsulta.DataBind();
-                }
+                gvConsulta.DataSource = Session["ListaCategorias"];
+                gvConsulta.DataBind();
             }
         }
 

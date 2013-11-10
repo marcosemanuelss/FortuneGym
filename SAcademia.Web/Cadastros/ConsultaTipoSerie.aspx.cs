@@ -19,11 +19,8 @@ namespace SAcademia.Web.Cadastros
         {
             if (!IsPostBack)
             {
-                if (Session["ListaSeriesTipo"] != null)
-                {
-                    gvConsulta.DataSource = (List<SerieTipo>)Session["ListaSeriesTipo"];
-                    gvConsulta.DataBind();
-                }
+                gvConsulta.DataSource = Session["ListaSeriesTipo"];
+                gvConsulta.DataBind();
             }
         }
         
@@ -49,7 +46,6 @@ namespace SAcademia.Web.Cadastros
             txtPesquisa.Text = String.Empty;
             CarregaGV();
         }
-
 
         protected void gvConsulta_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -79,7 +75,6 @@ namespace SAcademia.Web.Cadastros
                 Server.Transfer("~/Cadastros/TipoSerieCategoria.aspx");
             }
         }
-
 
         #endregion
 
