@@ -32,7 +32,7 @@
                     <asp:GridView ID="gvSeries" runat="server" CssClass="tabela" 
                         AutoGenerateColumns="True" EmptyDataText="Não existem séries cadastradas">
                         <Columns>
-                            <asp:TemplateField HeaderText="">
+                            <asp:TemplateField HeaderText="" ItemStyle-CssClass="ckbox">
                                 <ItemTemplate>
                                     <asp:CheckBox ID="cbExercicio" runat="server"  />
                                 </ItemTemplate>

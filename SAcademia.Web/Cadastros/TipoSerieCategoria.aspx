@@ -19,7 +19,7 @@
                             EmptyDataText="Não existem categorias cadastradas" 
                             onrowdatabound="gvConsulta_RowDataBound">
                             <Columns>
-                                <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="" ItemStyle-CssClass="ckbox">
                                     <ItemTemplate>
                                         <asp:CheckBox ID="cbCategoria" runat="server"  />
                                         <asp:HiddenField ID="Codigo" runat="server" />
