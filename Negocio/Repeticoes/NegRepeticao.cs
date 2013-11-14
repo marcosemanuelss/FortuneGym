@@ -32,12 +32,52 @@ namespace Negocio.Repeticoes
 
         public bool InserirRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
         {
-            throw new NotImplementedException();
+            PerRepeticao PerRepeticao = new PerRepeticao();
+
+            int CodigoRetorno = PerRepeticao.InserirTipoRepeticao(NovaRepeticao);
+
+            if (CodigoRetorno > 0)
+            {
+                NovaRepeticao.Codigo = CodigoRetorno;
+                CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao);
+            }
+
+            if (CodigoRetorno > 0)
+                Mensagem = "Repetição inserida com sucesso.";
+            else
+                Mensagem = "Erro ao inserir repetição, favor verificar os dados informados e tentar novamente.";
+
+            return CodigoRetorno > 0;
         }
 
         public bool AtualizarRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
         {
-            throw new NotImplementedException();
+            PerRepeticao PerRepeticao = new PerRepeticao();
+            int CodigoRetorno = PerRepeticao.AtualizarTipoRepeticao(NovaRepeticao);
+
+            if (CodigoRetorno == 1)
+            {
+                for (int i = 0; i < NovaRepeticao.Repeticoes.Count; i++)
+                {
+                    if (NovaRepeticao.Repeticoes[i].Codigo == 0)
+                        CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao);
+                    else
+                        CodigoRetorno = PerRepeticao.AtualizarRepeticao(NovaRepeticao.CodigoAcademia, NovaRepeticao.Codigo, NovaRepeticao.Repeticoes[i]);
+
+                    if (CodigoRetorno != 1)
+                        break;
+                }
+            }
+
+            switch (CodigoRetorno)
+            {
+                case 1: Mensagem = "Repetição atualizada com sucesso.";
+                    break;
+                default: Mensagem = "Erro ao atualizar repetição, favor verificar os dados informados e tentar novamente.";
+                    break;
+            }
+
+            return CodigoRetorno == 1;
         }
     }
 }

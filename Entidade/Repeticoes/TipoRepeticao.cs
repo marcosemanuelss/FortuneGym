@@ -18,6 +18,9 @@ namespace Entidade.Repeticoes
         [Coluna("DS_NOME")]
         public string Nome { get; set; }
 
+        [Coluna("IN_TIPO")]
+        public string Tipo { get; set; }
+
         public List<Repeticao> Repeticoes { get; set; }
     }
 }

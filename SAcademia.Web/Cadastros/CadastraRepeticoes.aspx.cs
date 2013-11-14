@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Entidade.Repeticoes;
 using Negocio.Repeticoes;
+using Entidade.Usuarios;
 
 namespace SAcademia.Web.Cadastros
 {
@@ -62,25 +63,99 @@ namespace SAcademia.Web.Cadastros
             Response.Redirect("~/Cadastros/ConsultaRepeticoes.aspx");
         }
 
+        protected void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            Repeticao repeticao = new Repeticao();
+
+            repeticao.QtdVezes = Convert.ToInt32(txtNumVezesCombinada.Text);
+            repeticao.QtdRepeticao = Convert.ToInt32(txtRepetCombinada.Text);
+            repeticao.Variacao = dpVariacaoCombinada.SelectedValue;
+
+            List<Repeticao> lista = (List<Repeticao>)Session["RepeticaoComposta"];
+            if (lista == null)
+            {
+                lista = new List<Repeticao>();
+            }
+
+            lista.Add(repeticao);
+
+            Session["RepeticaoComposta"] = lista;
+            CarregarGridComposta();
+        }
+
         #endregion
 
         #region "Métodos"
 
-        private void PreencherEdits(TipoRepeticao tipoRepeticao)
+        private void PreencherEdits(TipoRepeticao TipoRepeticao)
         {
-            throw new NotImplementedException();
+            txtNome.Text = TipoRepeticao.Nome;
+            rbtipoCombinacao.SelectedValue = TipoRepeticao.Tipo;
+
+            if (TipoRepeticao.Tipo == "S")
+            {
+                txtNumVezesSimples.Text = TipoRepeticao.Repeticoes[0].QtdVezes.ToString();
+                txtRepetSimples.Text = TipoRepeticao.Repeticoes[0].QtdRepeticao.ToString();
+                dpVariacaoSimples.SelectedValue = TipoRepeticao.Repeticoes[0].Variacao.ToString();
+            }
+            else
+            {
+                Session["RepeticaoComposta"] = TipoRepeticao.Repeticoes;
+                CarregarGridComposta();
+            }
         }
 
         private void PreencherObjeto(ref TipoRepeticao NovaRepeticao)
         {
-            throw new NotImplementedException();
+            NovaRepeticao.CodigoAcademia = ((Usuarios)Session["Usuario"]).CodigoAcademia;
+            NovaRepeticao.Nome = txtNome.Text;
+            NovaRepeticao.Tipo = rbtipoCombinacao.SelectedValue;
+
+            if (rbtipoCombinacao.SelectedValue == "S")
+            {
+                List<Repeticao> Repet = new List<Repeticao>();
+
+                Repeticao repeticao = new Repeticao();
+                repeticao.QtdVezes = Convert.ToInt32(txtNumVezesSimples.Text);
+                repeticao.QtdRepeticao = Convert.ToInt32(txtRepetSimples.Text);
+                repeticao.Variacao = dpVariacaoSimples.SelectedValue;
+
+                Repet.Add(repeticao);
+                NovaRepeticao.Repeticoes = Repet;
+            }
+            else
+            {
+                NovaRepeticao.Repeticoes = (List<Repeticao>)Session["RepeticaoComposta"];
+            }
         }
 
-        private void AtualizarRepeticao(TipoRepeticao tipoRepeticao, TipoRepeticao NovaRepeticao)
+        private void AtualizarRepeticao(TipoRepeticao TipoRepeticao, TipoRepeticao NovaRepeticao)
         {
-            throw new NotImplementedException();
+            TipoRepeticao.Nome = NovaRepeticao.Nome;
+            TipoRepeticao.Tipo = NovaRepeticao.Tipo;
+
+            if (NovaRepeticao.Tipo == "S")
+            {
+                TipoRepeticao.Repeticoes[0].QtdRepeticao = NovaRepeticao.Repeticoes[0].QtdRepeticao;
+                TipoRepeticao.Repeticoes[0].QtdVezes = NovaRepeticao.Repeticoes[0].QtdVezes;
+                TipoRepeticao.Repeticoes[0].Variacao = NovaRepeticao.Repeticoes[0].Variacao;
+            }
+            else
+            {
+                TipoRepeticao.Repeticoes = NovaRepeticao.Repeticoes;
+            }
+        }
+
+        private void CarregarGridComposta()
+        {
+            if (Session["RepeticaoComposta"] != null)
+            {
+                gvCombinada.DataSource = (List<Repeticao>)Session["RepeticaoComposta"];
+                gvCombinada.DataBind();
+            }
         }
 
         #endregion
+
     }
 }

@@ -76,10 +76,14 @@
                                 Variação*:</label>
                             <asp:DropDownList ID="dpVariacaoCombinada" Cssclass="required" runat="server">
                                 <asp:ListItem Text="Selecione" Value="" />
-                                <asp:ListItem Text="teste" Value="teste" />
+                                <asp:ListItem Text="Aumenta" Value="A" />
+                                <asp:ListItem Text="Diminui" Value="D" />
+                                <asp:ListItem Text="Mantém" Value="M" />
                             </asp:DropDownList>
                         </div>           
-                        <asp:Button ID="btnAdicionar" CssClass="buttons" runat="server" Text="Adicionar Combinação" ToolTip="Adicionar Combinação" />      
+                        <asp:Button ID="btnAdicionar" CssClass="buttons" runat="server" 
+                            Text="Adicionar Combinação" ToolTip="Adicionar Combinação" 
+                            onclick="btnAdicionar_Click" />      
                         <asp:GridView ID="gvCombinada" runat="server" CssClass="tabela" AutoGenerateColumns="False">
                             <Columns>
                                 <asp:BoundField DataField="QtdVezes"  HeaderText="Número de Vezes" />
