@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academias\PerAcademia.cs" />
+    <Compile Include="Avisos\PerAvisos.cs" />
     <Compile Include="Base\BaseDao.cs" />
     <Compile Include="Base\Db.cs" />
     <Compile Include="Base\DecoratorCache.cs" />

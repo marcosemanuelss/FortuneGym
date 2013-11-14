@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidade.Academias;
+using Entidade.Usuarios;
+using Entidade.Avisos;
+using Negocio.Avisos;
 
 namespace SAcademia.Web.Cadastros
 {
@@ -18,11 +22,6 @@ namespace SAcademia.Web.Cadastros
                 gvConsulta.DataSource = Session["ListaAvisos"];
                 gvConsulta.DataBind();
             }
-        }
-
-        protected void CarregaGV()
-        {
-
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)
@@ -54,6 +53,21 @@ namespace SAcademia.Web.Cadastros
             {
 
             }
+        }
+
+        #endregion
+
+        #region "Métodos"
+
+
+        protected void CarregaGV()
+        {
+            int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            int TipoUsuario = ((Usuarios)Session["Usuario"]).CodigoTipo;
+            List<Avisos> lista = new NegAvisos().ListarAvisos(CodigoAcademia, txtPesquisa.Text, TipoUsuario);
+            Session["ListaAvisos"] = lista;
+            gvConsulta.DataSource = lista;
+            gvConsulta.DataBind();
         }
 
         #endregion

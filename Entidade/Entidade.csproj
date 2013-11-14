@@ -43,6 +43,9 @@
   <ItemGroup>
     <Compile Include="Academias\Academia.cs" />
     <Compile Include="Academias\AcademiaParametros.cs" />
+    <Compile Include="Avisos\Avisos.cs" />
+    <Compile Include="Avisos\AvisosArquivos.cs" />
+    <Compile Include="Avisos\AvisosVisao.cs" />
     <Compile Include="Db\CNPJ.cs" />
     <Compile Include="Db\ColunaAttribute.cs" />
     <Compile Include="Db\CPF.cs" />
@@ -72,6 +75,7 @@
     <Compile Include="Usuarios\UsuariosGrid.cs" />
     <Compile Include="Usuarios\UsuarioTipo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

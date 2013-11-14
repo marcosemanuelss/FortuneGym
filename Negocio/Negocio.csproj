@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Academias\NegAcademia.cs" />
+    <Compile Include="Avisos\NegAvisos.cs" />
     <Compile Include="Exercicios\NegCategoria.cs" />
     <Compile Include="Exercicios\NegExercicio.cs" />
     <Compile Include="Fichas\NegFicha.cs" />
