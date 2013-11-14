@@ -15,7 +15,9 @@
             <div class="row-936">
                     <div class="bg-tabela">  
                         <asp:GridView ID="gvConsulta" runat="server" CssClass="tabela tabCad" 
-                            AutoGenerateColumns="False" EmptyDataText="Não existem categorias cadastradas">
+                            AutoGenerateColumns="False" 
+                            EmptyDataText="Não existem categorias cadastradas" 
+                            onrowdatabound="gvConsulta_RowDataBound">
                             <Columns>
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
@@ -23,13 +25,19 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Descricao"  HeaderText="Descrição Categoria" />
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:HiddenField ID="Codigo" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>                          
                     </div>
             </div>       
             <div class="btnsCadastro">
                 <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
-                    runat="server" Text="Salvar" CssClass="buttons" />
+                    runat="server" Text="Salvar" CssClass="buttons" 
+                    onclick="btnSalvar_Click" />
                 <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" 
                     Text="Voltar" onclick="btnVoltar_Click" />
             </div>

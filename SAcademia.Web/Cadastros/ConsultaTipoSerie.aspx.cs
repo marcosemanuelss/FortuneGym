@@ -56,8 +56,8 @@ namespace SAcademia.Web.Cadastros
             if (e.CommandName == "Editar")
             {
                 List<SerieTipo> lista = (List<SerieTipo>)Session["ListaSeriesTipo"];
-                SerieTipo categoria = lista.Find(delegate(SerieTipo p) { return p.Codigo == Convert.ToInt32(e.CommandArgument); });
-                Session["SerieTipoCadastrada"] = categoria;
+                SerieTipo Tipo = lista.Find(delegate(SerieTipo p) { return p.Codigo == Convert.ToInt32(e.CommandArgument); });
+                Session["SerieTipoCadastrada"] = Tipo;
 
                 Server.Transfer("~/Cadastros/CadastraTipoSerie.aspx");
             }
@@ -72,6 +72,10 @@ namespace SAcademia.Web.Cadastros
             }
             else if (e.CommandName == "Vincular Categoria")
             {
+                List<SerieTipo> lista = (List<SerieTipo>)Session["ListaSeriesTipo"];
+                SerieTipo Tipo = lista.Find(delegate(SerieTipo p) { return p.Codigo == Convert.ToInt32(e.CommandArgument); });
+                Session["SerieTipoVincular"] = Tipo;
+
                 Server.Transfer("~/Cadastros/TipoSerieCategoria.aspx");
             }
         }
