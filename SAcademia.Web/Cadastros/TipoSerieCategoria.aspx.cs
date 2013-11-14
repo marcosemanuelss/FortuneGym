@@ -40,7 +40,7 @@ namespace SAcademia.Web.Cadastros
             {
                 if (((CheckBox)row.FindControl("cbCategoria")).Checked)
                 {
-                    ExercicioCategoria valor = AntigaLista.Find(delegate(ExercicioCategoria ex) { return ex.Codigo == Convert.ToInt32(row.Cells[2].Val); });
+                    ExercicioCategoria valor = AntigaLista.Find(delegate(ExercicioCategoria ex) { return ex.Codigo == Convert.ToInt32(((HiddenField)row.Cells[0].FindControl("Codigo")).Value); });
                     NovaLista.Add(valor);
                 }
             }
@@ -53,11 +53,9 @@ namespace SAcademia.Web.Cadastros
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                List<ExercicioCategoria> lista = (List<ExercicioCategoria>)Session["ListaCategoriasVinculo"];
+                HiddenField Codigo = (HiddenField)e.Row.Cells[0].FindControl("Codigo");
 
-                HiddenField Codigo = (HiddenField)e.Row.Cells[2].FindControl("Codigo");
-
-                Codigo.Value = lista[e.Row.DataItemIndex].Codigo.ToString();
+                Codigo.Value = ((ExercicioCategoria)e.Row.DataItem).Codigo.ToString();
             }
         }
     }

@@ -50,7 +50,22 @@ namespace Persistencia.Fichas
 
         public int VincularTipoCategoria(SerieTipo Tipo, List<Entidade.Exercicios.ExercicioCategoria> Categorias)
         {
-            throw new NotImplementedException();
+            string CodigosCategorias = "";
+
+            for (int i = 0; i < Categorias.Count; i++)
+            {
+                CodigosCategorias += Categorias[i].Codigo + ", ";
+            }
+
+            if (CodigosCategorias != "")
+                CodigosCategorias = CodigosCategorias.Substring(0, CodigosCategorias.Length - 2);
+
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", Tipo.CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_SERIE_TIPO", Tipo.Codigo));
+            p.Add(Base.Db.CreateParameter("@LS_CODIGOS_CATEGORIAS", CodigosCategorias));
+
+            return Base.Db.Insert("SP_VINCULAR_TIPO_CATEGORIA", CommandType.StoredProcedure, p);
         }
     }
 }

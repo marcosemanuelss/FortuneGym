@@ -22,14 +22,10 @@
                                 <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
                                         <asp:CheckBox ID="cbCategoria" runat="server"  />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                                <asp:BoundField DataField="Descricao"  HeaderText="Descrição Categoria" />
-                                <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
                                         <asp:HiddenField ID="Codigo" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:BoundField DataField="Descricao"  HeaderText="Descrição Categoria" />
                             </Columns>
                         </asp:GridView>                          
                     </div>
