@@ -21,7 +21,7 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="" ItemStyle-CssClass="ckbox">
                                     <ItemTemplate>
-                                        <asp:CheckBox ID="cbCategoria" runat="server"  />
+                                        <asp:CheckBox ID="cbCategoria" runat="server" />
                                         <asp:HiddenField ID="Codigo" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>

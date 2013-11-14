@@ -5,6 +5,7 @@ using System.Text;
 using Entidade.Fichas;
 using Persistencia.Fichas;
 using Entidade.Exercicios;
+using Persistencia.Exercicios;
 
 namespace Negocio.Fichas
 {
@@ -12,7 +13,10 @@ namespace Negocio.Fichas
     {
         public List<SerieTipo> ListarTipos(int CodigoAcademia, string Filtro)
         {
-            return new PerSerieTipo().ListarTipos(CodigoAcademia, Filtro);
+            List<SerieTipo> RetornoTipo = new PerSerieTipo().ListarTipos(CodigoAcademia, Filtro);
+            for (int i = 0; i < RetornoTipo.Count; i++)
+                RetornoTipo[i].Categorias = new PerCategoria().ListarCategorias(CodigoAcademia, RetornoTipo[i].Codigo);
+            return RetornoTipo;
         }
 
         public bool DesabilitarTipo(int CodigoAcademia, int CodigoTipo, ref string Mensagem)

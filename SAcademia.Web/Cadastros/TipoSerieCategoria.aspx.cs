@@ -45,8 +45,17 @@ namespace SAcademia.Web.Cadastros
                 }
             }
 
+            SerieTipo tipo = (SerieTipo)Session["SerieTipoVincular"];
+
             string Mensagem = "";
-            new NegSerieTipo().VincularTipoCategoria((SerieTipo)Session["SerieTipoVincular"], NovaLista, ref Mensagem);
+            bool Valido = false;
+
+            Valido = new NegSerieTipo().VincularTipoCategoria(tipo, NovaLista, ref Mensagem);
+            tipo.Categorias = Valido ? NovaLista : tipo.Categorias;
+
+            string icon = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+            string TelaRetorno = Valido ? "../Cadastros/ConsultaTipoSerie.aspx" : "";
+            ((Site)Master).ExecutaResposta(Mensagem, icon, TelaRetorno);
         }
 
         protected void gvConsulta_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -56,6 +65,13 @@ namespace SAcademia.Web.Cadastros
                 HiddenField Codigo = (HiddenField)e.Row.Cells[0].FindControl("Codigo");
 
                 Codigo.Value = ((ExercicioCategoria)e.Row.DataItem).Codigo.ToString();
+
+                SerieTipo tipo = (SerieTipo)Session["SerieTipoVincular"];
+
+                CheckBox check = (CheckBox)e.Row.Cells[0].FindControl("cbCategoria");
+
+                check.Checked = tipo.Categorias != null &&
+                    tipo.Categorias.Find(delegate(ExercicioCategoria eca) { return eca.Codigo == Convert.ToInt32(Codigo.Value); }) != null;
             }
         }
     }

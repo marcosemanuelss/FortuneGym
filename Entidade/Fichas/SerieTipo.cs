@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Entidade.Db;
+using Entidade.Exercicios;
 
 namespace Entidade.Fichas
 {
@@ -20,5 +21,7 @@ namespace Entidade.Fichas
 
         [Coluna("IN_ATIVO")]
         public bool Ativo { get; set; }
+
+        public List<ExercicioCategoria> Categorias { get; set; }
     }
 }

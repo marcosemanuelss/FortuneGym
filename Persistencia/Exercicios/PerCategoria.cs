@@ -20,6 +20,16 @@ namespace Persistencia.Exercicios
             return Base.Db.ReadList<ExercicioCategoria>("SP_LISTAR_EXERCICIO_CATEGORIA", GenericMake.Make<ExercicioCategoria>, CommandType.StoredProcedure, p);
         }
 
+
+        public List<ExercicioCategoria> ListarCategorias(int CodigoAcademia, int CodigoTipoSerie)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_SERIE_TIPO", CodigoTipoSerie));
+
+            return Base.Db.ReadList<ExercicioCategoria>("SP_LISTAR_CATEGORIA_POR_TIPO", GenericMake.Make<ExercicioCategoria>, CommandType.StoredProcedure, p);
+        }
+
         public int DesabilitarCategoria(int CodigoAcademia, int CodigoCategoria)
         {
             List<DbParameter> p = new List<DbParameter>();

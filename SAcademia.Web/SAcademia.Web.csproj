@@ -60,6 +60,7 @@
     <Content Include="Administrativo\ImagemAcademia.aspx" />
     <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="AlterarSenha.aspx" />
+    <Content Include="Cadastros\AssociaAvisoPerfil.aspx" />
     <Content Include="Cadastros\CadastraAviso.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
     <Content Include="Cadastros\CadastraEquipamento.aspx" />
@@ -189,6 +190,13 @@
     </Compile>
     <Compile Include="AlterarSenha.aspx.designer.cs">
       <DependentUpon>AlterarSenha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cadastros\AssociaAvisoPerfil.aspx.cs">
+      <DependentUpon>AssociaAvisoPerfil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cadastros\AssociaAvisoPerfil.aspx.designer.cs">
+      <DependentUpon>AssociaAvisoPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cadastros\CadastraAviso.aspx.cs">
       <DependentUpon>CadastraAviso.aspx</DependentUpon>
