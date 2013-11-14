@@ -61,7 +61,7 @@ namespace SAcademia.Web.Cadastros
             {
                 List<TipoRepeticao> lista = (List<TipoRepeticao>)Session["ListaRepeticao"];
                 TipoRepeticao categoria = lista.Find(delegate(TipoRepeticao p) { return p.Codigo == Convert.ToInt32(e.CommandArgument); });
-                Session["ListaRepeticao"] = categoria;
+                Session["RepeticaoCadastrada"] = categoria;
 
                 Server.Transfer("~/Cadastros/CadastraRepeticoes.aspx");
             }

@@ -51,7 +51,9 @@
                                 Variação*:</label>
                             <asp:DropDownList ID="dpVariacaoSimples" Cssclass="required" runat="server">
                                 <asp:ListItem Text="Selecione" Value="" />
-                                <asp:ListItem Text="teste" Value="teste" />
+                                <asp:ListItem Text="Aumenta" Value="A" />
+                                <asp:ListItem Text="Diminui" Value="D" />
+                                <asp:ListItem Text="Mantém" Value="M" />
                             </asp:DropDownList>
                         </div>
                         
@@ -96,8 +98,10 @@
             </div>       
             <div class="btnsCadastro">
                 <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
-                    runat="server" Text="Salvar" CssClass="buttons" />
-                <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" Text="Voltar" />
+                    runat="server" Text="Salvar" CssClass="buttons" 
+                    onclick="btnSalvar_Click" />
+                <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" 
+                    Text="Voltar" onclick="btnVoltar_Click" />
             </div>
             <span class="campObrigatorio">(*) Campo Obrigatório</span>
         </div>

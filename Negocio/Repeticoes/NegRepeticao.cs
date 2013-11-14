@@ -29,5 +29,15 @@ namespace Negocio.Repeticoes
 
             return lista;
         }
+
+        public bool InserirRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AtualizarRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
