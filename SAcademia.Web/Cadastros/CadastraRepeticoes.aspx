@@ -33,7 +33,7 @@
                     <asp:ListItem Value="C"> Combinada</asp:ListItem>
                 </asp:RadioButtonList>
             </div>    
-            <div class="row-936">
+            <div class="div-936">
                 <div class="simples">
                     <div class="bg-tabela">
                         <div class="row-265">

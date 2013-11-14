@@ -26,7 +26,7 @@
                     <asp:ListItem Text="Teste" Value="Teste" />
                 </asp:DropDownList>
             </div> 
-            <div class="row-936">
+            <div class="div-936">
                 <div class="tableSerie">
                     <label>Exercícios Disponíveis:</label>
                     <asp:GridView ID="gvSeries" runat="server" CssClass="tabela" 
@@ -43,7 +43,7 @@
                     <asp:Button ID="btnAdicionarExercicios" CssClass="buttons" runat="server" Text="Adicionar Exercícios" ToolTip="Adicionar Exercícios" />
                 </div>
             </div>    
-            <div class="row-936">
+            <div class="div-936">
                 <asp:GridView ID="gvExerciciosAdicionados" runat="server" CssClass="tabela" 
                     AutoGenerateColumns="True" EmptyDataText="Não existem exercícios adicionados">
                     <Columns>

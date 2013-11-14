@@ -12,7 +12,7 @@
         <div class="bg-tabela">
             <h3>
                 Dados de Perfil</h3>
-            <div class="row-936">
+            <div class="div-936">
                     <div class="bg-tabela">  
                         <asp:GridView ID="gvConsulta" runat="server" CssClass="tabela tabCad" 
                             AutoGenerateColumns="False" EmptyDataText="Não existem perfis cadastrados">
