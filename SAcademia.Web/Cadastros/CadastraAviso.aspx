@@ -28,18 +28,18 @@
                     Associar Perfis de Visualização*:</label>
                 <asp:DropDownList ID="dpAssociarPerfil" Cssclass="required" runat="server">
                     <asp:ListItem Text="Selecione" Value="" />
-                    <asp:ListItem Text="Perfil1" Value="Perfil1" />
                 </asp:DropDownList>
-                <asp:Button ID="btnAdicionarPerfil" CssClass="buttons" runat="server" Text="Adicionar Perfil" ToolTip="Adicionar Perfil" />  
+                <asp:Button ID="btnAdicionarPerfil" CssClass="buttons" runat="server" 
+                    Text="Adicionar Perfil" ToolTip="Adicionar Perfil" 
+                    onclick="btnAdicionarPerfil_Click" />  
                 <div class="bg-tabela">
                     <asp:GridView ID="gvPerfisAdd" runat="server" CssClass="tabela tabCad" AutoGenerateColumns="False">
                         <Columns>
-                            <asp:BoundField DataField="Codigo"  HeaderText="Código" />
-                            <asp:BoundField DataField="Perfil"  HeaderText="Perfil" />
+                            <asp:BoundField DataField="CodigoTipoUsuario"  HeaderText="Perfil" />
                             <asp:TemplateField HeaderText="Remover">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageRemover" runat="server" ImageUrl="~\img\icon-excluir.png"
-                                        ToolTip="Remover Perfil" CommandName="Remover" CommandArgument='<%# Eval("Codigo") %>'/>
+                                        ToolTip="Remover Perfil" CommandName="Remover" CommandArgument='<%# Eval("CodigoTipoUsuario") %>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -51,12 +51,13 @@
                     Anexar Arquivo:</label>
                 <input id="fakeupload" name="fakeupload" class="fakeupload" type="text" />
                 <asp:FileUpload ID="FUpload" CssClass="realupload" runat="server" onchange="this.form.fakeupload.value = this.value;limitaCaracterArquivo(this.form.fakeupload.value);" />
-                <asp:Button ID="btnAdicionarAnexo" CssClass="buttons" runat="server" Text="Adicionar Anexo" ToolTip="Adicionar Anexo" />  
+                <asp:Button ID="btnAdicionarAnexo" CssClass="buttons" runat="server" 
+                    Text="Adicionar Anexo" ToolTip="Adicionar Anexo" 
+                    onclick="btnAdicionarAnexo_Click" />  
                 <div class="bg-tabela">
                     <asp:GridView ID="gvAnexos" runat="server" CssClass="tabela tabCad" AutoGenerateColumns="False">
                         <Columns>
-                            <asp:BoundField DataField="Codigo"  HeaderText="Código" />
-                            <asp:BoundField DataField="Titulo"  HeaderText="Título" />
+                            <asp:BoundField DataField="Descricao"  HeaderText="Titulo" />
                             <asp:TemplateField HeaderText="Download">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageDownload" runat="server" ImageUrl="~\img\icon-download.png"
@@ -75,9 +76,10 @@
             </div>          
             <div class="btnsCadastro">
                 <asp:Button ID="btnSalvar" OnClientClick="return valida();" ToolTip="Salvar" 
-                    runat="server" Text="Salvar" CssClass="buttons" />
+                    runat="server" Text="Salvar" CssClass="buttons" 
+                    onclick="btnSalvar_Click" />
                 <asp:Button ID="btnVoltar" ToolTip="Voltar" CssClass="buttons" runat="server" 
-                    Text="Voltar" />
+                    Text="Voltar" onclick="btnVoltar_Click" />
             </div>
             <span class="campObrigatorio">(*) Campo Obrigatório</span>
         </div>

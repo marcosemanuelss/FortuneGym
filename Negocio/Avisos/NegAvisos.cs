@@ -23,5 +23,15 @@ namespace Negocio.Avisos
 
             return RetornoAviso;
         }
+
+        public bool InserirAviso(Entidade.Avisos.Avisos NovoAviso, ref string Mensagem)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool AtualizarAviso(Entidade.Avisos.Avisos NovoAviso, ref string Mensagem)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

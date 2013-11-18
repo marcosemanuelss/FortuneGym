@@ -144,5 +144,10 @@ namespace Negocio.Usuarios
             }
             return Valido;
         }
+
+        public List<UsuarioTipo> ListarUsuarioTipo()
+        {
+            return new PerUsuarios().ListarUsuarioTipo();
+        }
     }
 }

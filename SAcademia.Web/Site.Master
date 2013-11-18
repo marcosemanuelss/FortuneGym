@@ -144,7 +144,7 @@
         function fechar(paginaDestino) {
             $('#Modal').hide();
 
-            if (paginaDestino != 'undefined') {
+            if (paginaDestino != 'undefined' && paginaDestino != '') {
                 $(location).attr('href', paginaDestino);
             }
         }

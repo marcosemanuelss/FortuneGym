@@ -146,5 +146,10 @@ namespace Persistencia.Usuarios
 
             return (int)Base.Db.GetScalar("SP_ALTERAR_SENHA_USUARIO", CommandType.StoredProcedure, p);
         }
+
+        public List<UsuarioTipo> ListarUsuarioTipo()
+        {
+            return Base.Db.ReadList<UsuarioTipo>("SP_LISTAR_USUARIO_TIPO", GenericMake.Make<UsuarioTipo>, null);
+        }
     }
 }
