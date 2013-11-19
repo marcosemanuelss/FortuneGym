@@ -310,6 +310,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DownloadArquivo.ashx.cs">
+      <DependentUpon>DownloadArquivo.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -378,6 +381,7 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DownloadArquivo.ashx" />
     <None Include="Scripts\shadowbox\LICENSE" />
     <None Include="Scripts\shadowbox\README" />
   </ItemGroup>

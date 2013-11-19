@@ -49,10 +49,50 @@ namespace SAcademia.Web.Cadastros
 
         protected void gvConsulta_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Editar")
-            {
+            string Mensagem = "";
+            bool Valido = true;
+            string icon = "";
 
+            List<Avisos> lista = null;
+            Avisos aviso = null;
+
+            switch (e.CommandName)
+            {
+                case "Editar" :
+                    lista = (List<Avisos>)Session["ListaAvisos"];
+                    aviso = lista.Find(delegate(Avisos av) { return av.Codigo == Convert.ToInt32(e.CommandArgument); });
+                    Session["AvisoCadastrado"] = aviso;
+
+                    Server.Transfer("~/Cadastros/CadastraAviso.aspx");
+                    break;
+
+                //case "Visao":
+                //    lista = (List<Avisos>)Session["ListaAvisos"];
+                //    aviso = lista.Find(delegate(Avisos av) { return av.Codigo == Convert.ToInt32(e.CommandArgument); });
+                //    Session["AvisoCadastrado"] = aviso;
+
+                //    Server.Transfer("~/Cadastros/AssociaAvisoPerfil.aspx");
+                //    break;
+
+                //case "Ver":
+                //    lista = (List<Avisos>)Session["ListaAvisos"];
+                //    aviso = lista.Find(delegate(Avisos av) { return av.Codigo == Convert.ToInt32(e.CommandArgument); });
+                //    Session["AvisoCadastrado"] = aviso;
+
+                //    Server.Transfer("~/Cadastros/ConsultaAnexoAviso.aspx");
+                //    break;
+
+                case "Excluir":
+                     Valido = new NegAvisos().DesabilitarAviso(((Usuarios)Session["Usuario"]).CodigoAcademia, Convert.ToInt32(e.CommandArgument), ((Usuarios)Session["Usuario"]).Codigo, ref Mensagem);
+
+                     Session["ListaAvisos"] = null;
+
+                    icon = Valido ? "../img/icon-ok.png" : "../img/icon-erro.png";
+                    ((Site)Master).ExecutaResposta(Mensagem, icon, "");
+                    break;
             }
+            
+            
         }
 
         #endregion

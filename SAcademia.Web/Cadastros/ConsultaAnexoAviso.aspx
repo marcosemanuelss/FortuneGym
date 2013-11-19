@@ -9,7 +9,7 @@
                 <h2>Anexos</h2>
             </div>
             <div class="bg-tabela">
-                <asp:GridView ID="gvConsulta" AutoGenerateColumns="True" CssClass="tabela tabCad" 
+                <asp:GridView ID="gvConsulta" AutoGenerateColumns="false" CssClass="tabela tabCad" 
                     runat="server" EmptyDataText="Nenhum Dado encontrado">
                     <FooterStyle Wrap="False" />
                     <HeaderStyle Wrap="False" />

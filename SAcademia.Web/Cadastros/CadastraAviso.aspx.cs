@@ -25,16 +25,9 @@ namespace SAcademia.Web.Cadastros
                         Session["AvisoCadastrado"] = null;
 
                     Session["NaoValido"] = null;
-
                 }
 
-                if (Session["ListaUsuarioTipoCompleta"] == null)
-                {
-                    int CodigoAcademia = ((Usuarios)Session["Usuario"]).CodigoAcademia;
-                    List<UsuarioTipo> lista = new NegUsuario().ListarUsuarioTipo();
-                    Session["ListaUsuarioTipoCompleta"] = lista;
-                }
-
+                AtualizarSessaoListaTipoUsuario();
                 AtualizarDropDownPerfil();
             }
         }
@@ -46,6 +39,7 @@ namespace SAcademia.Web.Cadastros
                 AvisosVisao visao = new AvisosVisao();
 
                 visao.CodigoTipoUsuario = Convert.ToInt32(dpAssociarPerfil.SelectedValue);
+                visao.Descricao = dpAssociarPerfil.SelectedItem.Text;
 
                 List<AvisosVisao> lista = (List<AvisosVisao>)Session["VisaoAviso"];
                 if (lista == null)
@@ -65,29 +59,6 @@ namespace SAcademia.Web.Cadastros
                 string TelaRetorno = "";
                 ((Site)Master).ExecutaResposta("Não existe mais perfil para ser selecionado.", icon, TelaRetorno);
             }
-        }
-
-        private void AtualizarDropDownPerfil()
-        {
-            Session["ListaUsuarioTipo"] = Session["ListaUsuarioTipoCompleta"];
-
-            if (Session["VisaoAviso"] != null && ((List<AvisosVisao>)Session["VisaoAviso"]).Count != 0)
-            {
-                List<AvisosVisao> Visao = (List<AvisosVisao>)Session["VisaoAviso"];
-                List<UsuarioTipo> Tipo = (List<UsuarioTipo>)Session["ListaUsuarioTipo"];
-
-                for (int i = 0; i < Visao.Count; i++)
-                {
-                    int Index = Tipo.FindIndex(delegate(UsuarioTipo t) { return t.Codigo == Visao[i].CodigoTipoUsuario; });
-
-                    if (Index != -1)
-                        Tipo.RemoveAt(Index);
-                }
-
-                Session["ListaUsuarioTipo"] = Tipo;
-            }
-
-            CarregarUsuarioTipo();
         }
 
         protected void btnAdicionarAnexo_Click(object sender, EventArgs e)
@@ -126,12 +97,13 @@ namespace SAcademia.Web.Cadastros
             if (Session["AvisoCadastrado"] == null)
             {
                 Session["AvisoCadastrado"] = NovoAviso;
+                NovoAviso.CodigoUsuarioCadastro = ((Usuarios)Session["Usuario"]).Codigo;
                 Valido = new NegAvisos().InserirAviso(NovoAviso, ref Mensagem);
             }
             else
             {
                 NovoAviso.Codigo = ((Avisos)Session["AvisoCadastrado"]).Codigo;
-                Valido = new NegAvisos().AtualizarAviso(NovoAviso, ref Mensagem);
+                Valido = new NegAvisos().AtualizarAviso(NovoAviso, ((Usuarios)Session["Usuario"]).Codigo, ref Mensagem);
 
                 if (Valido)
                     AtualizarRepeticao((Avisos)Session["AvisoCadastrado"], NovoAviso);
@@ -152,6 +124,82 @@ namespace SAcademia.Web.Cadastros
             Session["AvisoCadastrado"] = null;
             Session["ListaUsuarioTipo"] = null;
             Response.Redirect("~/Cadastros/ConsultaAviso.aspx");
+        }
+
+        protected void gvPerfisAdd_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Remover")
+            {
+                string icon = "../img/icon-ok.png";
+                string TelaRetorno = "";
+                string Mensagem = "";
+
+                List<AvisosVisao> visao = (List<AvisosVisao>)Session["VisaoAviso"];
+                int Index = visao.FindIndex(delegate(AvisosVisao av) { return av.CodigoTipoUsuario == Convert.ToInt32(e.CommandArgument); });
+
+                if (Index >= 0)
+                {
+                    visao.RemoveAt(Index);
+
+                    Session["VisaoAviso"] = visao;
+
+                    CarregarGridVisao();
+                    AtualizarDropDownPerfil();
+
+                    icon = "../img/icon-ok.png";
+                    Mensagem = "Perfil de usuário removido com sucesso.";
+                }
+                else
+                {
+                    icon = "../img/icon-error.png";
+                    Mensagem = "Não foi possivel remover o perfil do usuário.";
+                }
+
+                ((Site)Master).ExecutaResposta(Mensagem, icon, TelaRetorno);
+            }
+        }
+
+        protected void gvAnexos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string icon = "../img/icon-ok.png";
+            string TelaRetorno = "";
+            string Mensagem = "";
+
+            List<AvisosArquivos> arqui = null;
+
+            if (e.CommandName == "Remover")
+            {
+                arqui = (List<AvisosArquivos>)Session["ArquivosAviso"];
+                int Index = arqui.FindIndex(delegate(AvisosArquivos ar) { return ar.Codigo == Convert.ToInt32(e.CommandArgument); });
+
+                if (Index >= 0)
+                {
+                    arqui.RemoveAt(Index);
+
+                    Session["ArquivosAviso"] = arqui;
+
+                    CarregarGridArquivo();
+
+                    icon = "../img/icon-ok.png";
+                    Mensagem = "Arquivo removido com sucesso.";
+                }
+                else
+                {
+                    icon = "../img/icon-error.png";
+                    Mensagem = "Não foi possivel remover o arquivo.";
+                }
+
+                ((Site)Master).ExecutaResposta(Mensagem, icon, TelaRetorno);
+            }
+            else if (e.CommandName == "Download")
+            {
+                arqui = (List<AvisosArquivos>)Session["ArquivosAviso"];
+                AvisosArquivos arq = arqui.Find(delegate(AvisosArquivos a) { return a.Codigo == Convert.ToInt32(e.CommandArgument); });
+
+                Session["ArquivoDownload"] = arq.Arquivo;
+                
+                Response.Redirect("~/DownloadArquivo.ashx?Descricao=" + arq.Descricao + "&Extensao=" + arq.Extensao);
+            }
         }
 
         #endregion
@@ -221,6 +269,37 @@ namespace SAcademia.Web.Cadastros
             }
         }
 
+        private void AtualizarSessaoListaTipoUsuario()
+        {
+            int CodigoAcademia = ((Usuarios)Session["Usuario"]).CodigoAcademia;
+            List<UsuarioTipo> lista = new NegUsuario().ListarUsuarioTipo();
+            Session["ListaUsuarioTipo"] = lista;
+        }
+
+        private void AtualizarDropDownPerfil()
+        {
+            AtualizarSessaoListaTipoUsuario();
+
+            if (Session["VisaoAviso"] != null && ((List<AvisosVisao>)Session["VisaoAviso"]).Count != 0)
+            {
+                List<AvisosVisao> Visao = (List<AvisosVisao>)Session["VisaoAviso"];
+                List<UsuarioTipo> Tipo = (List<UsuarioTipo>)Session["ListaUsuarioTipo"];
+
+                for (int i = 0; i < Visao.Count; i++)
+                {
+                    int Index = Tipo.FindIndex(delegate(UsuarioTipo t) { return t.Codigo == Visao[i].CodigoTipoUsuario; });
+
+                    if (Index != -1)
+                        Tipo.RemoveAt(Index);
+                }
+
+                Session["ListaUsuarioTipo"] = Tipo;
+            }
+
+            CarregarUsuarioTipo();
+        }
+
         #endregion
+
     }
 }

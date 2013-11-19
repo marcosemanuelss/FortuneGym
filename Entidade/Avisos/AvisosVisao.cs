@@ -17,5 +17,8 @@ namespace Entidade.Avisos
 
         [Coluna("ID_USUARIO_TIPO")]
         public int CodigoTipoUsuario { get; set; }
+
+        [Coluna("DESCRICAO")]
+        public string Descricao { get; set; }
     }
 }

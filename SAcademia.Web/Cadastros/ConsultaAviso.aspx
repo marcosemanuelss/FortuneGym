@@ -33,7 +33,7 @@
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="Descricao" HeaderText="Aviso" />
-                        <asp:TemplateField HeaderText="Visão">
+                        <%--<asp:TemplateField HeaderText="Visão">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageVisao" runat="server" ImageUrl="~\img\icon-users.png"
                                     ToolTip="Visão" CommandName="Visao" CommandArgument='<%# Eval("Codigo") %>'/>
@@ -44,7 +44,7 @@
                                 <asp:ImageButton ID="ImageVer" runat="server" ImageUrl="~\img\icon-ver.png"
                                     ToolTip="Ver Anexos" CommandName="Ver" CommandArgument='<%# Eval("Codigo") %>'/>
                             </ItemTemplate>
-                        </asp:TemplateField>
+                        </asp:TemplateField>--%>
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"

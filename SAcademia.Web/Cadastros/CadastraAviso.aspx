@@ -25,17 +25,18 @@
             </div>  
             <div class="row-936-btn">
                 <label>
-                    Associar Perfis de Visualização*:</label>
-                <asp:DropDownList ID="dpAssociarPerfil" Cssclass="required" runat="server">
+                    Associar Perfis de Visualização:</label>
+                <asp:DropDownList ID="dpAssociarPerfil" runat="server">
                     <asp:ListItem Text="Selecione" Value="" />
                 </asp:DropDownList>
                 <asp:Button ID="btnAdicionarPerfil" CssClass="buttons" runat="server" 
                     Text="Adicionar Perfil" ToolTip="Adicionar Perfil" 
                     onclick="btnAdicionarPerfil_Click" />  
                 <div class="bg-tabela">
-                    <asp:GridView ID="gvPerfisAdd" runat="server" CssClass="tabela tabCad" AutoGenerateColumns="False">
+                    <asp:GridView ID="gvPerfisAdd" runat="server" CssClass="tabela tabCad" 
+                        AutoGenerateColumns="False" onrowcommand="gvPerfisAdd_RowCommand">
                         <Columns>
-                            <asp:BoundField DataField="CodigoTipoUsuario"  HeaderText="Perfil" />
+                            <asp:BoundField DataField="Descricao"  HeaderText="Perfil" />
                             <asp:TemplateField HeaderText="Remover">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageRemover" runat="server" ImageUrl="~\img\icon-excluir.png"
@@ -55,9 +56,10 @@
                     Text="Adicionar Anexo" ToolTip="Adicionar Anexo" 
                     onclick="btnAdicionarAnexo_Click" />  
                 <div class="bg-tabela">
-                    <asp:GridView ID="gvAnexos" runat="server" CssClass="tabela tabCad" AutoGenerateColumns="False">
+                    <asp:GridView ID="gvAnexos" runat="server" CssClass="tabela tabCad" 
+                        AutoGenerateColumns="False" onrowcommand="gvAnexos_RowCommand">
                         <Columns>
-                            <asp:BoundField DataField="Descricao"  HeaderText="Titulo" />
+                            <asp:BoundField DataField="Descricao"  HeaderText="Título" />
                             <asp:TemplateField HeaderText="Download">
                                 <ItemTemplate>
                                     <asp:ImageButton ID="ImageDownload" runat="server" ImageUrl="~\img\icon-download.png"
