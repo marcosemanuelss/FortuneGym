@@ -18,5 +18,15 @@ namespace Negocio.Fichas
 
             return ficha;
         }
+
+        public List<Ficha> ListarFicha(int CodigoAcademia, string Filtro)
+        {
+            List<Ficha> lista = new PerFicha().ListarFicha(CodigoAcademia, Filtro);
+
+            for (int i = 0; i < lista.Count; i++)
+                lista[i].Series = new NegSerie().ListarSeries(CodigoAcademia, lista[i].CodigoUsuario, lista[i].Codigo);
+
+            return lista;
+        }
     }
 }

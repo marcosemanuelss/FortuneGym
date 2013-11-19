@@ -33,7 +33,7 @@
                     <RowStyle Wrap="False" />
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
-                        <asp:BoundField DataField="idUsuario" HeaderText="Usuário" />
+                        <asp:BoundField DataField="CodigoUsuario" HeaderText="Usuário" />
                         <asp:BoundField HeaderText="Situação" DataField="Situcacao"/>
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>

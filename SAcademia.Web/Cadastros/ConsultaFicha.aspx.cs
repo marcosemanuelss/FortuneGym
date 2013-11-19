@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Entidade.Academias;
+using Entidade.Fichas;
+using Negocio.Fichas;
 
 namespace SAcademia.Web.Cadastros
 {
@@ -22,7 +25,11 @@ namespace SAcademia.Web.Cadastros
 
         protected void CarregaGV()
         {
-            
+            int CodigoAcademia = ((Academia)Session["Academia"]).Codigo;
+            List<Ficha> lista = new NegFicha().ListarFicha(CodigoAcademia, txtPesquisa.Text);
+            Session["ListaFichas"] = lista;
+            gvConsulta.DataSource = lista;
+            gvConsulta.DataBind();
         }
 
         protected void btnNovo_Click(object sender, EventArgs e)
@@ -34,7 +41,7 @@ namespace SAcademia.Web.Cadastros
         protected void btnVoltar_Click(object sender, EventArgs e)
         {
             Session["ListaFichas"] = null;
-            Response.Redirect("~/Inicio.aspx");
+            Response.Redirect("~/Default.aspx");
         }
 
         protected void btnPesquisar_Click(object sender, EventArgs e)

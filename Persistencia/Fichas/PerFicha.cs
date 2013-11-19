@@ -19,5 +19,14 @@ namespace Persistencia.Fichas
 
             return Base.Db.Read<Ficha>("SP_OBTER_FICHA", GenericMake.Make<Ficha>, CommandType.StoredProcedure, p);
         }
+
+        public List<Ficha> ListarFicha(int CodigoAcademia, string Filtro)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@DS_FILTRO", Filtro));
+
+            return Base.Db.ReadList<Ficha>("SP_LISTAR_FICHAS", GenericMake.Make<Ficha>, CommandType.StoredProcedure, p);
+        }
     }
 }
