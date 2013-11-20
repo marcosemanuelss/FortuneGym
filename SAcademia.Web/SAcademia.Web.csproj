@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=4.1.50927.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>App_Data\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -60,6 +64,7 @@
     <Content Include="Administrativo\ImagemAcademia.aspx" />
     <Content Include="Administrativo\Parametros.aspx" />
     <Content Include="AlterarSenha.aspx" />
+    <Content Include="App_Data\AjaxControlToolkit.dll" />
     <Content Include="Cadastros\AssociaAvisoPerfil.aspx" />
     <Content Include="Cadastros\CadastraAviso.aspx" />
     <Content Include="Cadastros\CadastraCategoria.aspx" />
@@ -75,7 +80,9 @@
     <Content Include="Cadastros\ConsultaRepeticoes.aspx" />
     <Content Include="Cadastros\ConsultaTipoSerie.aspx" />
     <Content Include="Cadastros\TipoSerieCategoria.aspx" />
+    <Content Include="Controls\ucAjaxModalPopup.ascx" />
     <Content Include="Controls\ucEnviaEmail.ascx" />
+    <Content Include="Controls\ucModalPopUpPesquisaMatricula.ascx" />
     <Content Include="img\btn-sair.jpg" />
     <Content Include="img\btn-selecione.png" />
     <Content Include="img\icon-atencao.png" />
@@ -296,12 +303,26 @@
     <Compile Include="Cadastros\TipoSerieCategoria.aspx.designer.cs">
       <DependentUpon>TipoSerieCategoria.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ucAjaxModalPopup.ascx.cs">
+      <DependentUpon>ucAjaxModalPopup.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ucAjaxModalPopup.ascx.designer.cs">
+      <DependentUpon>ucAjaxModalPopup.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ucEnviaEmail.ascx.cs">
       <DependentUpon>ucEnviaEmail.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\ucEnviaEmail.ascx.designer.cs">
       <DependentUpon>ucEnviaEmail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ucModalPopUpPesquisaMatricula.ascx.cs">
+      <DependentUpon>ucModalPopUpPesquisaMatricula.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ucModalPopUpPesquisaMatricula.ascx.designer.cs">
+      <DependentUpon>ucModalPopUpPesquisaMatricula.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -374,9 +395,7 @@
       <DependentUpon>SolicitaSenha.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Site.Master" />
   </ItemGroup>

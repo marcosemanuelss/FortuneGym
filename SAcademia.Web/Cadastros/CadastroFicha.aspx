@@ -1,6 +1,11 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="CadastroFicha.aspx.cs" Inherits="SAcademia.Web.Cadastros.CadastroFicha" %>
-
+<%@ Register src="~/Controls/ucModalPopupPesquisaMatricula.ascx" tagname="ucModalPopupPesquisaMatricula" tagprefix="uc1" %>
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <script type="text/javascript">
+        $(function () {
+            $("#MainContent_txtMatricula").keypress(verificaNumero);
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div class="conteudo">
@@ -13,6 +18,20 @@
         <div class="bg-tabela">
             <h3>
                 Dados da Ficha</h3>
+            <div class="row-290">
+                <label>
+                    Matrícula:</label>
+                <asp:TextBox ID="txtMatricula" runat="server" ToolTip="Matrícula" />
+            </div>
+            <div class="btnProcurar">
+                <asp:Button ID="btnProcurarMatricula" ToolTip="Procurar" runat="server" 
+                    CssClass="buttons" Text="Procurar" onclick="btnProcurarMatricula_Click" />
+            </div>
+            <div class="lbrow-525">
+                <label>
+                    Nome:</label>
+                <asp:TextBox ID="txtNome" runat="server" ToolTip="Nome" ReadOnly="true" />
+            </div>
             <div class="lbrow-936">
                 <label>
                     Objetivo:</label>
@@ -91,4 +110,6 @@
             }
         });
         </script>
+         <uc1:ucModalPopupPesquisaMatricula ID="ucModalPopupPesquisaMatricula1" runat="server" />
 </asp:Content>
+

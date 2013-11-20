@@ -292,6 +292,19 @@
     padding:0 5px 0 5px;
     resize:none;
 }
+.lbrow-525{
+    width:525px;
+    height:49px;
+    float:left;
+    margin:0px 0 13px 34px;
+}
+.lbrow-525 input{
+    width:513px;
+    height:29px;
+    background: #f0f0f0 no-repeat;
+    border:1px solid #000;
+    padding:0 5px 0 5px;
+}
 .btnsCadastro{
     float:right;
     margin:18px 37px 16px;
@@ -303,6 +316,11 @@
 /*end*/
 .btnsCadastro input{
     margin-left:6px;
+}
+.btnProcurar{
+    float: left;
+    margin-left: 8px;
+    margin-top: 19px;
 }
 /*Cadastra Repetições*/
 .adicione{

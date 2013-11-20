@@ -36,5 +36,10 @@ namespace SAcademia.Web.Cadastros
         }
 
         #endregion
+
+        protected void btnProcurarMatricula_Click(object sender, EventArgs e)
+        {
+            ucModalPopupPesquisaMatricula1.Call("~/Default.aspx", "~/Default.aspx");
+        }
     }
 }
