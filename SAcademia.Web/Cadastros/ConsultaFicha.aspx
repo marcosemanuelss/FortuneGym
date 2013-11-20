@@ -34,7 +34,7 @@
                     <Columns>
                         <asp:BoundField DataField="Codigo" HeaderText="Código" />
                         <asp:BoundField DataField="CodigoUsuario" HeaderText="Usuário" />
-                        <asp:BoundField HeaderText="Situação" DataField="Situcacao"/>
+                        <asp:BoundField HeaderText="Situação" DataField="Ativo"/>
                         <asp:TemplateField HeaderText="Editar">
                             <ItemTemplate>
                                 <asp:ImageButton ID="ImageEditar" runat="server" ImageUrl="~\img\icon-editar.png"

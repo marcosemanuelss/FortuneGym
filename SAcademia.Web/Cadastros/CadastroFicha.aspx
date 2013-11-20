@@ -21,7 +21,8 @@
             <div class="row-936">
                 <label>
                     Série*:</label>
-                <asp:DropDownList ID="dpSerie" Cssclass="required" runat="server">
+                <asp:DropDownList ID="dpSerie" Cssclass="required" runat="server" 
+                    AutoPostBack="True">
                     <asp:ListItem Text="Selecione" Value="" />
                     <asp:ListItem Text="Teste" Value="Teste" />
                 </asp:DropDownList>
