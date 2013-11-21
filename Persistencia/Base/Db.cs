@@ -183,6 +183,15 @@ namespace Persistencia.Base
 
         }
 
+        public static object GetScalar(string sql, CommandType commandType, List<DbParameter> parms, SqlCommand Command)
+        {
+            Command.CommandText = sql;
+            Command.CommandType = commandType;
+            Command.SetParameters(parms);
+
+            return Command.ExecuteScalar();
+        }
+
         public static List<String> ReadList(string sql, CommandType commandType, List<DbParameter> parms)
         {
 
@@ -251,6 +260,15 @@ namespace Persistencia.Base
                     return command.ExecuteScalar().AsInt();
                 }
             }
+        }
+
+        public static int Insert(string sql, CommandType commandType, List<DbParameter> parms, SqlCommand Command)
+        {
+            Command.CommandType = commandType;
+            Command.SetParameters(parms);
+            Command.CommandText = sql;
+
+            return Command.ExecuteScalar().AsInt();
         }
 
         /// <summary>
