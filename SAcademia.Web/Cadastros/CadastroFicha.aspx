@@ -41,7 +41,7 @@
                 <label>
                     Série*:</label>
                 <asp:DropDownList ID="dpSerie" Cssclass="required" runat="server" 
-                    AutoPostBack="True">
+                    AutoPostBack="True" onselectedindexchanged="dpSerie_SelectedIndexChanged">
                     <asp:ListItem Text="Selecione" Value="" />
                     <asp:ListItem Text="Teste" Value="Teste" />
                 </asp:DropDownList>
@@ -50,34 +50,43 @@
                 <div class="tableSerie">
                     <label>Exercícios Disponíveis:</label>
                     <asp:GridView ID="gvSeries" runat="server" CssClass="tabela" 
-                        AutoGenerateColumns="True" EmptyDataText="Não existem séries cadastradas">
+                        AutoGenerateColumns="False" 
+                        EmptyDataText="Não existe exercícios disponíveis" 
+                        onrowdatabound="gvSeries_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText="" ItemStyle-CssClass="ckbox">
                                 <ItemTemplate>
+                                    <asp:HiddenField ID="Codigo" runat="server" />
                                     <asp:CheckBox ID="cbExercicio" runat="server"  />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="Exercicio"  HeaderText="Exercício" />
+                            <asp:BoundField DataField="Nome"  HeaderText="Exercício" />
+                            <asp:BoundField DataField="Categoria"  HeaderText="Categoria" />
                         </Columns>
                     </asp:GridView>
-                    <asp:Button ID="btnAdicionarExercicios" CssClass="buttons" runat="server" Text="Adicionar Exercícios" ToolTip="Adicionar Exercícios" />
+                    <asp:Button ID="btnAdicionarExercicios" CssClass="buttons" runat="server" 
+                        Text="Adicionar Exercícios" ToolTip="Adicionar Exercícios" 
+                        onclick="btnAdicionarExercicios_Click" />
                 </div>
             </div>    
             <div class="div-936">
                 <asp:GridView ID="gvExerciciosAdicionados" runat="server" CssClass="tabela" 
-                    AutoGenerateColumns="True" EmptyDataText="Não existem exercícios adicionados">
+                    AutoGenerateColumns="False" 
+                    EmptyDataText="Não existem exercícios adicionados" 
+                    onrowcommand="gvExerciciosAdicionados_RowCommand" 
+                    onrowdatabound="gvExerciciosAdicionados_RowDataBound">
                     <Columns>
-                        <asp:BoundField DataField="Exercicio"  HeaderText="Exercício" />
+                        <asp:BoundField DataField="Nome"  HeaderText="Exercício" />
                         <asp:TemplateField HeaderText="Repetições">
                             <ItemTemplate>
-                                <asp:DropDownList ID="dpRepeticao" CssClass="dropInput" Width="140px" Height="20px" runat="server" >
+                                <asp:DropDownList ID="dpRepeticao" DataTextField="Nome" DataValueField="Codigo" CssClass="dropInput" Width="140px" Height="20px" runat="server" >
                                 </asp:DropDownList>
                             </ItemTemplate>
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Remover">
                             <ItemTemplate>
                                 <asp:ImageButton ID="imgRemoverItem" ToolTip="Remover Exercício" runat="server"
-                                    ImageUrl="~/img/icon-excluir.png" CommandName="Remover" CommandArgument='<%# ((GridViewRow) Container).RowIndex %>' />
+                                    ImageUrl="~/img/icon-excluir.png" CommandName="Remover" CommandArgument='<%# Eval("Codigo") %>' />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>

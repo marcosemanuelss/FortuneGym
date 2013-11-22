@@ -23,5 +23,7 @@ namespace Entidade.Fichas
         public bool Ativo { get; set; }
 
         public List<ExercicioCategoria> Categorias { get; set; }
+
+        public List<ExercicioFichaGrid> Exercicios { get; set; }
     }
 }

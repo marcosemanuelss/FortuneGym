@@ -137,6 +137,15 @@ namespace Persistencia.Usuarios
             return (int)Base.Db.GetScalar("SP_OBTER_USUARIO", CommandType.StoredProcedure, p);
         }
 
+        public List<Entidade.Usuarios.Usuarios> ObterUsuario(int CodigoAcademia, string Filtro)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@DS_FILTRO", Filtro));
+
+            return Base.Db.ReadList<Entidade.Usuarios.Usuarios>("SP_OBTER_USUARIO_FICHA", GenericMake.Make<Entidade.Usuarios.Usuarios>, CommandType.StoredProcedure, p);
+        }
+
         public int AlterarSenhaUsuario(int CodigoAcademia, int CodigoUsuario, string NovaSenha)
         {
             List<DbParameter> p = new List<DbParameter>();

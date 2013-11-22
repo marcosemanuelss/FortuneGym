@@ -37,6 +37,18 @@ namespace Negocio.Usuarios
             return UsuarioRetorno;
         }
 
+        public List<Entidade.Usuarios.Usuarios> ObterUsuario(int CodigoAcademia, string Filtro)
+        {
+            List<Entidade.Usuarios.Usuarios> UsuarioRetorno = new PerUsuarios().ObterUsuario(CodigoAcademia, Filtro);
+
+            if (UsuarioRetorno.Count == 1)
+            {
+                UsuarioRetorno[0].Complemento = ObterComplemento(UsuarioRetorno[0].CodigoAcademia, UsuarioRetorno[0].Codigo);
+            }
+
+            return UsuarioRetorno;
+        }
+
         private UsuarioComplemento ObterComplemento(int CodigoAcademia, int CodigoUsuario)
         {
             UsuarioComplemento Complemento = new PerUsuarios().ObterComplemento(CodigoAcademia, CodigoUsuario);
@@ -148,6 +160,21 @@ namespace Negocio.Usuarios
         public List<UsuarioTipo> ListarUsuarioTipo()
         {
             return new PerUsuarios().ListarUsuarioTipo();
+        }
+
+        public List<Entidade.Usuarios.Usuarios> ObterDadosUsuarioFicha(int CodigoAcademia, string Filtro, ref int Codigo, ref string Matricula, ref string Nome, ref bool IsFichaAtiva)
+        {
+            List<Entidade.Usuarios.Usuarios> Usu = ObterUsuario(CodigoAcademia, Filtro);
+
+            if (Usu.Count == 1)
+            {
+                Codigo = Usu[0].Codigo;
+                Matricula = Usu[0].Complemento.Matricula;
+                Nome = Usu[0].Nome;
+                IsFichaAtiva = Usu[0].Complemento.Ficha != null;
+            }
+
+            return Usu;
         }
     }
 }

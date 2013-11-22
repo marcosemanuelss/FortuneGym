@@ -19,6 +19,17 @@ namespace Negocio.Fichas
             return RetornoTipo;
         }
 
+        public List<SerieTipo> ListarTipos(int CodigoAcademia)
+        {
+            List<SerieTipo> RetornoTipo = new PerSerieTipo().ListarTipos(CodigoAcademia, "");
+            for (int i = 0; i < RetornoTipo.Count; i++)
+            {
+                RetornoTipo[i].Categorias = new PerCategoria().ListarCategorias(CodigoAcademia, RetornoTipo[i].Codigo);
+                RetornoTipo[i].Exercicios = new PerExercicio().ListarExerciciosPorSerie(CodigoAcademia, RetornoTipo[i].Codigo);
+            }
+            return RetornoTipo;
+        }
+
         public bool DesabilitarTipo(int CodigoAcademia, int CodigoTipo, ref string Mensagem)
         {
             int CodigoRetorno = new PerSerieTipo().DesabilitarTipo(CodigoAcademia, CodigoTipo);

@@ -58,5 +58,14 @@ namespace Persistencia.Exercicios
 
             return (int)Base.Db.GetScalar("SP_ATUALIZAR_EXERCICIO", CommandType.StoredProcedure, p);
         }
+
+        public List<ExercicioFichaGrid> ListarExerciciosPorSerie(int CodigoAcademia, int CodigoSerie)
+        {
+            List<DbParameter> p = new List<DbParameter>();
+            p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
+            p.Add(Base.Db.CreateParameter("@ID_SERIE_TIPO", CodigoSerie));
+
+            return Base.Db.ReadList<ExercicioFichaGrid>("SP_LISTAR_EXERCICIO_POR_SERIE", GenericMake.Make<ExercicioFichaGrid>, CommandType.StoredProcedure, p);
+        }
     }
 }
