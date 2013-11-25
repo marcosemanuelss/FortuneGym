@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Persistencia.Avisos;
+using Persistencia.Base;
+using System.Data.SqlClient;
 
 namespace Negocio.Avisos
 {
@@ -26,28 +28,42 @@ namespace Negocio.Avisos
 
         public bool InserirAviso(Entidade.Avisos.Avisos NovoAviso, ref string Mensagem)
         {
+            Transacao trans = new Transacao();
             PerAvisos PerAvisos = new PerAvisos();
-            int CodigoRetorno = PerAvisos.InserirAviso(NovoAviso);
 
-            if (CodigoRetorno > 0)
+            int CodigoRetorno = 0;
+
+            try
             {
-                NovoAviso.Codigo = CodigoRetorno;
-                CodigoRetorno = InserirVisaoArquivo(NovoAviso);
+                CodigoRetorno = PerAvisos.InserirAviso(NovoAviso, trans.GetCommand());
+
+                if (CodigoRetorno > 0)
+                {
+                    NovoAviso.Codigo = CodigoRetorno;
+                    CodigoRetorno = InserirVisaoArquivo(NovoAviso, trans.GetCommand());
+                }
+            }
+            catch
+            {
+                CodigoRetorno = 0;
+                trans.Rollback();
             }
 
             if (CodigoRetorno > 0)
             {
+                trans.Commit();
                 Mensagem = "Aviso inserido com sucesso.";
             }
             else
             {
+                trans.Rollback();
                 Mensagem = "Erro ao inserir aviso, favor verificar os dados informados e tentar novamente.";
             }
 
             return CodigoRetorno > 0;
         }
 
-        private int InserirVisaoArquivo(Entidade.Avisos.Avisos NovoAviso)
+        private int InserirVisaoArquivo(Entidade.Avisos.Avisos NovoAviso, SqlCommand Command)
         {
             PerAvisos perAvisos = new PerAvisos();
             int CodigoRetorno = NovoAviso.Codigo;
@@ -61,14 +77,14 @@ namespace Negocio.Avisos
                 }
                 Codigos = Codigos.Substring(0, Codigos.Length - 2);
 
-                CodigoRetorno = perAvisos.InserirVisao(NovoAviso.CodigoAcademia, NovoAviso.Codigo, Codigos);
+                CodigoRetorno = perAvisos.InserirVisao(NovoAviso.CodigoAcademia, NovoAviso.Codigo, Codigos, Command);
             }
 
             if (CodigoRetorno > 0 && NovoAviso.Arquivos != null && NovoAviso.Arquivos.Count > 0)
             {
                 for (int i = 0; i < NovoAviso.Arquivos.Count; i++)
                 {
-                    CodigoRetorno = perAvisos.InserirArquivo(NovoAviso.CodigoAcademia, NovoAviso.Codigo, NovoAviso.Arquivos[i]);
+                    CodigoRetorno = perAvisos.InserirArquivo(NovoAviso.CodigoAcademia, NovoAviso.Codigo, NovoAviso.Arquivos[i], Command);
 
                     if (CodigoRetorno <= 0)
                         break;
@@ -80,22 +96,36 @@ namespace Negocio.Avisos
 
         public bool AtualizarAviso(Entidade.Avisos.Avisos NovoAviso, int CodigoUsuarioAlt, ref string Mensagem)
         {
+            Transacao trans = new Transacao();
             PerAvisos perAvisos = new PerAvisos();
-            int CodigoRetorno = perAvisos.AtualizarAviso(NovoAviso, CodigoUsuarioAlt);
-
-            if (CodigoRetorno > 0)
+            int CodigoRetorno = 0;
+            try
             {
-                perAvisos.RemoverVisao(NovoAviso.CodigoAcademia, NovoAviso.Codigo);
-                perAvisos.RemoverArquivo(NovoAviso.CodigoAcademia, NovoAviso.Codigo);
+                CodigoRetorno = perAvisos.AtualizarAviso(NovoAviso, CodigoUsuarioAlt, trans.GetCommand());
 
-                CodigoRetorno = InserirVisaoArquivo(NovoAviso);
+                if (CodigoRetorno > 0)
+                {
+                    perAvisos.RemoverVisao(NovoAviso.CodigoAcademia, NovoAviso.Codigo, trans.GetCommand());
+                    perAvisos.RemoverArquivo(NovoAviso.CodigoAcademia, NovoAviso.Codigo, trans.GetCommand());
+
+                    CodigoRetorno = InserirVisaoArquivo(NovoAviso, trans.GetCommand());
+                }
+            }
+            catch
+            {
+                CodigoRetorno = 0;
+                trans.Rollback();
             }
 
             switch (CodigoRetorno)
             {
-                case 1: Mensagem = "Aviso atualizado com sucesso.";
+                case 1:
+                    trans.Commit();
+                    Mensagem = "Aviso atualizado com sucesso.";
                     break;
-                default: Mensagem = "Erro ao atualizar o aviso, favor verificar os dados informados e tentar novamente.";
+                default:
+                    trans.Rollback();
+                    Mensagem = "Erro ao atualizar o aviso, favor verificar os dados informados e tentar novamente.";
                     break;
             }
 

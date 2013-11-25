@@ -6,6 +6,7 @@ using Persistencia.Base;
 using System.Data;
 using System.Data.Common;
 using Entidade.Avisos;
+using System.Data.SqlClient;
 
 namespace Persistencia.Avisos
 {
@@ -49,7 +50,7 @@ namespace Persistencia.Avisos
             return (int)Base.Db.GetScalar("SP_BLOQUEAR_AVISO", CommandType.StoredProcedure, p);
         }
 
-        public int InserirAviso(Entidade.Avisos.Avisos NovoAviso)
+        public int InserirAviso(Entidade.Avisos.Avisos NovoAviso, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoAviso.CodigoAcademia));
@@ -57,20 +58,20 @@ namespace Persistencia.Avisos
             p.Add(Base.Db.CreateParameter("@DS_TITULO", NovoAviso.Titulo));
             p.Add(Base.Db.CreateParameter("@DS_DESCRICAO", NovoAviso.Descricao));
 
-            return Base.Db.Insert("SP_INSERIR_AVISO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_AVISO", CommandType.StoredProcedure, p, Command);
         }
 
-        public int InserirVisao(int CodigoAcademia, int CodigoAviso, string Codigos)
+        public int InserirVisao(int CodigoAcademia, int CodigoAviso, string Codigos, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
             p.Add(Base.Db.CreateParameter("@ID_AVISO", CodigoAviso));
             p.Add(Base.Db.CreateParameter("@ID_TIPOS", Codigos));
 
-            return Base.Db.Insert("SP_INSERIR_AVISO_USUARIOS_TIPOS", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_AVISO_USUARIOS_TIPOS", CommandType.StoredProcedure, p, Command);
         }
 
-        public int InserirArquivo(int CodigoAcademia, int CodigoAviso, AvisosArquivos AvisosArquivos)
+        public int InserirArquivo(int CodigoAcademia, int CodigoAviso, AvisosArquivos AvisosArquivos, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
@@ -79,10 +80,10 @@ namespace Persistencia.Avisos
             p.Add(Base.Db.CreateParameter("@IM_ARQUIVO", AvisosArquivos.Arquivo));
             p.Add(Base.Db.CreateParameter("@DS_EXTENSAO", AvisosArquivos.Extensao));
 
-            return Base.Db.Insert("SP_INSERIR_AVISO_ARQUIVO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_AVISO_ARQUIVO", CommandType.StoredProcedure, p, Command);
         }
 
-        public int AtualizarAviso(Entidade.Avisos.Avisos NovoAviso, int CodigoUsuarioAlt)
+        public int AtualizarAviso(Entidade.Avisos.Avisos NovoAviso, int CodigoUsuarioAlt, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoAviso.CodigoAcademia));
@@ -91,25 +92,25 @@ namespace Persistencia.Avisos
             p.Add(Base.Db.CreateParameter("@DS_TITULO", NovoAviso.Titulo));
             p.Add(Base.Db.CreateParameter("@DS_DESCRICAO", NovoAviso.Descricao));
 
-            return (int)Base.Db.GetScalar("SP_ATUALIZAR_AVISO", CommandType.StoredProcedure, p);
+            return (int)Base.Db.GetScalar("SP_ATUALIZAR_AVISO", CommandType.StoredProcedure, p, Command);
         }
 
-        public void RemoverVisao(int CodigoAcademia, int CodigoAviso)
+        public void RemoverVisao(int CodigoAcademia, int CodigoAviso, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
             p.Add(Base.Db.CreateParameter("@ID_AVISO", CodigoAviso));
 
-            Base.Db.GetScalar("SP_EXCLUIR_AVISO_VISAO", CommandType.StoredProcedure, p);
+            Base.Db.GetScalar("SP_EXCLUIR_AVISO_VISAO", CommandType.StoredProcedure, p, Command);
         }
 
-        public void RemoverArquivo(int CodigoAcademia, int CodigoAviso)
+        public void RemoverArquivo(int CodigoAcademia, int CodigoAviso, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", CodigoAcademia));
             p.Add(Base.Db.CreateParameter("@ID_AVISO", CodigoAviso));
 
-            Base.Db.GetScalar("SP_EXCLUIR_AVISO_ARQUIVOS", CommandType.StoredProcedure, p);
+            Base.Db.GetScalar("SP_EXCLUIR_AVISO_ARQUIVOS", CommandType.StoredProcedure, p, Command);
         }
     }
 }

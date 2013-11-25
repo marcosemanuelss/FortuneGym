@@ -7,7 +7,7 @@ using System.Configuration;
 
 namespace Persistencia.Base
 {
-    class Transacao
+    public class Transacao
     {
         private SqlCommand command;
         private SqlTransaction trans;
@@ -33,16 +33,28 @@ namespace Persistencia.Base
         public void Commit()
         {
             trans.Commit();
+            CloseConnection();
         }
 
         public void Rollback()
         {
-            trans.Rollback();
+            try
+            {
+                trans.Rollback();
+            }
+            catch
+            {
+            }
+            finally
+            {
+                CloseConnection();
+            }
         }
 
-        public void CloseConnection()
+        private void CloseConnection()
         {
-            conn.Close();
+            if (conn.State != System.Data.ConnectionState.Closed)
+                conn.Close();
         }
     }
 }

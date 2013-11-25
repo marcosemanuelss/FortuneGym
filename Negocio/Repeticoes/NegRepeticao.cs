@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Entidade.Repeticoes;
 using Persistencia.Repeticoes;
+using Persistencia.Base;
 
 namespace Negocio.Repeticoes
 {
@@ -32,48 +33,75 @@ namespace Negocio.Repeticoes
 
         public bool InserirRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
         {
+            Transacao trans = new Transacao();
             PerRepeticao PerRepeticao = new PerRepeticao();
-
-            int CodigoRetorno = PerRepeticao.InserirTipoRepeticao(NovaRepeticao);
-
-            if (CodigoRetorno > 0)
+            int CodigoRetorno = 0;
+            try
             {
-                NovaRepeticao.Codigo = CodigoRetorno;
-                CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao);
+                CodigoRetorno = PerRepeticao.InserirTipoRepeticao(NovaRepeticao, trans.GetCommand());
+
+                if (CodigoRetorno > 0)
+                {
+                    NovaRepeticao.Codigo = CodigoRetorno;
+                    CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao, trans.GetCommand());
+                }
+            }
+            catch
+            {
+                CodigoRetorno = 0;
+                trans.Rollback();
             }
 
             if (CodigoRetorno > 0)
+            {
+                trans.Commit();
                 Mensagem = "Repetição inserida com sucesso.";
+            }
             else
+            {
+                trans.Rollback();
                 Mensagem = "Erro ao inserir repetição, favor verificar os dados informados e tentar novamente.";
+            }
 
             return CodigoRetorno > 0;
         }
 
         public bool AtualizarRepeticao(TipoRepeticao NovaRepeticao, ref string Mensagem)
         {
+            //Ajustar esse metodo, para apagar todas as repetições e inserir tudo de novo, atualizar apenas o tipo de repetição
+            Transacao trans = new Transacao();
             PerRepeticao PerRepeticao = new PerRepeticao();
-            int CodigoRetorno = PerRepeticao.AtualizarTipoRepeticao(NovaRepeticao);
-
-            if (CodigoRetorno == 1)
+            int CodigoRetorno = 0;
+            try
             {
-                for (int i = 0; i < NovaRepeticao.Repeticoes.Count; i++)
-                {
-                    if (NovaRepeticao.Repeticoes[i].Codigo == 0)
-                        CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao);
-                    else
-                        CodigoRetorno = PerRepeticao.AtualizarRepeticao(NovaRepeticao.CodigoAcademia, NovaRepeticao.Codigo, NovaRepeticao.Repeticoes[i]);
+                CodigoRetorno = PerRepeticao.AtualizarTipoRepeticao(NovaRepeticao, trans.GetCommand());
 
-                    if (CodigoRetorno != 1)
-                        break;
+                if (CodigoRetorno == 1)
+                {
+                    for (int i = 0; i < NovaRepeticao.Repeticoes.Count; i++)
+                    {
+                        CodigoRetorno = PerRepeticao.InserirRepeticao(NovaRepeticao, trans.GetCommand());
+                        
+                        if (CodigoRetorno != 1)
+                            break;
+                    }
                 }
+            }
+            catch
+            {
+                CodigoRetorno = 0;
+                trans.Rollback();
             }
 
             switch (CodigoRetorno)
             {
-                case 1: Mensagem = "Repetição atualizada com sucesso.";
+                case 1:
+                    trans.Commit();
+                    Mensagem = "Repetição atualizada com sucesso.";
                     break;
-                default: Mensagem = "Erro ao atualizar repetição, favor verificar os dados informados e tentar novamente.";
+                default:
+                    trans.Rollback();
+                    Mensagem = "Erro ao atualizar repetição, favor verificar os dados informados e tentar novamente.";
                     break;
             }
 

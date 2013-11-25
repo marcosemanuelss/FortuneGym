@@ -6,6 +6,7 @@ using Entidade.Repeticoes;
 using System.Data.Common;
 using Persistencia.Base;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Persistencia.Repeticoes
 {
@@ -38,17 +39,17 @@ namespace Persistencia.Repeticoes
             return Base.Db.ReadList<TipoRepeticao>("SP_LISTAR_TIPO_REPETICAO", GenericMake.Make<TipoRepeticao>, CommandType.StoredProcedure, p);
         }
 
-        public static int InserirTipoRepeticao(TipoRepeticao NovaRepeticao)
+        public static int InserirTipoRepeticao(TipoRepeticao NovaRepeticao, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovaRepeticao.CodigoAcademia));
             p.Add(Base.Db.CreateParameter("@DS_NOME", NovaRepeticao.Nome));
             p.Add(Base.Db.CreateParameter("@IN_TIPO", NovaRepeticao.Tipo));
 
-            return Base.Db.Insert("SP_INSERIR_TIPO_REPETICAO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_TIPO_REPETICAO", CommandType.StoredProcedure, p, Command);
         }
 
-        public static int InserirRepeticao(TipoRepeticao NovaRepeticao)
+        public static int InserirRepeticao(TipoRepeticao NovaRepeticao, SqlCommand Command)
         {
             int retorno = -1;
             for (int i = 0; i < NovaRepeticao.Repeticoes.Count; i++)
@@ -60,7 +61,7 @@ namespace Persistencia.Repeticoes
                 p.Add(Base.Db.CreateParameter("@NR_REPETICAO", NovaRepeticao.Repeticoes[i].QtdRepeticao));
                 p.Add(Base.Db.CreateParameter("@IN_MUDANCA", NovaRepeticao.Repeticoes[i].Variacao));
 
-                retorno = Base.Db.Insert("SP_INSERIR_REPETICAO", CommandType.StoredProcedure, p);
+                retorno = Base.Db.Insert("SP_INSERIR_REPETICAO", CommandType.StoredProcedure, p, Command);
 
                 if (retorno != 1)
                     break;
@@ -69,7 +70,7 @@ namespace Persistencia.Repeticoes
             return retorno;
         }
 
-        public static int AtualizarTipoRepeticao(TipoRepeticao NovaRepeticao)
+        public static int AtualizarTipoRepeticao(TipoRepeticao NovaRepeticao, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovaRepeticao.CodigoAcademia));
@@ -77,7 +78,7 @@ namespace Persistencia.Repeticoes
             p.Add(Base.Db.CreateParameter("@DS_NOME", NovaRepeticao.Nome));
             p.Add(Base.Db.CreateParameter("@IN_TIPO", NovaRepeticao.Tipo));
 
-            return Base.Db.Insert("SP_ATUALIZAR_TIPO_REPETICAO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_ATUALIZAR_TIPO_REPETICAO", CommandType.StoredProcedure, p, Command);
         }
 
         public static int AtualizarRepeticao(int CodigoAcademia, int CodigoTipoRepeticao, Repeticao NovaRepeticao)

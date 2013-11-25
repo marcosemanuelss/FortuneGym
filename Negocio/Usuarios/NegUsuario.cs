@@ -8,6 +8,7 @@ using Persistencia.Perfil;
 using Persistencia.Fichas;
 using Persistencia.Objetivos;
 using Negocio.Fichas;
+using Persistencia.Base;
 
 namespace Negocio.Usuarios
 {
@@ -64,14 +65,24 @@ namespace Negocio.Usuarios
 
         public bool InserirUsuario(Entidade.Usuarios.Usuarios NovoUsuario, ref string Mensagem)
         {
-            int CodigoRetorno = new PerUsuarios().InserirUsuario(NovoUsuario);
+            Transacao trans = new Transacao();
+            int CodigoRetorno = new PerUsuarios().InserirUsuario(NovoUsuario, trans.GetCommand());
 
             if (CodigoRetorno > 0)
+            {
+                trans.Commit();
                 Mensagem = "Usuário inserido com sucesso. Sua senha é trocar@123 ";
+            }
             else if (CodigoRetorno == -2601)
+            {
+                trans.Rollback();
                 Mensagem = "Login já cadastrado no sistema, favor escolher outro.";
+            }
             else
+            {
+                trans.Commit();
                 Mensagem = "Erro ao inserir usuário, favor verificar os dados informados e tentar novamente.";
+            }
 
             return CodigoRetorno > 0;
         }
@@ -108,13 +119,18 @@ namespace Negocio.Usuarios
 
         public bool AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao, ref string Mensagem)
         {
-            int CodigoRetorno = new PerUsuarios().AtualizarUsuario(NovoUsuario, CodigoUsuarioAlteracao);
+            Transacao trans = new Transacao();
+            int CodigoRetorno = new PerUsuarios().AtualizarUsuario(NovoUsuario, CodigoUsuarioAlteracao, trans.GetCommand());
 
             switch (CodigoRetorno)
             {
-                case 1: Mensagem = "Usuário atualizado com sucesso.";
+                case 1:
+                    trans.Commit();
+                    Mensagem = "Usuário atualizado com sucesso.";
                     break;
-                default: Mensagem = "Erro ao atualizar o usuário, favor verificar os dados informados e tentar novamente.";
+                default:
+                    trans.Rollback();
+                    Mensagem = "Erro ao atualizar o usuário, favor verificar os dados informados e tentar novamente.";
                     break;
             }
 

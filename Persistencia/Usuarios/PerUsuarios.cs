@@ -6,6 +6,7 @@ using System.Data.Common;
 using Persistencia.Base;
 using System.Data;
 using Entidade.Usuarios;
+using System.Data.SqlClient;
 
 namespace Persistencia.Usuarios
 {
@@ -38,7 +39,7 @@ namespace Persistencia.Usuarios
             return Base.Db.ReadList<Entidade.Usuarios.UsuariosGrid>("SP_LISTAR_USUARIOS_BUSCA", GenericMake.Make<Entidade.Usuarios.UsuariosGrid>, CommandType.StoredProcedure, p);
         }
 
-        public int InserirUsuario(Entidade.Usuarios.Usuarios NovoUsuario)
+        public int InserirUsuario(Entidade.Usuarios.Usuarios NovoUsuario, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoUsuario.CodigoAcademia));
@@ -49,10 +50,10 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@DT_CADASTRO", NovoUsuario.DataCadastro));
             p.Add(Base.Db.CreateParameter("@IN_ATIVO", NovoUsuario.Ativo));
 
-            return Base.Db.Insert("SP_INSERIR_USUARIO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_USUARIO", CommandType.StoredProcedure, p, Command);
         }
 
-        public int AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao)
+        public int AtualizarUsuario(Entidade.Usuarios.Usuarios NovoUsuario, int CodigoUsuarioAlteracao, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", NovoUsuario.CodigoAcademia));
@@ -63,7 +64,7 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@IN_ATIVO", NovoUsuario.Ativo));
             p.Add(Base.Db.CreateParameter("@ID_USUARIO_ALT", CodigoUsuarioAlteracao));
 
-            return Base.Db.Insert("SP_ATUALIZAR_USUARIO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_ATUALIZAR_USUARIO", CommandType.StoredProcedure, p, Command);
         }
 
         public int BloquearUsuario(int CodigoAcademia, int CodigoUsuario, int CodigoUsuarioAlteracao)
@@ -86,7 +87,7 @@ namespace Persistencia.Usuarios
             return (int)Base.Db.GetScalar("SP_REDEFINIR_SENHA_USUARIO", CommandType.StoredProcedure, p);
         }
 
-        public int InserirUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento)
+        public int InserirUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", UsuarioComplemento.CodigoAcademia));
@@ -104,10 +105,10 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@NR_CELULAR", UsuarioComplemento.Complemento.Celular));
             p.Add(Base.Db.CreateParameter("@DS_EMAIL", UsuarioComplemento.Complemento.Email));
 
-            return Base.Db.Insert("SP_INSERIR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_INSERIR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p, Command);
         }
 
-        public int AtualizarUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento)
+        public int AtualizarUsuarioComplemento(Entidade.Usuarios.Usuarios UsuarioComplemento, SqlCommand Command)
         {
             List<DbParameter> p = new List<DbParameter>();
             p.Add(Base.Db.CreateParameter("@ID_ACADEMIA", UsuarioComplemento.CodigoAcademia));
@@ -125,7 +126,7 @@ namespace Persistencia.Usuarios
             p.Add(Base.Db.CreateParameter("@NR_CELULAR", UsuarioComplemento.Complemento.Celular));
             p.Add(Base.Db.CreateParameter("@DS_EMAIL", UsuarioComplemento.Complemento.Email));
 
-            return Base.Db.Insert("SP_ATUALIZAR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p);
+            return Base.Db.Insert("SP_ATUALIZAR_USUARIO_COMPLEMENTO", CommandType.StoredProcedure, p, Command);
         }
 
         public int ObterUsuario(string Login, string CPF)
