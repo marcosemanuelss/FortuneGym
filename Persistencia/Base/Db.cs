@@ -185,6 +185,7 @@ namespace Persistencia.Base
 
         public static object GetScalar(string sql, CommandType commandType, List<DbParameter> parms, SqlCommand Command)
         {
+            Command.Parameters.Clear();
             Command.CommandText = sql;
             Command.CommandType = commandType;
             Command.SetParameters(parms);
@@ -264,6 +265,7 @@ namespace Persistencia.Base
 
         public static int Insert(string sql, CommandType commandType, List<DbParameter> parms, SqlCommand Command)
         {
+            Command.Parameters.Clear();
             Command.CommandType = commandType;
             Command.SetParameters(parms);
             Command.CommandText = sql;
